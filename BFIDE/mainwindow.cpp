@@ -9,6 +9,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ui->bytes8->toggle();
 }
 
 MainWindow::~MainWindow()
@@ -16,10 +17,62 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+bool MainWindow::checkErrors()
+{
+    std::string codeCopy = code.toStdString();
+    int pos = 0;
+    int brackets = 0;
+    for(int i = 0; i < (int)codeCopy.size(); i++)
+    {
+        if(codeCopy[i] == '>')
+            pos++;
+        else if(codeCopy[i] == '<')
+            pos--;
+        if(pos < 0)
+        {
+            output += "Invalid pointer position\n";
+            return 1;
+        }
+        if(codeCopy[i] == '[')
+        {
+            codeCopy[i] = '#';
+            brackets++;
+            while(brackets && i < (int)codeCopy.size())
+            {
+                i++;
+                if(codeCopy[i] == '[')
+                    brackets++;
+                else if(codeCopy[i] == ']')
+                    brackets--;
+            }
+
+            if(brackets != 0)
+            {
+                output += "Cycle error\n";
+                return 1;
+            }
+            else codeCopy[i] = '#';
+        }
+        if(codeCopy[i] == ']')
+        {
+            output += "Cycle error\n";
+            return 1;
+        }
+    }
+
+
+    return 0;
+}
+
 void MainWindow::executeCode()
 {
+    if(checkErrors())
+    {
+        line.clear();
+        return;
+    }
     line.resize(code.size(), 0);
-    unsigned int pos = 0;
+    int pos = 0;
     int inputPos = 0;
     int brackets = 0;
     for(int i = 0; i < code.size(); i++)
@@ -71,7 +124,12 @@ void MainWindow::executeCode()
                 i--;
             }
         }
+        if(line[pos] > maxValue)
+        {
+            line[pos] = 0;
+        }
     }
+    line.clear();
 }
 
 void MainWindow::on_run_clicked()
@@ -81,4 +139,24 @@ void MainWindow::on_run_clicked()
     executeCode();
     ui->output->setText(output);
     output = "";
+}
+void MainWindow::on_bytes16_clicked()
+{
+    maxValue = 65535;
+}
+
+
+void MainWindow::on_bytes32_clicked()
+{
+    maxValue = 4294967295;
+}
+
+void MainWindow::on_bytes8_clicked()
+{
+    maxValue = 255;
+}
+
+void MainWindow::on_clear_clicked()
+{
+     ui->prog->setText(" ");
 }

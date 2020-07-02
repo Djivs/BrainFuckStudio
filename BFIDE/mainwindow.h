@@ -19,12 +19,22 @@ public:
 private slots:
     void on_run_clicked();
 
+    void on_bytes16_clicked();
+
+    void on_bytes32_clicked();
+
+    void on_bytes8_clicked();
+    void on_clear_clicked();
+
+
 private:
     QString code;
     QString input;
     QString output = "";
-    std::vector<char> line;
+    std::vector <long long int> line;
+    long long int maxValue = 255;
     void executeCode();
+    bool checkErrors();
     Ui::MainWindow *ui;
 };
 #endif // MAINWINDOW_H

@@ -18,7 +18,7 @@
     <property name="geometry">
      <rect>
       <x>260</x>
-      <y>320</y>
+      <y>280</y>
       <width>258</width>
       <height>224</height>
      </rect>
@@ -34,43 +34,98 @@
      <item>
       <widget class="QTextEdit" name="prog"/>
      </item>
+     <item>
+      <widget class="QPushButton" name="clear">
+       <property name="text">
+        <string>Clear</string>
+       </property>
+      </widget>
+     </item>
     </layout>
    </widget>
    <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>10</y>
-      <width>621</width>
-      <height>251</height>
+      <x>50</x>
+      <y>20</y>
+      <width>258</width>
+      <height>216</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="horizontalLayout">
+    <layout class="QVBoxLayout" name="verticalLayout">
      <item>
-      <layout class="QVBoxLayout" name="verticalLayout">
-       <item>
-        <widget class="QLabel" name="label">
-         <property name="text">
-          <string>Output</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QTextBrowser" name="output"/>
-       </item>
-      </layout>
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Output</string>
+       </property>
+      </widget>
      </item>
      <item>
-      <layout class="QVBoxLayout" name="verticalLayout_2">
+      <widget class="QTextBrowser" name="output"/>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>500</x>
+      <y>20</y>
+      <width>258</width>
+      <height>216</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <item>
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>Input</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QTextEdit" name="input"/>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>650</x>
+      <y>356</y>
+      <width>95</width>
+      <height>104</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_5">
+     <item>
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>Cell size:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_4">
        <item>
-        <widget class="QLabel" name="label_2">
+        <widget class="QRadioButton" name="bytes8">
          <property name="text">
-          <string>Input</string>
+          <string>8 bytes</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QTextEdit" name="input"/>
+        <widget class="QRadioButton" name="bytes16">
+         <property name="text">
+          <string>16 bytes</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QRadioButton" name="bytes32">
+         <property name="text">
+          <string>32 bytes</string>
+         </property>
+        </widget>
        </item>
       </layout>
      </item>
