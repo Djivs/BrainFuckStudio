@@ -13,10 +13,10 @@ Added:
 
 - Code clear button
 
-  ![img](/home/dmitriy/QT_PROJECTS/BF/img/example.png)
+  ![img1.1](/img/example.png)
 
 ##### v1.0
 
 Just basic BF code execution.
 
-![img](/home/dmitriy/QT_PROJECTS/BF/img/v1_0.png)
+![img1.0](/img/v1_0.png)
