@@ -3,6 +3,18 @@
 
 ### Change Log:
 
+##### v1.2
+
+Changed app style.
+
+Added:
+
+- Status bar
+- "View memory" option
+- Optimized errors finding
+- Added fonts
+- ![img1.2](/img/v1_2.png)
+
 ##### v1.1
 
 Added:

@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/img">
+        <file>loading.gif</file>
+        <file>sandwatch.png</file>
+    </qresource>
+</RCC>
