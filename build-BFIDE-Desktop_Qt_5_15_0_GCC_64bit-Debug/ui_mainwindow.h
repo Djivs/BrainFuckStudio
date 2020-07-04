@@ -55,6 +55,12 @@ public:
     QLabel *label_loading;
     QLabel *label_status;
     QLabel *label_loadimg;
+    QWidget *layoutWidget4;
+    QVBoxLayout *verticalLayout_5;
+    QLabel *label_5;
+    QRadioButton *sep_no;
+    QRadioButton *sep_space;
+    QRadioButton *sep_nl;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -63,6 +69,7 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
         MainWindow->resize(1146, 789);
+        MainWindow->setStyleSheet(QString::fromUtf8("background-color:rgb(46, 52, 54)"));
         actionCredits = new QAction(MainWindow);
         actionCredits->setObjectName(QString::fromUtf8("actionCredits"));
         actionCredits_2 = new QAction(MainWindow);
@@ -83,22 +90,25 @@ public:
         font.setBold(true);
         font.setWeight(75);
         label_2->setFont(font);
+        label_2->setStyleSheet(QString::fromUtf8("color:rgb(238, 238, 236)"));
 
         verticalLayout_2->addWidget(label_2);
 
         input = new QTextEdit(layoutWidget);
         input->setObjectName(QString::fromUtf8("input"));
+        input->setStyleSheet(QString::fromUtf8("background-color:rgb(186, 189, 182)"));
 
         verticalLayout_2->addWidget(input);
 
         viewMemoryLine = new QPushButton(centralwidget);
         viewMemoryLine->setObjectName(QString::fromUtf8("viewMemoryLine"));
-        viewMemoryLine->setGeometry(QRect(850, 550, 261, 41));
+        viewMemoryLine->setGeometry(QRect(840, 440, 261, 41));
         QFont font1;
         font1.setFamily(QString::fromUtf8("DejaVu Serif"));
         font1.setBold(true);
         font1.setWeight(75);
         viewMemoryLine->setFont(font1);
+        viewMemoryLine->setStyleSheet(QString::fromUtf8("color:rgb(238, 238, 236)"));
         run = new QPushButton(centralwidget);
         run->setObjectName(QString::fromUtf8("run"));
         run->setGeometry(QRect(850, 260, 241, 24));
@@ -107,13 +117,15 @@ public:
         font2.setBold(true);
         font2.setWeight(75);
         run->setFont(font2);
+        run->setStyleSheet(QString::fromUtf8("color: rgb(78, 154, 6)"));
         clear = new QPushButton(centralwidget);
         clear->setObjectName(QString::fromUtf8("clear"));
         clear->setGeometry(QRect(20, 710, 256, 24));
         clear->setFont(font1);
+        clear->setStyleSheet(QString::fromUtf8("color: rgb(204, 0, 0)"));
         layoutWidget1 = new QWidget(centralwidget);
         layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
-        layoutWidget1->setGeometry(QRect(940, 620, 98, 114));
+        layoutWidget1->setGeometry(QRect(850, 310, 98, 114));
         layoutWidget1->setFont(font1);
         verticalLayout_4 = new QVBoxLayout(layoutWidget1);
         verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
@@ -121,24 +133,28 @@ public:
         label_3 = new QLabel(layoutWidget1);
         label_3->setObjectName(QString::fromUtf8("label_3"));
         label_3->setFont(font1);
+        label_3->setStyleSheet(QString::fromUtf8("color:rgb(238, 238, 236)"));
 
         verticalLayout_4->addWidget(label_3);
 
         bytes8 = new QRadioButton(layoutWidget1);
         bytes8->setObjectName(QString::fromUtf8("bytes8"));
         bytes8->setFont(font1);
+        bytes8->setStyleSheet(QString::fromUtf8("color:rgb(238, 238, 236)"));
 
         verticalLayout_4->addWidget(bytes8);
 
         bytes16 = new QRadioButton(layoutWidget1);
         bytes16->setObjectName(QString::fromUtf8("bytes16"));
         bytes16->setFont(font1);
+        bytes16->setStyleSheet(QString::fromUtf8("color:rgb(238, 238, 236)"));
 
         verticalLayout_4->addWidget(bytes16);
 
         bytes32 = new QRadioButton(layoutWidget1);
         bytes32->setObjectName(QString::fromUtf8("bytes32"));
         bytes32->setFont(font1);
+        bytes32->setStyleSheet(QString::fromUtf8("color:rgb(238, 238, 236)"));
 
         verticalLayout_4->addWidget(bytes32);
 
@@ -151,11 +167,13 @@ public:
         label = new QLabel(layoutWidget2);
         label->setObjectName(QString::fromUtf8("label"));
         label->setFont(font);
+        label->setStyleSheet(QString::fromUtf8("color:rgb(238, 238, 236)"));
 
         verticalLayout->addWidget(label);
 
         output = new QTextBrowser(layoutWidget2);
         output->setObjectName(QString::fromUtf8("output"));
+        output->setStyleSheet(QString::fromUtf8("background-color:rgb(186, 189, 182)"));
 
         verticalLayout->addWidget(output);
 
@@ -168,33 +186,67 @@ public:
         label_4 = new QLabel(layoutWidget3);
         label_4->setObjectName(QString::fromUtf8("label_4"));
         label_4->setFont(font);
+        label_4->setStyleSheet(QString::fromUtf8("color:rgb(238, 238, 236)"));
 
         verticalLayout_3->addWidget(label_4);
 
         prog = new QTextEdit(layoutWidget3);
         prog->setObjectName(QString::fromUtf8("prog"));
+        prog->setStyleSheet(QString::fromUtf8("background-color:rgb(186, 189, 182)"));
 
         verticalLayout_3->addWidget(prog);
 
         label_loading = new QLabel(centralwidget);
         label_loading->setObjectName(QString::fromUtf8("label_loading"));
-        label_loading->setGeometry(QRect(850, 360, 111, 21));
+        label_loading->setGeometry(QRect(840, 540, 111, 21));
         QFont font3;
         font3.setFamily(QString::fromUtf8("FreeMono"));
         font3.setBold(false);
         font3.setItalic(false);
         font3.setWeight(50);
         label_loading->setFont(font3);
+        label_loading->setStyleSheet(QString::fromUtf8("color:rgb(238, 238, 236)"));
         label_status = new QLabel(centralwidget);
         label_status->setObjectName(QString::fromUtf8("label_status"));
-        label_status->setGeometry(QRect(850, 330, 75, 16));
+        label_status->setGeometry(QRect(850, 520, 75, 16));
         QFont font4;
         font4.setFamily(QString::fromUtf8("Dyuthi"));
         font4.setPointSize(15);
         label_status->setFont(font4);
+        label_status->setStyleSheet(QString::fromUtf8("color:rgb(238, 238, 236)"));
         label_loadimg = new QLabel(centralwidget);
         label_loadimg->setObjectName(QString::fromUtf8("label_loadimg"));
-        label_loadimg->setGeometry(QRect(920, 350, 20, 35));
+        label_loadimg->setGeometry(QRect(920, 510, 20, 35));
+        layoutWidget4 = new QWidget(centralwidget);
+        layoutWidget4->setObjectName(QString::fromUtf8("layoutWidget4"));
+        layoutWidget4->setGeometry(QRect(980, 310, 134, 102));
+        verticalLayout_5 = new QVBoxLayout(layoutWidget4);
+        verticalLayout_5->setObjectName(QString::fromUtf8("verticalLayout_5"));
+        verticalLayout_5->setContentsMargins(0, 0, 0, 0);
+        label_5 = new QLabel(layoutWidget4);
+        label_5->setObjectName(QString::fromUtf8("label_5"));
+        label_5->setStyleSheet(QString::fromUtf8("color:rgb(238, 238, 236)"));
+
+        verticalLayout_5->addWidget(label_5);
+
+        sep_no = new QRadioButton(layoutWidget4);
+        sep_no->setObjectName(QString::fromUtf8("sep_no"));
+        sep_no->setStyleSheet(QString::fromUtf8("color:rgb(238, 238, 236)"));
+
+        verticalLayout_5->addWidget(sep_no);
+
+        sep_space = new QRadioButton(layoutWidget4);
+        sep_space->setObjectName(QString::fromUtf8("sep_space"));
+        sep_space->setStyleSheet(QString::fromUtf8("color:rgb(238, 238, 236)"));
+
+        verticalLayout_5->addWidget(sep_space);
+
+        sep_nl = new QRadioButton(layoutWidget4);
+        sep_nl->setObjectName(QString::fromUtf8("sep_nl"));
+        sep_nl->setStyleSheet(QString::fromUtf8("color:rgb(238, 238, 236)"));
+
+        verticalLayout_5->addWidget(sep_nl);
+
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -232,6 +284,10 @@ public:
         label_loading->setText(QCoreApplication::translate("MainWindow", "text editing", nullptr));
         label_status->setText(QCoreApplication::translate("MainWindow", "Status:", nullptr));
         label_loadimg->setText(QString());
+        label_5->setText(QCoreApplication::translate("MainWindow", "Input separator:", nullptr));
+        sep_no->setText(QCoreApplication::translate("MainWindow", "None", nullptr));
+        sep_space->setText(QCoreApplication::translate("MainWindow", "Space", nullptr));
+        sep_nl->setText(QCoreApplication::translate("MainWindow", "New line", nullptr));
     } // retranslateUi
 
 };

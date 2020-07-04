@@ -3,4 +3,5 @@
         <file>loading.gif</file>
         <file>sandwatch.png</file>
     </qresource>
+    <qresource prefix="/txt"/>
 </RCC>

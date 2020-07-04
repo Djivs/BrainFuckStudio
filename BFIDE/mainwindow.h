@@ -33,7 +33,17 @@ private slots:
 
     void on_prog_textChanged();
 
+    void on_sep_no_clicked();
+
+    void on_sep_space_clicked();
+
+    void on_sep_nl_clicked();
+
 private:
+
+    char *separator = new char;
+
+    void executeCode();
     MemoryLine *window;
     QPixmap pixmap;
 
@@ -43,7 +53,6 @@ private:
     QString output = "";
     std::vector <long long int> line;
     long long int maxValue = 255;
-    void executeCode();
     Ui::MainWindow *ui;
 };
 #endif // MAINWINDOW_H

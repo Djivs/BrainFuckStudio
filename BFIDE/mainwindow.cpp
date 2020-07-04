@@ -13,6 +13,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     ui->bytes8->toggle();
+    ui->sep_no->toggle();
 }
 
 MainWindow::~MainWindow()
@@ -51,12 +52,18 @@ void MainWindow::executeCode()
             }
         }
         else if(code[i] == '.')
+        {
             output+=char(line[pos]);
+            ui->output->setText(output);
+            repaint();
+        }
         else if(code[i] == ',')
         {
             line[pos] = input[inputPos].toLatin1();
-            qDebug() << input[inputPos];
-            inputPos+=2;
+            inputPos++;
+            if(input[inputPos] == *separator)
+                inputPos++;
+
         }
         else if(code[i] == '[')
         {
@@ -103,21 +110,30 @@ void MainWindow::executeCode()
         {
             line[pos] = 0;
         }
+        else if(line[pos] < (-1)*maxValue)
+        {
+            line[pos] = 0;
+        }
     }
 }
 
 void MainWindow::on_run_clicked()
 {
+    //show loading//
     ui->label_loading->setText("loading");
     ui->label_loadimg->setPixmap(pixmap);
     repaint();
+    //clear line for programm//
     line.clear();
+    //get user code && user input//
     code = ui->prog->toPlainText();
-    input = ui->input->toPlainText();
+    input = ui->input->toPlainText() + " ";
+    //run BF code//
     executeCode();
+    //end loading//
     ui->label_loading->setText("executed");
     ui->label_loadimg->clear();
-    ui->output->setText(output);
+    //clear string for output//
     output = "";
 }
 void MainWindow::on_bytes16_clicked()
@@ -156,4 +172,19 @@ void MainWindow::on_prog_textChanged()
 {
     ui->label_loading->setText("text editing");
     QString progText = ui->prog->toPlainText();
+}
+
+void MainWindow::on_sep_no_clicked()
+{
+    separator = NULL;
+}
+
+void MainWindow::on_sep_space_clicked()
+{
+    *separator =  ' ';
+}
+
+void MainWindow::on_sep_nl_clicked()
+{
+    *separator = '\n';
 }
