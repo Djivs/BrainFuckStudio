@@ -10,6 +10,37 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
+class CodeExecuter : public QObject
+{
+    Q_OBJECT
+public:
+    //constructor
+    explicit CodeExecuter(QObject *parent = 0);
+    //destructor
+    ~CodeExecuter() {};
+    //setters
+    void setLine(std::vector<long long int> newLine) {line = newLine;};
+    void setSeparator(char newSeparator) {separator = newSeparator;};
+    void setCode(QString newCode) {code = newCode;};
+    void setMaxValue(long long int newMaxValue) {maxValue = newMaxValue;};
+    void setInput(QString newInput){input = newInput;};
+    void setOutput(QString newOutput) {output = newOutput;};
+    //getters
+    QString getOutput() const {return output;};
+    std::vector <long long int> getLine() const {return line;};
+public slots:
+    void runCode();
+signals:
+    void codeExecuted();
+private:
+    std::vector <long long int> line;
+    long long int maxValue = 255;
+    char separator = ' ';
+    QString code;
+    QString output = " ";
+    QString input;
+};
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -19,6 +50,8 @@ public:
     ~MainWindow();
 
 private slots:
+
+    void end_code_execution();
 
     void on_run_clicked();
 
@@ -33,26 +66,22 @@ private slots:
 
     void on_prog_textChanged();
 
-    void on_sep_no_clicked();
-
     void on_sep_space_clicked();
 
     void on_sep_nl_clicked();
+signals:
+    void startOperation();
 
 private:
-
-    char *separator = new char;
-
-    void executeCode();
+    //window with memory view
     MemoryLine *window;
-    QPixmap pixmap;
-
-
-    QString code;
-    QString input;
-    QString output = "";
-    std::vector <long long int> line;
-    long long int maxValue = 255;
+    //loaging gif
+    QMovie dots_loading;
+    //main window
     Ui::MainWindow *ui;
+    //class for code running
+    CodeExecuter *worker;
+    //thread for class above
+    QThread *thread;
 };
 #endif // MAINWINDOW_H

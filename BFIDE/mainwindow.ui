@@ -340,10 +340,10 @@ p, li { white-space: pre-wrap; }
    <widget class="QLabel" name="label_loadimg">
     <property name="geometry">
      <rect>
-      <x>920</x>
+      <x>910</x>
       <y>510</y>
-      <width>20</width>
-      <height>35</height>
+      <width>32</width>
+      <height>32</height>
      </rect>
     </property>
     <property name="text">
@@ -367,16 +367,6 @@ p, li { white-space: pre-wrap; }
        </property>
        <property name="text">
         <string>Input separator:</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QRadioButton" name="sep_no">
-       <property name="styleSheet">
-        <string notr="true">color:rgb(238, 238, 236)</string>
-       </property>
-       <property name="text">
-        <string>None</string>
        </property>
       </widget>
      </item>

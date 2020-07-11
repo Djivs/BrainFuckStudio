@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.12.3, 2020-07-04T19:15:40. -->
+<!-- Written by QtCreator 4.12.3, 2020-07-11T23:02:28. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -306,8 +306,9 @@
     </valuelist>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:/home/dmitriy/QT_PROJECTS/BF/BFIDE/BFIDE.pro</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/home/dmitriy/QT_PROJECTS/BF/BFIDE/BFIDE.pro</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">BFIDE2</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:/home/dmitriy/Qt/QT_PROJECTS/BF/BFIDE/BFIDE.pro</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/home/dmitriy/Qt/QT_PROJECTS/BF/BFIDE/BFIDE.pro</value>
     <value type="QString" key="RunConfiguration.Arguments"></value>
     <value type="bool" key="RunConfiguration.Arguments.multi">false</value>
     <value type="QString" key="RunConfiguration.OverrideDebuggerStartup"></value>
