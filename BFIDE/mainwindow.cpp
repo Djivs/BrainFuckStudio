@@ -28,6 +28,7 @@ MainWindow::MainWindow(QWidget *parent)
     //connect signals
     connect(worker, SIGNAL(codeExecuted()), this, SLOT(end_code_execution()));
     connect(this, SIGNAL(startOperation()), worker, SLOT(runCode()));
+    connect(worker, SIGNAL(printItPlease(QString)), this, SLOT(updateOutput(QString)));
     //move worker to created thread and start it
     worker->moveToThread(thread);
     thread->start();
@@ -65,7 +66,10 @@ void CodeExecuter::runCode()
                 pos--;
         }
         else if(code[i] == '.')
+        {
             output += (char)line[pos];
+            emit printItPlease(output);
+        }
         else if(code[i] == ',')
         {
             while(input[inputPos] == separator && inputPos < input.size())
@@ -112,7 +116,10 @@ void CodeExecuter::runCode()
     emit codeExecuted();
 }
 
-
+void MainWindow::updateOutput(QString text)
+{
+    ui->output->setText(text);
+}
 void MainWindow::end_code_execution()
 {
     //stop loading gif

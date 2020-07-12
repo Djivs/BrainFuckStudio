@@ -31,6 +31,7 @@ public:
 public slots:
     void runCode();
 signals:
+    void printItPlease(QString text);
     void codeExecuted();
 private:
     std::vector <long long int> line;
@@ -50,6 +51,7 @@ public:
     ~MainWindow();
 
 private slots:
+    void updateOutput(QString text);
 
     void end_code_execution();
 
