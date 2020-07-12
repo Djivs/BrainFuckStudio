@@ -20,15 +20,25 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     ui->bytes8->toggle();
     ui->sep_space->toggle();
+    ui->darkScheme->toggle();
+
+
     //create thread for code executing
     thread = new QThread(this);
     connect(this, SIGNAL(destroyed()), thread, SLOT(quit()));
+
+
     //create code executer object
     worker = new CodeExecuter();
+    timer = new QTimer;
+
+
     //connect signals
     connect(worker, SIGNAL(codeExecuted()), this, SLOT(end_code_execution()));
     connect(this, SIGNAL(startOperation()), worker, SLOT(runCode()));
-    connect(worker, SIGNAL(printItPlease(QString)), this, SLOT(updateOutput(QString)));
+    connect(timer, SIGNAL(timeout()), this, SLOT(updateOut()));
+
+
     //move worker to created thread and start it
     worker->moveToThread(thread);
     thread->start();
@@ -39,9 +49,9 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-
 void CodeExecuter::runCode()
 {
+    output.clear();
     line.clear();
     line.resize(1, 0);
     int pos = 0;
@@ -49,9 +59,18 @@ void CodeExecuter::runCode()
     for(int i = 0; i < code.size(); i++)
     {
         if(code[i] == '+')
+        {
             line[pos]++;
+            if(line[pos] > maxValue)
+                line[pos] = 0;
+        }
         else if(code[i] == '-')
-            line[pos]--;
+        {
+            if(line[pos])
+                line[pos]--;
+            else
+                line[pos] = maxValue;
+        }
         else if(code[i] == '>')
         {
             pos++;
@@ -68,16 +87,16 @@ void CodeExecuter::runCode()
         else if(code[i] == '.')
         {
             output += (char)line[pos];
-            emit printItPlease(output);
         }
         else if(code[i] == ',')
         {
-            while(input[inputPos] == separator && inputPos < input.size())
+            while(inputPos < input.size() && input[inputPos] == separator)
             {
                 inputPos++;
             }
             if(inputPos < input.size())
                 line[pos] = (int)input[inputPos].toLatin1();
+            inputPos++;
         }
         else if(code[i] == '[' && line[pos] == 0)
         {
@@ -106,20 +125,17 @@ void CodeExecuter::runCode()
         }
 
 
-        if(line[pos] > maxValue)
-            line[pos] = 0;
-
-
 
 
     }
     emit codeExecuted();
 }
-
-void MainWindow::updateOutput(QString text)
+void MainWindow::updateOut()
 {
-    ui->output->setText(text);
+    ui->output->setText(worker->getOutput());
+    repaint();
 }
+
 void MainWindow::end_code_execution()
 {
     //stop loading gif
@@ -138,6 +154,7 @@ void MainWindow::end_code_execution()
     ui->bytes32->setEnabled(1);
     //set output
     ui->output->setText(worker->getOutput());
+    timer->stop();
 }
 
 
@@ -153,8 +170,6 @@ void MainWindow::on_run_clicked()
     worker->setCode(ui->prog->toPlainText());
     //load input to worker
     worker->setInput(ui->input->toPlainText());
-    //refresh output
-    worker->setOutput(" ");
     //disable buttons
     ui->sep_space->setEnabled(0);
     ui->sep_nl->setEnabled(0);
@@ -163,6 +178,7 @@ void MainWindow::on_run_clicked()
     ui->bytes32->setEnabled(0);
     //run code
     emit startOperation();
+    timer->start(1000);
 }
 void MainWindow::on_bytes16_clicked()
 {
@@ -210,4 +226,19 @@ void MainWindow::on_sep_space_clicked()
 void MainWindow::on_sep_nl_clicked()
 {
      worker->setSeparator('\n');
+}
+
+void MainWindow::on_darkScheme_clicked()
+{
+     ui->centralwidget->setStyleSheet("color: white; background-color: rgb(46, 52, 54)");
+}
+
+void MainWindow::on_lightScheme_clicked()
+{
+     ui->centralwidget->setStyleSheet("color: black; background-color: white");
+}
+
+void MainWindow::on_sep_no_clicked()
+{
+    worker->setSeparator((char)0);
 }

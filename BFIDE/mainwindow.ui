@@ -17,6 +17,9 @@
    <string notr="true">background-color:rgb(46, 52, 54)</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">color: white</string>
+   </property>
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
@@ -38,7 +41,7 @@
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">color:rgb(238, 238, 236)</string>
+        <string notr="true"/>
        </property>
        <property name="text">
         <string>Input</string>
@@ -48,7 +51,7 @@
      <item>
       <widget class="QTextEdit" name="input">
        <property name="styleSheet">
-        <string notr="true">background-color:rgb(186, 189, 182)</string>
+        <string notr="true"/>
        </property>
       </widget>
      </item>
@@ -71,7 +74,7 @@
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">color:rgb(238, 238, 236)</string>
+     <string notr="true"/>
     </property>
     <property name="text">
      <string>View memory line</string>
@@ -150,7 +153,7 @@
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">color:rgb(238, 238, 236)</string>
+        <string notr="true"/>
        </property>
        <property name="text">
         <string>Cell size:</string>
@@ -167,7 +170,7 @@
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">color:rgb(238, 238, 236)</string>
+        <string notr="true"/>
        </property>
        <property name="text">
         <string>8 bytes</string>
@@ -184,7 +187,7 @@
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">color:rgb(238, 238, 236)</string>
+        <string notr="true"/>
        </property>
        <property name="text">
         <string>16 bytes</string>
@@ -201,7 +204,7 @@
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">color:rgb(238, 238, 236)</string>
+        <string notr="true"/>
        </property>
        <property name="text">
         <string>32 bytes</string>
@@ -231,7 +234,7 @@
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">color:rgb(238, 238, 236)</string>
+        <string notr="true"/>
        </property>
        <property name="text">
         <string>Output</string>
@@ -241,7 +244,13 @@
      <item>
       <widget class="QTextBrowser" name="output">
        <property name="styleSheet">
-        <string notr="true">background-color:rgb(186, 189, 182)</string>
+        <string notr="true"/>
+       </property>
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAsNeeded</enum>
+       </property>
+       <property name="sizeAdjustPolicy">
+        <enum>QAbstractScrollArea::AdjustIgnored</enum>
        </property>
       </widget>
      </item>
@@ -268,7 +277,7 @@
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">color:rgb(238, 238, 236)</string>
+        <string notr="true"/>
        </property>
        <property name="text">
         <string>Edit code:</string>
@@ -278,7 +287,7 @@
      <item>
       <widget class="QTextEdit" name="prog">
        <property name="styleSheet">
-        <string notr="true">background-color:rgb(186, 189, 182)</string>
+        <string notr="true"/>
        </property>
        <property name="html">
         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -309,7 +318,7 @@ p, li { white-space: pre-wrap; }
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">color:rgb(238, 238, 236)</string>
+     <string notr="true"/>
     </property>
     <property name="text">
      <string>text editing</string>
@@ -331,7 +340,7 @@ p, li { white-space: pre-wrap; }
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">color:rgb(238, 238, 236)</string>
+     <string notr="true"/>
     </property>
     <property name="text">
      <string>Status:</string>
@@ -363,7 +372,7 @@ p, li { white-space: pre-wrap; }
      <item>
       <widget class="QLabel" name="label_5">
        <property name="styleSheet">
-        <string notr="true">color:rgb(238, 238, 236)</string>
+        <string notr="true"/>
        </property>
        <property name="text">
         <string>Input separator:</string>
@@ -371,9 +380,16 @@ p, li { white-space: pre-wrap; }
       </widget>
      </item>
      <item>
+      <widget class="QRadioButton" name="sep_no">
+       <property name="text">
+        <string>No</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QRadioButton" name="sep_space">
        <property name="styleSheet">
-        <string notr="true">color:rgb(238, 238, 236)</string>
+        <string notr="true"/>
        </property>
        <property name="text">
         <string>Space</string>
@@ -383,10 +399,43 @@ p, li { white-space: pre-wrap; }
      <item>
       <widget class="QRadioButton" name="sep_nl">
        <property name="styleSheet">
-        <string notr="true">color:rgb(238, 238, 236)</string>
+        <string notr="true"/>
        </property>
        <property name="text">
         <string>New line</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>990</x>
+      <y>500</y>
+      <width>118</width>
+      <height>74</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_6">
+     <item>
+      <widget class="QLabel" name="label_6">
+       <property name="text">
+        <string>Color scheme:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="darkScheme">
+       <property name="text">
+        <string>Dark</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="lightScheme">
+       <property name="text">
+        <string>Light</string>
        </property>
       </widget>
      </item>

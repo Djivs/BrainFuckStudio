@@ -28,17 +28,16 @@ public:
     //getters
     QString getOutput() const {return output;};
     std::vector <long long int> getLine() const {return line;};
-public slots:
+private slots:
     void runCode();
 signals:
-    void printItPlease(QString text);
     void codeExecuted();
 private:
     std::vector <long long int> line;
     long long int maxValue = 255;
     char separator = ' ';
     QString code;
-    QString output = " ";
+    QString output;
     QString input;
 };
 
@@ -51,7 +50,7 @@ public:
     ~MainWindow();
 
 private slots:
-    void updateOutput(QString text);
+    void updateOut();
 
     void end_code_execution();
 
@@ -71,6 +70,13 @@ private slots:
     void on_sep_space_clicked();
 
     void on_sep_nl_clicked();
+
+    void on_darkScheme_clicked();
+
+    void on_lightScheme_clicked();
+
+    void on_sep_no_clicked();
+
 signals:
     void startOperation();
 
@@ -85,5 +91,6 @@ private:
     CodeExecuter *worker;
     //thread for class above
     QThread *thread;
+    QTimer *timer;
 };
 #endif // MAINWINDOW_H
