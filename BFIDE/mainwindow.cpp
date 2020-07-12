@@ -16,18 +16,19 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), dots_loading(":/img/loading.gif")
     , ui(new Ui::MainWindow)
 {
+    //main window setup
     ui->setupUi(this);
     ui->bytes8->toggle();
     ui->sep_space->toggle();
-
+    //create thread for code executing
     thread = new QThread(this);
     connect(this, SIGNAL(destroyed()), thread, SLOT(quit()));
-
-    qRegisterMetaType<std::vector<long long int>>("std::vector<long long int>");
-
+    //create code executer object
     worker = new CodeExecuter();
+    //connect signals
     connect(worker, SIGNAL(codeExecuted()), this, SLOT(end_code_execution()));
     connect(this, SIGNAL(startOperation()), worker, SLOT(runCode()));
+    //move worker to created thread and start it
     worker->moveToThread(thread);
     thread->start();
 }
@@ -47,29 +48,24 @@ void CodeExecuter::runCode()
     for(int i = 0; i < code.size(); i++)
     {
         if(code[i] == '+')
-        {
             line[pos]++;
-        }
         else if(code[i] == '-')
-        {
             line[pos]--;
-        }
-        else if(code[i] == '<')
-        {
-            pos--;
-        }
         else if(code[i] == '>')
         {
             pos++;
-            if(pos == static_cast<int>(line.size()))
+            if(pos == (int)line.size())
             {
                 line.push_back(0);
             }
         }
-        else if(code[i] == '.')
+        else if(code[i] == '<')
         {
-            output += char(line[pos]);
+            if(pos > 0)
+                pos--;
         }
+        else if(code[i] == '.')
+            output += (char)line[pos];
         else if(code[i] == ',')
         {
             while(input[inputPos] == separator && inputPos < input.size())
@@ -79,17 +75,39 @@ void CodeExecuter::runCode()
             if(inputPos < input.size())
                 line[pos] = (int)input[inputPos].toLatin1();
         }
-
-
-
-
-
-        if(code[i] == '[')
+        else if(code[i] == '[' && line[pos] == 0)
         {
             int brackets = 1;
-
-
+            while(brackets && i < code.size())
+            {
+                i++;
+                if(code[i] == '[')
+                    brackets++;
+                else if(code[i] == ']')
+                    brackets--;
+            }
         }
+        else if(code[i] == ']' && line[pos] != 0)
+        {
+            int brackets = 1;
+            while(brackets && i >= 0)
+            {
+                i--;
+                if(code[i] == '[')
+                    brackets--;
+                else if(code[i] == ']')
+                    brackets++;
+            }
+            i--;
+        }
+
+
+        if(line[pos] > maxValue)
+            line[pos] = 0;
+
+
+
+
     }
     emit codeExecuted();
 }

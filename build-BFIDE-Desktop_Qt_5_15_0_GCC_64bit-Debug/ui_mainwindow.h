@@ -58,7 +58,6 @@ public:
     QWidget *layoutWidget4;
     QVBoxLayout *verticalLayout_5;
     QLabel *label_5;
-    QRadioButton *sep_no;
     QRadioButton *sep_space;
     QRadioButton *sep_nl;
     QMenuBar *menubar;
@@ -216,7 +215,7 @@ public:
         label_status->setStyleSheet(QString::fromUtf8("color:rgb(238, 238, 236)"));
         label_loadimg = new QLabel(centralwidget);
         label_loadimg->setObjectName(QString::fromUtf8("label_loadimg"));
-        label_loadimg->setGeometry(QRect(920, 510, 20, 35));
+        label_loadimg->setGeometry(QRect(910, 510, 32, 32));
         layoutWidget4 = new QWidget(centralwidget);
         layoutWidget4->setObjectName(QString::fromUtf8("layoutWidget4"));
         layoutWidget4->setGeometry(QRect(980, 310, 134, 102));
@@ -228,12 +227,6 @@ public:
         label_5->setStyleSheet(QString::fromUtf8("color:rgb(238, 238, 236)"));
 
         verticalLayout_5->addWidget(label_5);
-
-        sep_no = new QRadioButton(layoutWidget4);
-        sep_no->setObjectName(QString::fromUtf8("sep_no"));
-        sep_no->setStyleSheet(QString::fromUtf8("color:rgb(238, 238, 236)"));
-
-        verticalLayout_5->addWidget(sep_no);
 
         sep_space = new QRadioButton(layoutWidget4);
         sep_space->setObjectName(QString::fromUtf8("sep_space"));
@@ -285,7 +278,6 @@ public:
         label_status->setText(QCoreApplication::translate("MainWindow", "Status:", nullptr));
         label_loadimg->setText(QString());
         label_5->setText(QCoreApplication::translate("MainWindow", "Input separator:", nullptr));
-        sep_no->setText(QCoreApplication::translate("MainWindow", "None", nullptr));
         sep_space->setText(QCoreApplication::translate("MainWindow", "Space", nullptr));
         sep_nl->setText(QCoreApplication::translate("MainWindow", "New line", nullptr));
     } // retranslateUi

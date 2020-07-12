@@ -29,6 +29,7 @@ public:
         memoryOutput = new QTextBrowser(MemoryLine);
         memoryOutput->setObjectName(QString::fromUtf8("memoryOutput"));
         memoryOutput->setGeometry(QRect(10, 10, 371, 351));
+        memoryOutput->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255)"));
 
         retranslateUi(MemoryLine);
 
