@@ -764,7 +764,9 @@ compiler_rcc_clean:
 qrc_resources.cpp: ../BFIDE/resources.qrc \
 		../../../Qt/5.15.0/gcc_64/bin/rcc \
 		../BFIDE/sandwatch.png \
-		../BFIDE/loading.gif
+		../BFIDE/loading.gif \
+		../BFIDE/green_start.png \
+		../BFIDE/red_stop.jpeg
 	/home/dmitriy/Qt/5.15.0/gcc_64/bin/rcc -name resources ../BFIDE/resources.qrc -o qrc_resources.cpp
 
 compiler_moc_predefs_make_all: moc_predefs.h
@@ -1312,17 +1314,27 @@ mainwindow.o: ../BFIDE/mainwindow.cpp ../BFIDE/mainwindow.h \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qdesktopwidget.h \
 		../../../Qt/5.15.0/gcc_64/include/QtGui/qguiapplication.h \
 		../../../Qt/5.15.0/gcc_64/include/QtGui/qinputmethod.h \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QGroupBox \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qgroupbox.h \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qframe.h \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QHBoxLayout \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qboxlayout.h \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qlayout.h \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qlayoutitem.h \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qgridlayout.h \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QLabel \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qlabel.h \
-		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qframe.h \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QMenu \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qmenu.h \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QMenuBar \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qmenubar.h \
-		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qmenu.h \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QPushButton \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qpushbutton.h \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qabstractbutton.h \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QRadioButton \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qradiobutton.h \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QSplitter \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qsplitter.h \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QStatusBar \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qstatusbar.h \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QTextBrowser \
@@ -1336,10 +1348,6 @@ mainwindow.o: ../BFIDE/mainwindow.cpp ../BFIDE/mainwindow.h \
 		../../../Qt/5.15.0/gcc_64/include/QtGui/qpen.h \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QTextEdit \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QVBoxLayout \
-		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qboxlayout.h \
-		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qlayout.h \
-		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qlayoutitem.h \
-		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qgridlayout.h \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QWidget \
 		../../../Qt/5.15.0/gcc_64/include/QtCore/QDebug \
 		../../../Qt/5.15.0/gcc_64/include/QtCore/QThread \

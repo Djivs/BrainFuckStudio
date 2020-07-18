@@ -49,101 +49,71 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void CodeExecuter::solveCode()
+{
+    commands.clear();
+    times.clear();
+    int count;
+    for(int i = 0; i < static_cast<int>(code.size()); i++)
+    {
+        switch(code[i].toLatin1())
+        {
+            case '+':
+                count = 0;
+                while((code[i] == '+' || code[i] == '-') && i < static_cast<int>(code.size()))
+                {
+                    if(code[i] == '+')
+                        count++;
+                    else
+                        count--;
+                    i++;
+                }
+                commands.push_back(ADD);
+                times.push_back(count);
+            break;
+            case '-':
+                count = 0;
+                while((code[i] == '+' || code[i] == '-') && i < static_cast<int>(code.size()))
+                {
+                    if(code[i] == '+')
+                        count++;
+                    else
+                        count--;
+                    i++;
+                }
+                commands.push_back(ADD);
+                times.push_back(count);
+            break;
+        }
+    }
+}
+
 void CodeExecuter::runCode()
 {
     output.clear();
-    line.clear();
-    line.resize(1, 0);
-    int pos = 0;
-    int inputPos = 0;
-    for(int i = 0; i < code.size(); i++)
+    solveCode();
+    for(int i = 0; i < static_cast<int>(commands.size()); i++)
     {
-        if(code[i] == '+')
-        {
-            line[pos]++;
-            if(line[pos] > maxValue)
-                line[pos] = 0;
-        }
-        else if(code[i] == '-')
-        {
-            if(line[pos])
-                line[pos]--;
-            else
-                line[pos] = maxValue;
-        }
-        else if(code[i] == '>')
-        {
-            pos++;
-            if(pos == (int)line.size())
-            {
-                line.push_back(0);
-            }
-        }
-        else if(code[i] == '<')
-        {
-            if(pos > 0)
-                pos--;
-        }
-        else if(code[i] == '.')
-        {
-            output += (char)line[pos];
-        }
-        else if(code[i] == ',')
-        {
-            while(inputPos < input.size() && input[inputPos] == separator)
-            {
-                inputPos++;
-            }
-            if(inputPos < input.size())
-                line[pos] = (int)input[inputPos].toLatin1();
-            inputPos++;
-        }
-        else if(code[i] == '[' && line[pos] == 0)
-        {
-            int brackets = 1;
-            while(brackets && i < code.size())
-            {
-                i++;
-                if(code[i] == '[')
-                    brackets++;
-                else if(code[i] == ']')
-                    brackets--;
-            }
-        }
-        else if(code[i] == ']' && line[pos] != 0)
-        {
-            int brackets = 1;
-            while(brackets && i >= 0)
-            {
-                i--;
-                if(code[i] == '[')
-                    brackets--;
-                else if(code[i] == ']')
-                    brackets++;
-            }
-            i--;
-        }
-
-
-
-
+        output += QString::number(commands[i]) + QString::number(times[i]) + " ";
     }
     emit codeExecuted();
 }
 void MainWindow::updateOut()
 {
     ui->output->setText(worker->getOutput());
-    repaint();
+    ui->output->repaint();
 }
 
 void MainWindow::end_code_execution()
 {
+    finish =  QDateTime::currentDateTime();
+    int secs = start.msecsTo(finish)/10;
     //stop loading gif
     dots_loading.stop();
     //delete loading gif from the screen
     ui->label_loadimg->clear();
     //change status
-    ui->label_loading->setText("executed");
+    ui->label_loading->setText("executed in\n" + QString::number((float)secs/100.0) + 's');
     //show changes
     repaint();
     //enable buttons
@@ -155,30 +125,8 @@ void MainWindow::end_code_execution()
     //set output
     ui->output->setText(worker->getOutput());
     timer->stop();
-}
+    worker->setEndCode(1);
 
-
-
-void MainWindow::on_run_clicked()
-{
-    //show loading//
-    ui->label_loading->setText("loading");
-    ui->label_loadimg->setMovie(&dots_loading);
-    dots_loading.start();
-    repaint();
-    //load code text to worker
-    worker->setCode(ui->prog->toPlainText());
-    //load input to worker
-    worker->setInput(ui->input->toPlainText());
-    //disable buttons
-    ui->sep_space->setEnabled(0);
-    ui->sep_nl->setEnabled(0);
-    ui->bytes8->setEnabled(0);
-    ui->bytes16->setEnabled(0);
-    ui->bytes32->setEnabled(0);
-    //run code
-    emit startOperation();
-    timer->start(1000);
 }
 void MainWindow::on_bytes16_clicked()
 {
@@ -193,12 +141,6 @@ void MainWindow::on_bytes8_clicked()
 {
      worker->setMaxValue(255);
 }
-
-void MainWindow::on_clear_clicked()
-{
-     ui->prog->setText("");
-}
-
 void MainWindow::on_viewMemoryLine_clicked()
 {
     window = new MemoryLine(this);
@@ -231,14 +173,51 @@ void MainWindow::on_sep_nl_clicked()
 void MainWindow::on_darkScheme_clicked()
 {
      ui->centralwidget->setStyleSheet("color: white; background-color: rgb(46, 52, 54)");
+     ui->menubar->setStyleSheet("color: white; background-color: rgb(46, 52, 54)");
 }
 
 void MainWindow::on_lightScheme_clicked()
 {
      ui->centralwidget->setStyleSheet("color: black; background-color: white");
+       ui->menubar->setStyleSheet("color: black; background-color: white");
 }
 
 void MainWindow::on_sep_no_clicked()
 {
     worker->setSeparator((char)0);
+}
+void MainWindow::on_actionStart_Code_triggered()
+{
+    if(!(worker->getEndCode()))
+        return;
+    //show loading//
+    ui->label_loading->setText("loading");
+    ui->label_loadimg->setMovie(&dots_loading);
+    dots_loading.start();
+    repaint();
+    //load code text to worker
+    worker->setCode(ui->prog->toPlainText());
+    //load input to worker
+    worker->setInput(ui->input->toPlainText());
+    //disable buttons
+    ui->sep_space->setEnabled(0);
+    ui->sep_nl->setEnabled(0);
+    ui->bytes8->setEnabled(0);
+    ui->bytes16->setEnabled(0);
+    ui->bytes32->setEnabled(0);
+    //run code
+    start =  QDateTime::currentDateTime();
+    worker->setEndCode(0);
+    emit startOperation();
+    timer->start(1);
+}
+
+void MainWindow::on_actionEnd_Code_triggered()
+{
+     worker->setEndCode(1);
+}
+
+void MainWindow::on_actionClear_triggered()
+{
+    ui->prog->setText("");
 }

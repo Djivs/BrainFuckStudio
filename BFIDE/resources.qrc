@@ -2,6 +2,8 @@
     <qresource prefix="/img">
         <file>loading.gif</file>
         <file>sandwatch.png</file>
+        <file>red_stop.jpeg</file>
+        <file>green_start.png</file>
     </qresource>
     <qresource prefix="/txt"/>
 </RCC>
