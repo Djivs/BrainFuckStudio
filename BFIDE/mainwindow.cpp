@@ -48,53 +48,90 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
-
-void CodeExecuter::solveCode()
+void CodeExecuter::runCode()
 {
-    commands.clear();
-    times.clear();
-    int count;
-    for(int i = 0; i < static_cast<int>(code.size()); i++)
+    line.clear();
+    line.resize(30000, 0);
+    int pos = 0;
+    int inputPos = 0;
+    for(int i = 0; i < code.size(); i++)
     {
         switch(code[i].toLatin1())
         {
             case '+':
-                count = 0;
-                while((code[i] == '+' || code[i] == '-') && i < static_cast<int>(code.size()))
+                line[pos]++;
+                if(line[pos] > maxValue)
                 {
-                    if(code[i] == '+')
-                        count++;
-                    else
-                        count--;
-                    i++;
+                    line[pos] = 0;
                 }
-                commands.push_back(ADD);
-                times.push_back(count);
             break;
             case '-':
-                count = 0;
-                while((code[i] == '+' || code[i] == '-') && i < static_cast<int>(code.size()))
+                line[pos]--;
+                if(line[pos]< 0)
                 {
-                    if(code[i] == '+')
-                        count++;
-                    else
-                        count--;
-                    i++;
+                    line[pos] = maxValue;
                 }
-                commands.push_back(ADD);
-                times.push_back(count);
+            break;
+            case '>':
+                pos++;
+            break;
+            case '<':
+                if(pos)
+                {
+                    pos--;
+                }
+            break;
+            case '.':
+                output += (char)line[pos];
+            break;
+            case ',':
+                while(inputPos < input.size() && input[inputPos] == separator)
+                {
+                    inputPos++;
+                }
+                if(inputPos < input.size())
+                    line[pos] = (int)input[inputPos].toLatin1();
+                inputPos++;
+            break;
+            case '[':
+                if(!line[pos])
+                {
+                    int brackets = 1;
+                    while(brackets && i < code.size())
+                    {
+                        i++;
+                        switch(code[i].toLatin1())
+                        {
+                            case '[':
+                                brackets++;
+                            break;
+                            case ']':
+                                brackets--;
+                            break;
+                        }
+                    }
+                }
+            break;
+            case ']':
+                if(line[pos])
+                {
+                    int brackets = 1;
+                    while(brackets && i >= 0)
+                    {
+                        i--;
+                        switch(code[i].toLatin1())
+                        {
+                            case '[':
+                                brackets--;
+                            break;
+                            case ']':
+                                brackets++;
+                            break;
+                        }
+                    }
+                }
             break;
         }
-    }
-}
-
-void CodeExecuter::runCode()
-{
-    output.clear();
-    solveCode();
-    for(int i = 0; i < static_cast<int>(commands.size()); i++)
-    {
-        output += QString::number(commands[i]) + QString::number(times[i]) + " ";
     }
     emit codeExecuted();
 }
@@ -206,6 +243,7 @@ void MainWindow::on_actionStart_Code_triggered()
     ui->bytes16->setEnabled(0);
     ui->bytes32->setEnabled(0);
     //run code
+    worker->setOutput("");
     start =  QDateTime::currentDateTime();
     worker->setEndCode(0);
     emit startOperation();

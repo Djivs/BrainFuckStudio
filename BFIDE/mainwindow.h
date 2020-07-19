@@ -20,7 +20,7 @@ public:
     ~CodeExecuter() {};
     //setters
     void setEndCode(bool t){endCode = t;};
-    void setLine(std::vector<long long int> newLine) {line = newLine;};
+    void setLine(std::vector<long int> newLine) {line = newLine;};
     void setSeparator(char newSeparator) {separator = newSeparator;};
     void setCode(QString newCode) {code = newCode;};
     void setMaxValue(long long int newMaxValue) {maxValue = newMaxValue;};
@@ -29,19 +29,15 @@ public:
     //getters
     QString getOutput() const {return output;};
     bool getEndCode() const {return endCode;};
-    std::vector <long long int> getLine() const {return line;};
+    std::vector <long int> getLine() const {return line;};
 private slots:
     void runCode();
 signals:
     void codeExecuted();
 private:
-    enum CMD {ADD, MOVE, SCAN, PRINT, GOTO};
-    void solveCode();
     volatile bool endCode = 1;
-    std::vector <long long int> line;
-    std::vector <CMD> commands;
-    std::vector <int> times;
-    long long int maxValue = 255;
+    std::vector <long int> line;
+    long int maxValue = 255;
     char separator = ' ';
     QString code;
     QString output;
