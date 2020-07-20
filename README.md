@@ -28,13 +28,13 @@ $ ./BFIDE
 
 - To run code, press F5 or go to Execute -> Start Code
 
-You can't change sell size or input separator while code is running, for obvious reasons.
+You can't change cell size or input separator while code is running, for obvious reasons.
 
 While code is executing, status changes to "loading".
 
 - To stop code execution, go to Execute -> End Code
 
-When code is executed, or code execution stopped, status changes to "executed in" + execution time
+When code is executed, or code execution stopped, status changes to "executed in " + execution time
 
 #### Input and output
 
