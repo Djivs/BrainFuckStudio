@@ -59,7 +59,7 @@ BrainFuckStudio ignores all symbols, that equals to input separator in Input tex
 
 # Testing
 
-[Speed Tests](https://github.com/Djivs/BrainFuckStudio/blob/88b46d23b27b8383f874476346809a6726a30f68/SPEEDTESTS.md)
+[Speed Tests](https://github.com/Djivs/BrainFuckStudio/blob/master/SPEEDTESTS.md)
 
 # License:
 
