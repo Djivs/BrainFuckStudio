@@ -763,10 +763,10 @@ compiler_rcc_clean:
 	-$(DEL_FILE) qrc_resources.cpp
 qrc_resources.cpp: ../BFIDE/resources.qrc \
 		../../../Qt/5.15.0/gcc_64/bin/rcc \
-		../BFIDE/sandwatch.png \
-		../BFIDE/loading.gif \
-		../BFIDE/green_start.png \
-		../BFIDE/red_stop.jpeg
+		../BFIDE/img/sandwatch.png \
+		../BFIDE/img/loading.gif \
+		../BFIDE/img/green_start.png \
+		../BFIDE/img/red_stop.jpeg
 	/home/dmitriy/Qt/5.15.0/gcc_64/bin/rcc -name resources ../BFIDE/resources.qrc -o qrc_resources.cpp
 
 compiler_moc_predefs_make_all: moc_predefs.h

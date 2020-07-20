@@ -23,7 +23,7 @@ public:
     void setLine(std::vector<long int> newLine) {line = newLine;};
     void setSeparator(char newSeparator) {separator = newSeparator;};
     void setCode(QString newCode) {code = newCode;};
-    void setMaxValue(long long int newMaxValue) {maxValue = newMaxValue;};
+    void setMaxValue(unsigned int newMaxValue) {maxValue = newMaxValue;};
     void setInput(QString newInput){input = newInput;};
     void setOutput(QString newOutput) {output = newOutput;};
     //getters
@@ -35,8 +35,13 @@ private slots:
 signals:
     void codeExecuted();
 private:
+    void parseCode();
     volatile bool endCode = 1;
     std::vector <long int> line;
+    std::vector <int> openPos;
+    enum CMD {NOT, ADD, MOV, GET, PUT, GOTO, ZERO};
+    std::vector <CMD> commands;
+    std::vector <int> args;
     long int maxValue = 255;
     char separator = ' ';
     QString code;

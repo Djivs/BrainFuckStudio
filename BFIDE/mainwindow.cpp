@@ -13,7 +13,7 @@ CodeExecuter::CodeExecuter(QObject *parent): QObject(parent)
 }
 
 MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent), dots_loading(":/img/loading.gif")
+    : QMainWindow(parent), dots_loading(":/res/img/loading.gif")
     , ui(new Ui::MainWindow)
 {
     //main window setup
@@ -48,43 +48,151 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+void CodeExecuter::parseCode()
+{
+    commands.clear();
+    commands.resize(30000, NOT);
+    args.clear();
+    args.resize(30000, 0);
+    openPos.clear();
+    openPos.resize(30000, 0);
+    int posJ = 0;
+    int j = 0;
+    for(int i = 0; i < code.size(); i++)
+    {
+        switch(code[i].toLatin1())
+        {
+            case '+':
+                switch(commands[j])
+                {
+                    case ADD:
+                        args[j]++;
+                    break;
+                    default:
+                        j++;
+                        commands[j] = ADD;
+                        args[j] = 1;
+                    break;
+                }
+            break;
+            case '-':
+                switch(commands[j])
+                {
+                    case ADD:
+                        args[j]--;
+                    break;
+                    default:
+                        j++;
+                        commands[j] = ADD;
+                        args[j] = -1;
+                    break;
+                }
+            break;
+            case '.':
+                switch(commands[j])
+                {
+                    case PUT:
+                        args[j]++;
+                    break;
+                    default:
+                        j++;
+                        commands[j] = PUT;
+                        args[j] = 1;
+                    break;
+                }
+            break;
+            case ',':
+                switch(commands[j])
+                {
+                    case GET:
+                        args[j]++;
+                    break;
+                    default:
+                        j++;
+                        commands[j] = GET;
+                        args[j] = 1;
+                    break;
+                }
+            break;
+            case '>':
+                switch(commands[j])
+                {
+                    case MOV:
+                        args[j]++;
+                    break;
+                    default:
+                        j++;
+                        commands[j] = MOV;
+                        args[j] = 1;
+                    break;
+                }
+            break;
+            case '<':
+                switch(commands[j])
+                {
+                    case MOV:
+                        args[j]--;
+                    break;
+                    default:
+                        j++;
+                        commands[j] = MOV;
+                        args[j] = -1;
+                    break;
+                }
+
+            break;
+            case '[':
+                if((code[i+1] == '-' || code[i+1] == '+') && code[i+2] == ']')
+                {
+                    j++;
+                    commands[j] = ZERO;
+                    args[j] = 1;
+                    i+=2;
+                }
+                else
+                {
+                    j++;
+                    commands[j] = GOTO;
+                    args[j] = 0;
+                    openPos[posJ] = j;
+                    posJ++;
+                }
+            break;
+            case ']':
+                j++;
+                args[openPos[posJ-1]] = j - openPos[posJ-1];
+                commands[j] = GOTO;
+                args[j] = openPos[posJ-1] - j;
+                posJ--;
+            break;
+        }
+    }
+}
+
+
 void CodeExecuter::runCode()
 {
     line.clear();
     line.resize(30000, 0);
     int pos = 0;
     int inputPos = 0;
-    for(int i = 0; i < code.size(); i++)
+    parseCode();
+    for(int i =  1; !endCode && commands[i] != NOT; i++)
     {
-        switch(code[i].toLatin1())
+        switch(commands[i])
         {
-            case '+':
-                line[pos]++;
-                if(line[pos] > maxValue)
-                {
-                    line[pos] = 0;
-                }
+            case ADD:
+                line[pos] += args[i];
+                if(line[pos] < 0)
+                    line[pos] += maxValue+1;
+                else if(line[pos] > maxValue)
+                    line[pos] -= maxValue+1;
             break;
-            case '-':
-                line[pos]--;
-                if(line[pos]< 0)
-                {
-                    line[pos] = maxValue;
-                }
+            case MOV:
+                pos += args[i];
             break;
-            case '>':
-                pos++;
-            break;
-            case '<':
-                if(pos)
-                {
-                    pos--;
-                }
-            break;
-            case '.':
-                output += (char)line[pos];
-            break;
-            case ',':
+            case GET:
                 while(inputPos < input.size() && input[inputPos] == separator)
                 {
                     inputPos++;
@@ -93,44 +201,19 @@ void CodeExecuter::runCode()
                     line[pos] = (int)input[inputPos].toLatin1();
                 inputPos++;
             break;
-            case '[':
-                if(!line[pos])
-                {
-                    int brackets = 1;
-                    while(brackets && i < code.size())
-                    {
-                        i++;
-                        switch(code[i].toLatin1())
-                        {
-                            case '[':
-                                brackets++;
-                            break;
-                            case ']':
-                                brackets--;
-                            break;
-                        }
-                    }
-                }
+            case PUT:
+                output += (char)line[pos];
             break;
-            case ']':
-                if(line[pos])
-                {
-                    int brackets = 1;
-                    while(brackets && i >= 0)
-                    {
-                        i--;
-                        switch(code[i].toLatin1())
-                        {
-                            case '[':
-                                brackets--;
-                            break;
-                            case ']':
-                                brackets++;
-                            break;
-                        }
-                    }
-                }
+            case GOTO:
+                if((line[pos] && args[i] < 0) || (!line[pos] && args[i] > 0))
+                    i += args[i];
             break;
+            case ZERO:
+                line[pos] = 0;
+            break;
+            default:
+            break;
+
         }
     }
     emit codeExecuted();
@@ -215,8 +298,8 @@ void MainWindow::on_darkScheme_clicked()
 
 void MainWindow::on_lightScheme_clicked()
 {
-     ui->centralwidget->setStyleSheet("color: black; background-color: white");
-       ui->menubar->setStyleSheet("color: black; background-color: white");
+     ui->centralwidget->setStyleSheet("color: black; background-color: AliceBlue");
+       ui->menubar->setStyleSheet("color: black; background-color: AliceBlue");
 }
 
 void MainWindow::on_sep_no_clicked()
@@ -247,7 +330,7 @@ void MainWindow::on_actionStart_Code_triggered()
     start =  QDateTime::currentDateTime();
     worker->setEndCode(0);
     emit startOperation();
-    timer->start(1);
+    timer->start(10);
 }
 
 void MainWindow::on_actionEnd_Code_triggered()

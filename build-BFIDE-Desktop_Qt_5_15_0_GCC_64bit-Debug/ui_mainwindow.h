@@ -37,15 +37,17 @@ public:
     QAction *actionClear;
     QWidget *centralwidget;
     QVBoxLayout *verticalLayout_8;
+    QSplitter *splitter_2;
+    QWidget *widget;
     QVBoxLayout *verticalLayout;
     QLabel *label;
     QTextBrowser *output;
     QSplitter *splitter;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QVBoxLayout *verticalLayout_7;
     QLabel *label_4;
     QTextEdit *prog;
-    QWidget *widget1;
+    QWidget *layoutWidget1;
     QVBoxLayout *verticalLayout_6;
     QLabel *label_2;
     QTextEdit *input;
@@ -84,12 +86,12 @@ public:
         actionStart_Code = new QAction(MainWindow);
         actionStart_Code->setObjectName(QString::fromUtf8("actionStart_Code"));
         QIcon icon;
-        icon.addFile(QString::fromUtf8(":/img/green_start.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon.addFile(QString::fromUtf8(":/res/img/green_start.png"), QSize(), QIcon::Normal, QIcon::Off);
         actionStart_Code->setIcon(icon);
         actionEnd_Code = new QAction(MainWindow);
         actionEnd_Code->setObjectName(QString::fromUtf8("actionEnd_Code"));
         QIcon icon1;
-        icon1.addFile(QString::fromUtf8(":/img/red_stop.jpeg"), QSize(), QIcon::Normal, QIcon::Off);
+        icon1.addFile(QString::fromUtf8(":/res/img/red_stop.jpeg"), QSize(), QIcon::Normal, QIcon::Off);
         actionEnd_Code->setIcon(icon1);
         actionClear = new QAction(MainWindow);
         actionClear->setObjectName(QString::fromUtf8("actionClear"));
@@ -98,9 +100,15 @@ public:
         centralwidget->setStyleSheet(QString::fromUtf8("color: white"));
         verticalLayout_8 = new QVBoxLayout(centralwidget);
         verticalLayout_8->setObjectName(QString::fromUtf8("verticalLayout_8"));
-        verticalLayout = new QVBoxLayout();
+        splitter_2 = new QSplitter(centralwidget);
+        splitter_2->setObjectName(QString::fromUtf8("splitter_2"));
+        splitter_2->setOrientation(Qt::Vertical);
+        widget = new QWidget(splitter_2);
+        widget->setObjectName(QString::fromUtf8("widget"));
+        verticalLayout = new QVBoxLayout(widget);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        label = new QLabel(centralwidget);
+        verticalLayout->setContentsMargins(0, 0, 0, 0);
+        label = new QLabel(widget);
         label->setObjectName(QString::fromUtf8("label"));
         QFont font;
         font.setFamily(QString::fromUtf8("DejaVu Sans"));
@@ -112,7 +120,7 @@ public:
 
         verticalLayout->addWidget(label);
 
-        output = new QTextBrowser(centralwidget);
+        output = new QTextBrowser(widget);
         output->setObjectName(QString::fromUtf8("output"));
         output->setStyleSheet(QString::fromUtf8(""));
         output->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
@@ -120,44 +128,42 @@ public:
 
         verticalLayout->addWidget(output);
 
-
-        verticalLayout_8->addLayout(verticalLayout);
-
-        splitter = new QSplitter(centralwidget);
+        splitter_2->addWidget(widget);
+        splitter = new QSplitter(splitter_2);
         splitter->setObjectName(QString::fromUtf8("splitter"));
         splitter->setOrientation(Qt::Horizontal);
-        widget = new QWidget(splitter);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        verticalLayout_7 = new QVBoxLayout(widget);
+        layoutWidget = new QWidget(splitter);
+        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
+        verticalLayout_7 = new QVBoxLayout(layoutWidget);
         verticalLayout_7->setObjectName(QString::fromUtf8("verticalLayout_7"));
         verticalLayout_7->setContentsMargins(0, 0, 0, 0);
-        label_4 = new QLabel(widget);
+        label_4 = new QLabel(layoutWidget);
         label_4->setObjectName(QString::fromUtf8("label_4"));
         label_4->setFont(font);
         label_4->setStyleSheet(QString::fromUtf8(""));
 
         verticalLayout_7->addWidget(label_4);
 
-        prog = new QTextEdit(widget);
+        prog = new QTextEdit(layoutWidget);
         prog->setObjectName(QString::fromUtf8("prog"));
         prog->setStyleSheet(QString::fromUtf8(""));
 
         verticalLayout_7->addWidget(prog);
 
-        splitter->addWidget(widget);
-        widget1 = new QWidget(splitter);
-        widget1->setObjectName(QString::fromUtf8("widget1"));
-        verticalLayout_6 = new QVBoxLayout(widget1);
+        splitter->addWidget(layoutWidget);
+        layoutWidget1 = new QWidget(splitter);
+        layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
+        verticalLayout_6 = new QVBoxLayout(layoutWidget1);
         verticalLayout_6->setObjectName(QString::fromUtf8("verticalLayout_6"));
         verticalLayout_6->setContentsMargins(0, 0, 0, 0);
-        label_2 = new QLabel(widget1);
+        label_2 = new QLabel(layoutWidget1);
         label_2->setObjectName(QString::fromUtf8("label_2"));
         label_2->setFont(font);
         label_2->setStyleSheet(QString::fromUtf8(""));
 
         verticalLayout_6->addWidget(label_2);
 
-        input = new QTextEdit(widget1);
+        input = new QTextEdit(layoutWidget1);
         input->setObjectName(QString::fromUtf8("input"));
         input->setStyleSheet(QString::fromUtf8(""));
 
@@ -165,7 +171,7 @@ public:
 
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        groupBox = new QGroupBox(widget1);
+        groupBox = new QGroupBox(layoutWidget1);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
         verticalLayout_4 = new QVBoxLayout(groupBox);
         verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
@@ -198,7 +204,7 @@ public:
 
         horizontalLayout_2->addWidget(groupBox);
 
-        groupBox_2 = new QGroupBox(widget1);
+        groupBox_2 = new QGroupBox(layoutWidget1);
         groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
         verticalLayout_3 = new QVBoxLayout(groupBox_2);
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
@@ -225,7 +231,7 @@ public:
 
         verticalLayout_6->addLayout(horizontalLayout_2);
 
-        viewMemoryLine = new QPushButton(widget1);
+        viewMemoryLine = new QPushButton(layoutWidget1);
         viewMemoryLine->setObjectName(QString::fromUtf8("viewMemoryLine"));
         QFont font2;
         font2.setFamily(QString::fromUtf8("DejaVu Serif"));
@@ -240,12 +246,12 @@ public:
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         verticalLayout_5 = new QVBoxLayout();
         verticalLayout_5->setObjectName(QString::fromUtf8("verticalLayout_5"));
-        label_loadimg = new QLabel(widget1);
+        label_loadimg = new QLabel(layoutWidget1);
         label_loadimg->setObjectName(QString::fromUtf8("label_loadimg"));
 
         verticalLayout_5->addWidget(label_loadimg);
 
-        label_status = new QLabel(widget1);
+        label_status = new QLabel(layoutWidget1);
         label_status->setObjectName(QString::fromUtf8("label_status"));
         QFont font3;
         font3.setFamily(QString::fromUtf8("Dyuthi"));
@@ -255,7 +261,7 @@ public:
 
         verticalLayout_5->addWidget(label_status);
 
-        label_loading = new QLabel(widget1);
+        label_loading = new QLabel(layoutWidget1);
         label_loading->setObjectName(QString::fromUtf8("label_loading"));
         QFont font4;
         font4.setFamily(QString::fromUtf8("FreeMono"));
@@ -270,7 +276,7 @@ public:
 
         horizontalLayout->addLayout(verticalLayout_5);
 
-        groupBox_3 = new QGroupBox(widget1);
+        groupBox_3 = new QGroupBox(layoutWidget1);
         groupBox_3->setObjectName(QString::fromUtf8("groupBox_3"));
         verticalLayout_2 = new QVBoxLayout(groupBox_3);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
@@ -290,9 +296,10 @@ public:
 
         verticalLayout_6->addLayout(horizontalLayout);
 
-        splitter->addWidget(widget1);
+        splitter->addWidget(layoutWidget1);
+        splitter_2->addWidget(splitter);
 
-        verticalLayout_8->addWidget(splitter);
+        verticalLayout_8->addWidget(splitter_2);
 
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);

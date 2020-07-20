@@ -1,9 +1,8 @@
 <RCC>
-    <qresource prefix="/img">
-        <file>loading.gif</file>
-        <file>sandwatch.png</file>
-        <file>red_stop.jpeg</file>
-        <file>green_start.png</file>
+    <qresource prefix="/res">
+        <file>img/sandwatch.png</file>
+        <file>img/red_stop.jpeg</file>
+        <file>img/loading.gif</file>
+        <file>img/green_start.png</file>
     </qresource>
-    <qresource prefix="/txt"/>
 </RCC>
