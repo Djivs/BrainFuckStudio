@@ -88,6 +88,10 @@ private slots:
 
     void on_actionClear_triggered();
 
+    void on_actionSave_triggered();
+
+    void on_actionLoad_triggered();
+
 signals:
     void startOperation();
 

@@ -35,19 +35,21 @@ public:
     QAction *actionStart_Code;
     QAction *actionEnd_Code;
     QAction *actionClear;
+    QAction *actionSave;
+    QAction *actionLoad;
     QWidget *centralwidget;
     QVBoxLayout *verticalLayout_8;
     QSplitter *splitter_2;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QVBoxLayout *verticalLayout;
     QLabel *label;
     QTextBrowser *output;
     QSplitter *splitter;
-    QWidget *layoutWidget;
+    QWidget *layoutWidget1;
     QVBoxLayout *verticalLayout_7;
     QLabel *label_4;
     QTextEdit *prog;
-    QWidget *layoutWidget1;
+    QWidget *layoutWidget2;
     QVBoxLayout *verticalLayout_6;
     QLabel *label_2;
     QTextEdit *input;
@@ -95,6 +97,10 @@ public:
         actionEnd_Code->setIcon(icon1);
         actionClear = new QAction(MainWindow);
         actionClear->setObjectName(QString::fromUtf8("actionClear"));
+        actionSave = new QAction(MainWindow);
+        actionSave->setObjectName(QString::fromUtf8("actionSave"));
+        actionLoad = new QAction(MainWindow);
+        actionLoad->setObjectName(QString::fromUtf8("actionLoad"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         centralwidget->setStyleSheet(QString::fromUtf8("color: white"));
@@ -103,12 +109,12 @@ public:
         splitter_2 = new QSplitter(centralwidget);
         splitter_2->setObjectName(QString::fromUtf8("splitter_2"));
         splitter_2->setOrientation(Qt::Vertical);
-        widget = new QWidget(splitter_2);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        verticalLayout = new QVBoxLayout(widget);
+        layoutWidget = new QWidget(splitter_2);
+        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
+        verticalLayout = new QVBoxLayout(layoutWidget);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
-        label = new QLabel(widget);
+        label = new QLabel(layoutWidget);
         label->setObjectName(QString::fromUtf8("label"));
         QFont font;
         font.setFamily(QString::fromUtf8("DejaVu Sans"));
@@ -120,7 +126,7 @@ public:
 
         verticalLayout->addWidget(label);
 
-        output = new QTextBrowser(widget);
+        output = new QTextBrowser(layoutWidget);
         output->setObjectName(QString::fromUtf8("output"));
         output->setStyleSheet(QString::fromUtf8(""));
         output->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
@@ -128,42 +134,42 @@ public:
 
         verticalLayout->addWidget(output);
 
-        splitter_2->addWidget(widget);
+        splitter_2->addWidget(layoutWidget);
         splitter = new QSplitter(splitter_2);
         splitter->setObjectName(QString::fromUtf8("splitter"));
         splitter->setOrientation(Qt::Horizontal);
-        layoutWidget = new QWidget(splitter);
-        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        verticalLayout_7 = new QVBoxLayout(layoutWidget);
+        layoutWidget1 = new QWidget(splitter);
+        layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
+        verticalLayout_7 = new QVBoxLayout(layoutWidget1);
         verticalLayout_7->setObjectName(QString::fromUtf8("verticalLayout_7"));
         verticalLayout_7->setContentsMargins(0, 0, 0, 0);
-        label_4 = new QLabel(layoutWidget);
+        label_4 = new QLabel(layoutWidget1);
         label_4->setObjectName(QString::fromUtf8("label_4"));
         label_4->setFont(font);
         label_4->setStyleSheet(QString::fromUtf8(""));
 
         verticalLayout_7->addWidget(label_4);
 
-        prog = new QTextEdit(layoutWidget);
+        prog = new QTextEdit(layoutWidget1);
         prog->setObjectName(QString::fromUtf8("prog"));
         prog->setStyleSheet(QString::fromUtf8(""));
 
         verticalLayout_7->addWidget(prog);
 
-        splitter->addWidget(layoutWidget);
-        layoutWidget1 = new QWidget(splitter);
-        layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
-        verticalLayout_6 = new QVBoxLayout(layoutWidget1);
+        splitter->addWidget(layoutWidget1);
+        layoutWidget2 = new QWidget(splitter);
+        layoutWidget2->setObjectName(QString::fromUtf8("layoutWidget2"));
+        verticalLayout_6 = new QVBoxLayout(layoutWidget2);
         verticalLayout_6->setObjectName(QString::fromUtf8("verticalLayout_6"));
         verticalLayout_6->setContentsMargins(0, 0, 0, 0);
-        label_2 = new QLabel(layoutWidget1);
+        label_2 = new QLabel(layoutWidget2);
         label_2->setObjectName(QString::fromUtf8("label_2"));
         label_2->setFont(font);
         label_2->setStyleSheet(QString::fromUtf8(""));
 
         verticalLayout_6->addWidget(label_2);
 
-        input = new QTextEdit(layoutWidget1);
+        input = new QTextEdit(layoutWidget2);
         input->setObjectName(QString::fromUtf8("input"));
         input->setStyleSheet(QString::fromUtf8(""));
 
@@ -171,7 +177,7 @@ public:
 
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        groupBox = new QGroupBox(layoutWidget1);
+        groupBox = new QGroupBox(layoutWidget2);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
         verticalLayout_4 = new QVBoxLayout(groupBox);
         verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
@@ -204,7 +210,7 @@ public:
 
         horizontalLayout_2->addWidget(groupBox);
 
-        groupBox_2 = new QGroupBox(layoutWidget1);
+        groupBox_2 = new QGroupBox(layoutWidget2);
         groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
         verticalLayout_3 = new QVBoxLayout(groupBox_2);
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
@@ -231,7 +237,7 @@ public:
 
         verticalLayout_6->addLayout(horizontalLayout_2);
 
-        viewMemoryLine = new QPushButton(layoutWidget1);
+        viewMemoryLine = new QPushButton(layoutWidget2);
         viewMemoryLine->setObjectName(QString::fromUtf8("viewMemoryLine"));
         QFont font2;
         font2.setFamily(QString::fromUtf8("DejaVu Serif"));
@@ -246,12 +252,12 @@ public:
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         verticalLayout_5 = new QVBoxLayout();
         verticalLayout_5->setObjectName(QString::fromUtf8("verticalLayout_5"));
-        label_loadimg = new QLabel(layoutWidget1);
+        label_loadimg = new QLabel(layoutWidget2);
         label_loadimg->setObjectName(QString::fromUtf8("label_loadimg"));
 
         verticalLayout_5->addWidget(label_loadimg);
 
-        label_status = new QLabel(layoutWidget1);
+        label_status = new QLabel(layoutWidget2);
         label_status->setObjectName(QString::fromUtf8("label_status"));
         QFont font3;
         font3.setFamily(QString::fromUtf8("Dyuthi"));
@@ -261,7 +267,7 @@ public:
 
         verticalLayout_5->addWidget(label_status);
 
-        label_loading = new QLabel(layoutWidget1);
+        label_loading = new QLabel(layoutWidget2);
         label_loading->setObjectName(QString::fromUtf8("label_loading"));
         QFont font4;
         font4.setFamily(QString::fromUtf8("FreeMono"));
@@ -276,7 +282,7 @@ public:
 
         horizontalLayout->addLayout(verticalLayout_5);
 
-        groupBox_3 = new QGroupBox(layoutWidget1);
+        groupBox_3 = new QGroupBox(layoutWidget2);
         groupBox_3->setObjectName(QString::fromUtf8("groupBox_3"));
         verticalLayout_2 = new QVBoxLayout(groupBox_3);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
@@ -296,7 +302,7 @@ public:
 
         verticalLayout_6->addLayout(horizontalLayout);
 
-        splitter->addWidget(layoutWidget1);
+        splitter->addWidget(layoutWidget2);
         splitter_2->addWidget(splitter);
 
         verticalLayout_8->addWidget(splitter_2);
@@ -320,6 +326,8 @@ public:
         menuFile->addAction(actionStart_Code);
         menuFile->addAction(actionEnd_Code);
         menuEdit_Code->addAction(actionClear);
+        menuEdit_Code->addAction(actionSave);
+        menuEdit_Code->addAction(actionLoad);
 
         retranslateUi(MainWindow);
 
@@ -335,6 +343,8 @@ public:
 #endif // QT_CONFIG(shortcut)
         actionEnd_Code->setText(QCoreApplication::translate("MainWindow", "End Code", nullptr));
         actionClear->setText(QCoreApplication::translate("MainWindow", "Clear", nullptr));
+        actionSave->setText(QCoreApplication::translate("MainWindow", "Save", nullptr));
+        actionLoad->setText(QCoreApplication::translate("MainWindow", "Load", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "Output", nullptr));
         label_4->setText(QCoreApplication::translate("MainWindow", "Edit code:", nullptr));
         prog->setHtml(QCoreApplication::translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"

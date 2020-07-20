@@ -5,7 +5,7 @@
 #include <QThread>
 #include <QTimer>
 #include <iostream>
-#include <fstream>
+#include <QFile>
 
 CodeExecuter::CodeExecuter(QObject *parent): QObject(parent)
 {
@@ -341,4 +341,24 @@ void MainWindow::on_actionEnd_Code_triggered()
 void MainWindow::on_actionClear_triggered()
 {
     ui->prog->setText("");
+}
+
+void MainWindow::on_actionSave_triggered()
+{
+    QFile file("txt/input.txt");
+    if (file.open(QIODevice::WriteOnly))
+    {
+        file.write(ui->prog->toPlainText().toLatin1());
+        file.close();
+    }
+}
+
+void MainWindow::on_actionLoad_triggered()
+{
+    QFile file("txt/input.txt");
+    if ((file.exists())&&(file.open(QIODevice::ReadOnly)))
+    {
+        ui->prog->setText(file.readAll());
+        file.close();
+    }
 }
