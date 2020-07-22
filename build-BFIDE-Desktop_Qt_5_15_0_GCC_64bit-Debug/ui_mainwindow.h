@@ -10,20 +10,20 @@
 #define UI_MAINWINDOW_H
 
 #include <QtCore/QVariant>
+#include <QtGui/QIcon>
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
-#include <QtWidgets/QPushButton>
-#include <QtWidgets/QRadioButton>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QSplitter>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTextBrowser>
 #include <QtWidgets/QTextEdit>
+#include <QtWidgets/QToolBar>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -37,297 +37,313 @@ public:
     QAction *actionClear;
     QAction *actionSave;
     QAction *actionLoad;
+    QAction *actionbeer_bf;
+    QAction *actioncellsize_bf;
+    QAction *actionhello_bf;
+    QAction *actionmandelbrot_tiny_bf;
+    QAction *actionmandelbrot_bf;
+    QAction *actionpidigits_bf;
+    QAction *actionDark;
+    QAction *actionLight;
+    QAction *action8_byte;
+    QAction *action16_byte;
+    QAction *action32_byte;
+    QAction *actionView_memory;
+    QAction *actionCheck_Errors;
+    QAction *actionOutput;
+    QAction *actionInput;
+    QAction *actionCode_buffer;
+    QAction *actionSystem;
+    QAction *actionLoad_from_file;
+    QAction *actionSave_to_file;
+    QAction *actionto_C;
+    QAction *actiontext_to_code;
     QWidget *centralwidget;
-    QVBoxLayout *verticalLayout_8;
+    QVBoxLayout *verticalLayout_4;
     QSplitter *splitter_2;
-    QWidget *layoutWidget;
+    QWidget *widget;
     QVBoxLayout *verticalLayout;
-    QLabel *label;
+    QLabel *label_output;
     QTextBrowser *output;
     QSplitter *splitter;
-    QWidget *layoutWidget1;
-    QVBoxLayout *verticalLayout_7;
-    QLabel *label_4;
-    QTextEdit *prog;
-    QWidget *layoutWidget2;
-    QVBoxLayout *verticalLayout_6;
-    QLabel *label_2;
-    QTextEdit *input;
-    QHBoxLayout *horizontalLayout_2;
-    QGroupBox *groupBox;
-    QVBoxLayout *verticalLayout_4;
-    QRadioButton *bytes8;
-    QRadioButton *bytes16;
-    QRadioButton *bytes32;
-    QGroupBox *groupBox_2;
-    QVBoxLayout *verticalLayout_3;
-    QRadioButton *sep_no;
-    QRadioButton *sep_space;
-    QRadioButton *sep_nl;
-    QPushButton *viewMemoryLine;
-    QHBoxLayout *horizontalLayout;
-    QVBoxLayout *verticalLayout_5;
-    QLabel *label_loadimg;
-    QLabel *label_status;
-    QLabel *label_loading;
-    QGroupBox *groupBox_3;
+    QWidget *widget1;
     QVBoxLayout *verticalLayout_2;
-    QRadioButton *darkScheme;
-    QRadioButton *lightScheme;
+    QHBoxLayout *horizontalLayout;
+    QLabel *label_edit_code;
+    QLabel *label_loadimg;
+    QSpacerItem *horizontalSpacer;
+    QTextEdit *prog;
+    QWidget *widget2;
+    QVBoxLayout *verticalLayout_3;
+    QLabel *label_input;
+    QTextEdit *input;
     QMenuBar *menubar;
-    QMenu *menuFile;
     QMenu *menuEdit_Code;
+    QMenu *menuLoad_Example;
+    QMenu *menuStyle;
+    QMenu *menuColor_scheme;
+    QMenu *menuText_settings;
+    QMenu *menuInterpreter;
+    QMenu *menuCell_Size;
+    QMenu *menuConvert;
     QStatusBar *statusbar;
+    QToolBar *toolBar;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
         MainWindow->resize(1146, 789);
-        MainWindow->setStyleSheet(QString::fromUtf8("background-color:rgb(46, 52, 54)"));
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/res/img/logo.png"), QSize(), QIcon::Normal, QIcon::Off);
+        MainWindow->setWindowIcon(icon);
+        MainWindow->setStyleSheet(QString::fromUtf8("color: white; background-color: rgb(46, 52, 54)"));
         actionStart_Code = new QAction(MainWindow);
         actionStart_Code->setObjectName(QString::fromUtf8("actionStart_Code"));
-        QIcon icon;
-        icon.addFile(QString::fromUtf8(":/res/img/green_start.png"), QSize(), QIcon::Normal, QIcon::Off);
-        actionStart_Code->setIcon(icon);
+        QIcon icon1;
+        icon1.addFile(QString::fromUtf8(":/res/img/green_start.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionStart_Code->setIcon(icon1);
         actionEnd_Code = new QAction(MainWindow);
         actionEnd_Code->setObjectName(QString::fromUtf8("actionEnd_Code"));
-        QIcon icon1;
-        icon1.addFile(QString::fromUtf8(":/res/img/red_stop.jpeg"), QSize(), QIcon::Normal, QIcon::Off);
-        actionEnd_Code->setIcon(icon1);
+        QIcon icon2;
+        icon2.addFile(QString::fromUtf8(":/res/img/red_stop.jpeg"), QSize(), QIcon::Normal, QIcon::Off);
+        actionEnd_Code->setIcon(icon2);
         actionClear = new QAction(MainWindow);
         actionClear->setObjectName(QString::fromUtf8("actionClear"));
         actionSave = new QAction(MainWindow);
         actionSave->setObjectName(QString::fromUtf8("actionSave"));
         actionLoad = new QAction(MainWindow);
         actionLoad->setObjectName(QString::fromUtf8("actionLoad"));
+        actionbeer_bf = new QAction(MainWindow);
+        actionbeer_bf->setObjectName(QString::fromUtf8("actionbeer_bf"));
+        actioncellsize_bf = new QAction(MainWindow);
+        actioncellsize_bf->setObjectName(QString::fromUtf8("actioncellsize_bf"));
+        actionhello_bf = new QAction(MainWindow);
+        actionhello_bf->setObjectName(QString::fromUtf8("actionhello_bf"));
+        actionmandelbrot_tiny_bf = new QAction(MainWindow);
+        actionmandelbrot_tiny_bf->setObjectName(QString::fromUtf8("actionmandelbrot_tiny_bf"));
+        actionmandelbrot_bf = new QAction(MainWindow);
+        actionmandelbrot_bf->setObjectName(QString::fromUtf8("actionmandelbrot_bf"));
+        actionpidigits_bf = new QAction(MainWindow);
+        actionpidigits_bf->setObjectName(QString::fromUtf8("actionpidigits_bf"));
+        actionDark = new QAction(MainWindow);
+        actionDark->setObjectName(QString::fromUtf8("actionDark"));
+        actionDark->setCheckable(true);
+        actionLight = new QAction(MainWindow);
+        actionLight->setObjectName(QString::fromUtf8("actionLight"));
+        actionLight->setCheckable(true);
+        action8_byte = new QAction(MainWindow);
+        action8_byte->setObjectName(QString::fromUtf8("action8_byte"));
+        action8_byte->setCheckable(true);
+        action16_byte = new QAction(MainWindow);
+        action16_byte->setObjectName(QString::fromUtf8("action16_byte"));
+        action16_byte->setCheckable(true);
+        action32_byte = new QAction(MainWindow);
+        action32_byte->setObjectName(QString::fromUtf8("action32_byte"));
+        action32_byte->setCheckable(true);
+        actionView_memory = new QAction(MainWindow);
+        actionView_memory->setObjectName(QString::fromUtf8("actionView_memory"));
+        actionCheck_Errors = new QAction(MainWindow);
+        actionCheck_Errors->setObjectName(QString::fromUtf8("actionCheck_Errors"));
+        QIcon icon3;
+        icon3.addFile(QString::fromUtf8(":/res/img/errors.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionCheck_Errors->setIcon(icon3);
+        actionOutput = new QAction(MainWindow);
+        actionOutput->setObjectName(QString::fromUtf8("actionOutput"));
+        actionInput = new QAction(MainWindow);
+        actionInput->setObjectName(QString::fromUtf8("actionInput"));
+        actionCode_buffer = new QAction(MainWindow);
+        actionCode_buffer->setObjectName(QString::fromUtf8("actionCode_buffer"));
+        actionSystem = new QAction(MainWindow);
+        actionSystem->setObjectName(QString::fromUtf8("actionSystem"));
+        actionLoad_from_file = new QAction(MainWindow);
+        actionLoad_from_file->setObjectName(QString::fromUtf8("actionLoad_from_file"));
+        actionSave_to_file = new QAction(MainWindow);
+        actionSave_to_file->setObjectName(QString::fromUtf8("actionSave_to_file"));
+        actionto_C = new QAction(MainWindow);
+        actionto_C->setObjectName(QString::fromUtf8("actionto_C"));
+        actiontext_to_code = new QAction(MainWindow);
+        actiontext_to_code->setObjectName(QString::fromUtf8("actiontext_to_code"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         centralwidget->setStyleSheet(QString::fromUtf8("color: white"));
-        verticalLayout_8 = new QVBoxLayout(centralwidget);
-        verticalLayout_8->setObjectName(QString::fromUtf8("verticalLayout_8"));
+        verticalLayout_4 = new QVBoxLayout(centralwidget);
+        verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
         splitter_2 = new QSplitter(centralwidget);
         splitter_2->setObjectName(QString::fromUtf8("splitter_2"));
         splitter_2->setOrientation(Qt::Vertical);
-        layoutWidget = new QWidget(splitter_2);
-        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        verticalLayout = new QVBoxLayout(layoutWidget);
+        widget = new QWidget(splitter_2);
+        widget->setObjectName(QString::fromUtf8("widget"));
+        verticalLayout = new QVBoxLayout(widget);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
-        label = new QLabel(layoutWidget);
-        label->setObjectName(QString::fromUtf8("label"));
+        label_output = new QLabel(widget);
+        label_output->setObjectName(QString::fromUtf8("label_output"));
         QFont font;
         font.setFamily(QString::fromUtf8("DejaVu Sans"));
         font.setPointSize(15);
         font.setBold(true);
         font.setWeight(75);
-        label->setFont(font);
-        label->setStyleSheet(QString::fromUtf8(""));
+        label_output->setFont(font);
+        label_output->setStyleSheet(QString::fromUtf8(""));
 
-        verticalLayout->addWidget(label);
+        verticalLayout->addWidget(label_output);
 
-        output = new QTextBrowser(layoutWidget);
+        output = new QTextBrowser(widget);
         output->setObjectName(QString::fromUtf8("output"));
+        QFont font1;
+        font1.setPointSize(11);
+        output->setFont(font1);
         output->setStyleSheet(QString::fromUtf8(""));
         output->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
         output->setSizeAdjustPolicy(QAbstractScrollArea::AdjustIgnored);
 
         verticalLayout->addWidget(output);
 
-        splitter_2->addWidget(layoutWidget);
+        splitter_2->addWidget(widget);
         splitter = new QSplitter(splitter_2);
         splitter->setObjectName(QString::fromUtf8("splitter"));
         splitter->setOrientation(Qt::Horizontal);
-        layoutWidget1 = new QWidget(splitter);
-        layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
-        verticalLayout_7 = new QVBoxLayout(layoutWidget1);
-        verticalLayout_7->setObjectName(QString::fromUtf8("verticalLayout_7"));
-        verticalLayout_7->setContentsMargins(0, 0, 0, 0);
-        label_4 = new QLabel(layoutWidget1);
-        label_4->setObjectName(QString::fromUtf8("label_4"));
-        label_4->setFont(font);
-        label_4->setStyleSheet(QString::fromUtf8(""));
+        widget1 = new QWidget(splitter);
+        widget1->setObjectName(QString::fromUtf8("widget1"));
+        verticalLayout_2 = new QVBoxLayout(widget1);
+        verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
+        verticalLayout_2->setContentsMargins(0, 0, 0, 0);
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        label_edit_code = new QLabel(widget1);
+        label_edit_code->setObjectName(QString::fromUtf8("label_edit_code"));
+        label_edit_code->setFont(font);
+        label_edit_code->setStyleSheet(QString::fromUtf8(""));
 
-        verticalLayout_7->addWidget(label_4);
+        horizontalLayout->addWidget(label_edit_code);
 
-        prog = new QTextEdit(layoutWidget1);
+        label_loadimg = new QLabel(widget1);
+        label_loadimg->setObjectName(QString::fromUtf8("label_loadimg"));
+
+        horizontalLayout->addWidget(label_loadimg);
+
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer);
+
+
+        verticalLayout_2->addLayout(horizontalLayout);
+
+        prog = new QTextEdit(widget1);
         prog->setObjectName(QString::fromUtf8("prog"));
         prog->setStyleSheet(QString::fromUtf8(""));
 
-        verticalLayout_7->addWidget(prog);
+        verticalLayout_2->addWidget(prog);
 
-        splitter->addWidget(layoutWidget1);
-        layoutWidget2 = new QWidget(splitter);
-        layoutWidget2->setObjectName(QString::fromUtf8("layoutWidget2"));
-        verticalLayout_6 = new QVBoxLayout(layoutWidget2);
-        verticalLayout_6->setObjectName(QString::fromUtf8("verticalLayout_6"));
-        verticalLayout_6->setContentsMargins(0, 0, 0, 0);
-        label_2 = new QLabel(layoutWidget2);
-        label_2->setObjectName(QString::fromUtf8("label_2"));
-        label_2->setFont(font);
-        label_2->setStyleSheet(QString::fromUtf8(""));
+        splitter->addWidget(widget1);
+        widget2 = new QWidget(splitter);
+        widget2->setObjectName(QString::fromUtf8("widget2"));
+        verticalLayout_3 = new QVBoxLayout(widget2);
+        verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
+        verticalLayout_3->setContentsMargins(0, 0, 0, 0);
+        label_input = new QLabel(widget2);
+        label_input->setObjectName(QString::fromUtf8("label_input"));
+        label_input->setFont(font);
+        label_input->setStyleSheet(QString::fromUtf8(""));
 
-        verticalLayout_6->addWidget(label_2);
+        verticalLayout_3->addWidget(label_input);
 
-        input = new QTextEdit(layoutWidget2);
+        input = new QTextEdit(widget2);
         input->setObjectName(QString::fromUtf8("input"));
         input->setStyleSheet(QString::fromUtf8(""));
 
-        verticalLayout_6->addWidget(input);
+        verticalLayout_3->addWidget(input);
 
-        horizontalLayout_2 = new QHBoxLayout();
-        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        groupBox = new QGroupBox(layoutWidget2);
-        groupBox->setObjectName(QString::fromUtf8("groupBox"));
-        verticalLayout_4 = new QVBoxLayout(groupBox);
-        verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
-        bytes8 = new QRadioButton(groupBox);
-        bytes8->setObjectName(QString::fromUtf8("bytes8"));
-        QFont font1;
-        font1.setFamily(QString::fromUtf8("DejaVu Serif"));
-        font1.setPointSize(11);
-        font1.setBold(true);
-        font1.setWeight(75);
-        bytes8->setFont(font1);
-        bytes8->setStyleSheet(QString::fromUtf8(""));
-
-        verticalLayout_4->addWidget(bytes8);
-
-        bytes16 = new QRadioButton(groupBox);
-        bytes16->setObjectName(QString::fromUtf8("bytes16"));
-        bytes16->setFont(font1);
-        bytes16->setStyleSheet(QString::fromUtf8(""));
-
-        verticalLayout_4->addWidget(bytes16);
-
-        bytes32 = new QRadioButton(groupBox);
-        bytes32->setObjectName(QString::fromUtf8("bytes32"));
-        bytes32->setFont(font1);
-        bytes32->setStyleSheet(QString::fromUtf8(""));
-
-        verticalLayout_4->addWidget(bytes32);
-
-
-        horizontalLayout_2->addWidget(groupBox);
-
-        groupBox_2 = new QGroupBox(layoutWidget2);
-        groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
-        verticalLayout_3 = new QVBoxLayout(groupBox_2);
-        verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
-        sep_no = new QRadioButton(groupBox_2);
-        sep_no->setObjectName(QString::fromUtf8("sep_no"));
-
-        verticalLayout_3->addWidget(sep_no);
-
-        sep_space = new QRadioButton(groupBox_2);
-        sep_space->setObjectName(QString::fromUtf8("sep_space"));
-        sep_space->setStyleSheet(QString::fromUtf8(""));
-
-        verticalLayout_3->addWidget(sep_space);
-
-        sep_nl = new QRadioButton(groupBox_2);
-        sep_nl->setObjectName(QString::fromUtf8("sep_nl"));
-        sep_nl->setStyleSheet(QString::fromUtf8(""));
-
-        verticalLayout_3->addWidget(sep_nl);
-
-
-        horizontalLayout_2->addWidget(groupBox_2);
-
-
-        verticalLayout_6->addLayout(horizontalLayout_2);
-
-        viewMemoryLine = new QPushButton(layoutWidget2);
-        viewMemoryLine->setObjectName(QString::fromUtf8("viewMemoryLine"));
-        QFont font2;
-        font2.setFamily(QString::fromUtf8("DejaVu Serif"));
-        font2.setBold(true);
-        font2.setWeight(75);
-        viewMemoryLine->setFont(font2);
-        viewMemoryLine->setStyleSheet(QString::fromUtf8(""));
-
-        verticalLayout_6->addWidget(viewMemoryLine);
-
-        horizontalLayout = new QHBoxLayout();
-        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        verticalLayout_5 = new QVBoxLayout();
-        verticalLayout_5->setObjectName(QString::fromUtf8("verticalLayout_5"));
-        label_loadimg = new QLabel(layoutWidget2);
-        label_loadimg->setObjectName(QString::fromUtf8("label_loadimg"));
-
-        verticalLayout_5->addWidget(label_loadimg);
-
-        label_status = new QLabel(layoutWidget2);
-        label_status->setObjectName(QString::fromUtf8("label_status"));
-        QFont font3;
-        font3.setFamily(QString::fromUtf8("Dyuthi"));
-        font3.setPointSize(15);
-        label_status->setFont(font3);
-        label_status->setStyleSheet(QString::fromUtf8(""));
-
-        verticalLayout_5->addWidget(label_status);
-
-        label_loading = new QLabel(layoutWidget2);
-        label_loading->setObjectName(QString::fromUtf8("label_loading"));
-        QFont font4;
-        font4.setFamily(QString::fromUtf8("FreeMono"));
-        font4.setBold(false);
-        font4.setItalic(false);
-        font4.setWeight(50);
-        label_loading->setFont(font4);
-        label_loading->setStyleSheet(QString::fromUtf8(""));
-
-        verticalLayout_5->addWidget(label_loading);
-
-
-        horizontalLayout->addLayout(verticalLayout_5);
-
-        groupBox_3 = new QGroupBox(layoutWidget2);
-        groupBox_3->setObjectName(QString::fromUtf8("groupBox_3"));
-        verticalLayout_2 = new QVBoxLayout(groupBox_3);
-        verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
-        darkScheme = new QRadioButton(groupBox_3);
-        darkScheme->setObjectName(QString::fromUtf8("darkScheme"));
-
-        verticalLayout_2->addWidget(darkScheme);
-
-        lightScheme = new QRadioButton(groupBox_3);
-        lightScheme->setObjectName(QString::fromUtf8("lightScheme"));
-
-        verticalLayout_2->addWidget(lightScheme);
-
-
-        horizontalLayout->addWidget(groupBox_3);
-
-
-        verticalLayout_6->addLayout(horizontalLayout);
-
-        splitter->addWidget(layoutWidget2);
+        splitter->addWidget(widget2);
         splitter_2->addWidget(splitter);
 
-        verticalLayout_8->addWidget(splitter_2);
+        verticalLayout_4->addWidget(splitter_2);
 
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
         menubar->setGeometry(QRect(0, 0, 1146, 21));
         menubar->setStyleSheet(QString::fromUtf8("color: white; background-color: rgb(46, 52, 54)"));
-        menuFile = new QMenu(menubar);
-        menuFile->setObjectName(QString::fromUtf8("menuFile"));
         menuEdit_Code = new QMenu(menubar);
         menuEdit_Code->setObjectName(QString::fromUtf8("menuEdit_Code"));
+        menuLoad_Example = new QMenu(menuEdit_Code);
+        menuLoad_Example->setObjectName(QString::fromUtf8("menuLoad_Example"));
+        menuStyle = new QMenu(menubar);
+        menuStyle->setObjectName(QString::fromUtf8("menuStyle"));
+        menuColor_scheme = new QMenu(menuStyle);
+        menuColor_scheme->setObjectName(QString::fromUtf8("menuColor_scheme"));
+        menuText_settings = new QMenu(menuStyle);
+        menuText_settings->setObjectName(QString::fromUtf8("menuText_settings"));
+        menuInterpreter = new QMenu(menubar);
+        menuInterpreter->setObjectName(QString::fromUtf8("menuInterpreter"));
+        menuCell_Size = new QMenu(menuInterpreter);
+        menuCell_Size->setObjectName(QString::fromUtf8("menuCell_Size"));
+        menuConvert = new QMenu(menubar);
+        menuConvert->setObjectName(QString::fromUtf8("menuConvert"));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
         MainWindow->setStatusBar(statusbar);
+        toolBar = new QToolBar(MainWindow);
+        toolBar->setObjectName(QString::fromUtf8("toolBar"));
+        MainWindow->addToolBar(Qt::TopToolBarArea, toolBar);
 
-        menubar->addAction(menuFile->menuAction());
         menubar->addAction(menuEdit_Code->menuAction());
-        menuFile->addAction(actionStart_Code);
-        menuFile->addAction(actionEnd_Code);
+        menubar->addAction(menuStyle->menuAction());
+        menubar->addAction(menuInterpreter->menuAction());
+        menubar->addAction(menuConvert->menuAction());
+        menuEdit_Code->addSeparator();
         menuEdit_Code->addAction(actionClear);
+        menuEdit_Code->addSeparator();
         menuEdit_Code->addAction(actionSave);
+        menuEdit_Code->addSeparator();
         menuEdit_Code->addAction(actionLoad);
+        menuEdit_Code->addSeparator();
+        menuEdit_Code->addAction(menuLoad_Example->menuAction());
+        menuEdit_Code->addSeparator();
+        menuEdit_Code->addAction(actionLoad_from_file);
+        menuEdit_Code->addSeparator();
+        menuEdit_Code->addAction(actionSave_to_file);
+        menuLoad_Example->addSeparator();
+        menuLoad_Example->addAction(actionbeer_bf);
+        menuLoad_Example->addSeparator();
+        menuLoad_Example->addAction(actioncellsize_bf);
+        menuLoad_Example->addSeparator();
+        menuLoad_Example->addAction(actionhello_bf);
+        menuLoad_Example->addSeparator();
+        menuLoad_Example->addAction(actionmandelbrot_tiny_bf);
+        menuLoad_Example->addSeparator();
+        menuLoad_Example->addAction(actionmandelbrot_bf);
+        menuLoad_Example->addSeparator();
+        menuLoad_Example->addAction(actionpidigits_bf);
+        menuStyle->addSeparator();
+        menuStyle->addSeparator();
+        menuStyle->addAction(menuColor_scheme->menuAction());
+        menuStyle->addSeparator();
+        menuStyle->addAction(menuText_settings->menuAction());
+        menuColor_scheme->addAction(actionDark);
+        menuColor_scheme->addAction(actionLight);
+        menuText_settings->addSeparator();
+        menuText_settings->addAction(actionOutput);
+        menuText_settings->addSeparator();
+        menuText_settings->addAction(actionInput);
+        menuText_settings->addSeparator();
+        menuText_settings->addAction(actionCode_buffer);
+        menuText_settings->addSeparator();
+        menuText_settings->addAction(actionSystem);
+        menuInterpreter->addSeparator();
+        menuInterpreter->addAction(menuCell_Size->menuAction());
+        menuInterpreter->addSeparator();
+        menuInterpreter->addAction(actionView_memory);
+        menuCell_Size->addAction(action8_byte);
+        menuCell_Size->addAction(action16_byte);
+        menuCell_Size->addAction(action32_byte);
+        menuConvert->addAction(actionto_C);
+        menuConvert->addAction(actiontext_to_code);
+        toolBar->addAction(actionStart_Code);
+        toolBar->addAction(actionEnd_Code);
+        toolBar->addAction(actionCheck_Errors);
 
         retranslateUi(MainWindow);
 
@@ -336,40 +352,57 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
+        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "BrainFuckStudio v2.1", nullptr));
         actionStart_Code->setText(QCoreApplication::translate("MainWindow", "Start Code", nullptr));
 #if QT_CONFIG(shortcut)
         actionStart_Code->setShortcut(QCoreApplication::translate("MainWindow", "F5", nullptr));
 #endif // QT_CONFIG(shortcut)
         actionEnd_Code->setText(QCoreApplication::translate("MainWindow", "End Code", nullptr));
         actionClear->setText(QCoreApplication::translate("MainWindow", "Clear", nullptr));
-        actionSave->setText(QCoreApplication::translate("MainWindow", "Save", nullptr));
-        actionLoad->setText(QCoreApplication::translate("MainWindow", "Load", nullptr));
-        label->setText(QCoreApplication::translate("MainWindow", "Output", nullptr));
-        label_4->setText(QCoreApplication::translate("MainWindow", "Edit code:", nullptr));
+        actionSave->setText(QCoreApplication::translate("MainWindow", "Save to buffer", nullptr));
+#if QT_CONFIG(shortcut)
+        actionSave->setShortcut(QCoreApplication::translate("MainWindow", "Ctrl+S", nullptr));
+#endif // QT_CONFIG(shortcut)
+        actionLoad->setText(QCoreApplication::translate("MainWindow", "Load from buffer", nullptr));
+        actionbeer_bf->setText(QCoreApplication::translate("MainWindow", "beer.bf", nullptr));
+        actioncellsize_bf->setText(QCoreApplication::translate("MainWindow", "cellsize.bf", nullptr));
+        actionhello_bf->setText(QCoreApplication::translate("MainWindow", "hello.bf", nullptr));
+        actionmandelbrot_tiny_bf->setText(QCoreApplication::translate("MainWindow", "mandelbrot-tiny.bf", nullptr));
+        actionmandelbrot_bf->setText(QCoreApplication::translate("MainWindow", "mandelbrot.bf", nullptr));
+        actionpidigits_bf->setText(QCoreApplication::translate("MainWindow", "pidigits.bf", nullptr));
+        actionDark->setText(QCoreApplication::translate("MainWindow", "Dark", nullptr));
+        actionLight->setText(QCoreApplication::translate("MainWindow", "Light", nullptr));
+        action8_byte->setText(QCoreApplication::translate("MainWindow", "8 byte", nullptr));
+        action16_byte->setText(QCoreApplication::translate("MainWindow", "16 byte", nullptr));
+        action32_byte->setText(QCoreApplication::translate("MainWindow", "32 byte", nullptr));
+        actionView_memory->setText(QCoreApplication::translate("MainWindow", "View memory", nullptr));
+        actionCheck_Errors->setText(QCoreApplication::translate("MainWindow", "Check Errors", nullptr));
+        actionOutput->setText(QCoreApplication::translate("MainWindow", "Output", nullptr));
+        actionInput->setText(QCoreApplication::translate("MainWindow", "Input", nullptr));
+        actionCode_buffer->setText(QCoreApplication::translate("MainWindow", "Code buffer", nullptr));
+        actionSystem->setText(QCoreApplication::translate("MainWindow", "System", nullptr));
+        actionLoad_from_file->setText(QCoreApplication::translate("MainWindow", "Load from file", nullptr));
+        actionSave_to_file->setText(QCoreApplication::translate("MainWindow", "Save to file", nullptr));
+        actionto_C->setText(QCoreApplication::translate("MainWindow", "code to C", nullptr));
+        actiontext_to_code->setText(QCoreApplication::translate("MainWindow", "text to code", nullptr));
+        label_output->setText(QCoreApplication::translate("MainWindow", "Output", nullptr));
+        label_edit_code->setText(QCoreApplication::translate("MainWindow", "Edit code:", nullptr));
+        label_loadimg->setText(QString());
         prog->setHtml(QCoreApplication::translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Consolas'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", nullptr));
-        label_2->setText(QCoreApplication::translate("MainWindow", "Input", nullptr));
-        groupBox->setTitle(QCoreApplication::translate("MainWindow", "Cell Size", nullptr));
-        bytes8->setText(QCoreApplication::translate("MainWindow", "8 bytes", nullptr));
-        bytes16->setText(QCoreApplication::translate("MainWindow", "16 bytes", nullptr));
-        bytes32->setText(QCoreApplication::translate("MainWindow", "32 bytes", nullptr));
-        groupBox_2->setTitle(QCoreApplication::translate("MainWindow", "Input Separator:", nullptr));
-        sep_no->setText(QCoreApplication::translate("MainWindow", "No", nullptr));
-        sep_space->setText(QCoreApplication::translate("MainWindow", "Space", nullptr));
-        sep_nl->setText(QCoreApplication::translate("MainWindow", "New line", nullptr));
-        viewMemoryLine->setText(QCoreApplication::translate("MainWindow", "View memory line", nullptr));
-        label_loadimg->setText(QString());
-        label_status->setText(QCoreApplication::translate("MainWindow", "Status:", nullptr));
-        label_loading->setText(QCoreApplication::translate("MainWindow", "text editing", nullptr));
-        groupBox_3->setTitle(QCoreApplication::translate("MainWindow", "Color Scheme", nullptr));
-        darkScheme->setText(QCoreApplication::translate("MainWindow", "Dark", nullptr));
-        lightScheme->setText(QCoreApplication::translate("MainWindow", "Light", nullptr));
-        menuFile->setTitle(QCoreApplication::translate("MainWindow", "Execute", nullptr));
+        label_input->setText(QCoreApplication::translate("MainWindow", "Input", nullptr));
         menuEdit_Code->setTitle(QCoreApplication::translate("MainWindow", "Edit", nullptr));
+        menuLoad_Example->setTitle(QCoreApplication::translate("MainWindow", "Load Example", nullptr));
+        menuStyle->setTitle(QCoreApplication::translate("MainWindow", "View", nullptr));
+        menuColor_scheme->setTitle(QCoreApplication::translate("MainWindow", "Color scheme", nullptr));
+        menuText_settings->setTitle(QCoreApplication::translate("MainWindow", "Text settings", nullptr));
+        menuInterpreter->setTitle(QCoreApplication::translate("MainWindow", "Interpreter", nullptr));
+        menuCell_Size->setTitle(QCoreApplication::translate("MainWindow", "Cell Size", nullptr));
+        menuConvert->setTitle(QCoreApplication::translate("MainWindow", "Convert", nullptr));
+        toolBar->setWindowTitle(QCoreApplication::translate("MainWindow", "toolBar", nullptr));
     } // retranslateUi
 
 };

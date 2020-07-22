@@ -1,3 +1,53 @@
+#### v2.1
+
+Added working with files, app customization and BF to C code converter.
+
+**New features:**
+
+##### Code converting:
+
+- convert BF code to C code, **with tabs and minimized commands amount**
+
+##### Errors checking:
+
+- runtime negative pointer position errors checking
+- brackets amount control
+
+##### Working with files:
+
+- Load text from code text browser to file
+- Load text to code text browser from file
+- Load text from code text browser to buffer
+- Load text from buffer to code text browser
+- Load example code:
+
+*beer.bf, cellsize.bf, hello.bf, mandelbrot.bf, mandelbrot-tiny.bf,  pidigits.bf* 
+
+<u>**Important information!**</u> 
+
+I do not own any of these codes. All conatcat information saved.
+
+##### App customization:
+
+- Change text font and text size of output/input/code text buffer or system
+
+##### Design changes:
+
+- Added toolbar for basic options:
+
+*run code, stop code execution, check errors*
+
+- Added app icon
+- Added window name
+
+##### Project files:
+
+- deleted old useless files
+
+
+
+![img 2.1](/img/v2_1.png)
+
 #### v2.0
 
 **App reinvented.**

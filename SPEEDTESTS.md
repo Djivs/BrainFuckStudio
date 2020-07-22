@@ -4,7 +4,6 @@ BrainFuckStudio speed tests results on 8-byte cells
 
 [Repository with this tests](https://github.com/rdebath/Brainfuck/tree/master/testing)
 
-- Beer - 0.01 sec
 - Primes - 0.01 sec
 - Chess - 0.01 sec
 - SkipLoop - 0.01 sec
@@ -13,6 +12,7 @@ BrainFuckStudio speed tests results on 8-byte cells
 - Hello - 0.01 sec
 - Kiloseconds - 0.01 sec
 - Bench - 0.02 sec
+- Beer - 0.03 sec
 - Golden - 0.54 sec
 - cristofd-rightmargin - 0.7 sec
 - BusyBeaver - 3.2 sec

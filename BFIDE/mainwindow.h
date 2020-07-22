@@ -5,7 +5,13 @@
 #include <vector>
 #include <QPixmap>
 #include <QMovie>
-#include "memoryline.h"
+#include <algorithm>
+#include <QThread>
+#include <QTimer>
+#include <QFontDialog>
+#include <QFileDialog>
+#include <QFile>
+#include "textwindow.h"
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -21,7 +27,6 @@ public:
     //setters
     void setEndCode(bool t){endCode = t;};
     void setLine(std::vector<long int> newLine) {line = newLine;};
-    void setSeparator(char newSeparator) {separator = newSeparator;};
     void setCode(QString newCode) {code = newCode;};
     void setMaxValue(unsigned int newMaxValue) {maxValue = newMaxValue;};
     void setInput(QString newInput){input = newInput;};
@@ -30,11 +35,17 @@ public:
     QString getOutput() const {return output;};
     bool getEndCode() const {return endCode;};
     std::vector <long int> getLine() const {return line;};
+    QString getConvertedCCode() const {return convertedCCode;};
 private slots:
+    void convertToC();
     void runCode();
+    void checkErrors();
 signals:
+    void codeConverted();
     void codeExecuted();
+    void errorsChecked();
 private:
+    QString convertedCCode;
     void parseCode();
     volatile bool endCode = 1;
     std::vector <long int> line;
@@ -43,7 +54,6 @@ private:
     std::vector <CMD> commands;
     std::vector <int> args;
     long int maxValue = 255;
-    char separator = ' ';
     QString code;
     QString output;
     QString input;
@@ -62,25 +72,11 @@ private slots:
 
     void end_code_execution();
 
-    void on_bytes16_clicked();
+    void end_errors_checking();
 
-    void on_bytes32_clicked();
-
-    void on_bytes8_clicked();
-
-    void on_viewMemoryLine_clicked();
+    void end_code_converting();
 
     void on_prog_textChanged();
-
-    void on_sep_space_clicked();
-
-    void on_sep_nl_clicked();
-
-    void on_darkScheme_clicked();
-
-    void on_lightScheme_clicked();
-
-    void on_sep_no_clicked();
 
     void on_actionStart_Code_triggered();
 
@@ -92,14 +88,56 @@ private slots:
 
     void on_actionLoad_triggered();
 
+    void on_actionbeer_bf_triggered();
+
+    void on_actioncellsize_bf_triggered();
+
+    void on_actionhello_bf_triggered();
+
+    void on_actionmandelbrot_tiny_bf_triggered();
+
+    void on_actionmandelbrot_bf_triggered();
+
+    void on_actionpidigits_bf_triggered();
+
+    void on_actionDark_triggered();
+
+    void on_actionLight_triggered();
+
+    void on_action8_byte_triggered();
+
+    void on_action16_byte_triggered();
+
+    void on_action32_byte_triggered();
+
+    void on_actionView_memory_triggered();
+
+    void on_actionCheck_Errors_triggered();
+
+    void on_actionOutput_triggered();
+
+    void on_actionInput_triggered();
+
+    void on_actionCode_buffer_triggered();
+
+    void on_actionSystem_triggered();
+
+    void on_actionSave_to_file_triggered();
+
+    void on_actionLoad_from_file_triggered();
+
+    void on_actionto_C_triggered();
+
 signals:
     void startOperation();
+    void startErrorsChecking();
+    void startConvertToC();
 
 private:
     QDateTime start;
     QDateTime finish;
     //window with memory view
-    MemoryLine *window;
+    TextWindow *textWindow;
     //loaging gif
     QMovie dots_loading;
     //main window

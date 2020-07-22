@@ -11,25 +11,29 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>BrainFuckStudio v2.1</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="resources.qrc">
+    <normaloff>:/res/img/logo.png</normaloff>:/res/img/logo.png</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color:rgb(46, 52, 54)</string>
+   <string notr="true">color: white; background-color: rgb(46, 52, 54)</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="styleSheet">
     <string notr="true">color: white</string>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout_8">
+   <layout class="QVBoxLayout" name="verticalLayout_4">
     <item>
      <widget class="QSplitter" name="splitter_2">
       <property name="orientation">
        <enum>Qt::Vertical</enum>
       </property>
-      <widget class="QWidget" name="layoutWidget">
+      <widget class="QWidget" name="">
        <layout class="QVBoxLayout" name="verticalLayout">
         <item>
-         <widget class="QLabel" name="label">
+         <widget class="QLabel" name="label_output">
           <property name="font">
            <font>
             <family>DejaVu Sans</family>
@@ -48,6 +52,11 @@
         </item>
         <item>
          <widget class="QTextBrowser" name="output">
+          <property name="font">
+           <font>
+            <pointsize>11</pointsize>
+           </font>
+          </property>
           <property name="styleSheet">
            <string notr="true"/>
           </property>
@@ -65,25 +74,49 @@
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
-       <widget class="QWidget" name="layoutWidget">
-        <layout class="QVBoxLayout" name="verticalLayout_7">
+       <widget class="QWidget" name="">
+        <layout class="QVBoxLayout" name="verticalLayout_2">
          <item>
-          <widget class="QLabel" name="label_4">
-           <property name="font">
-            <font>
-             <family>DejaVu Sans</family>
-             <pointsize>15</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="styleSheet">
-            <string notr="true"/>
-           </property>
-           <property name="text">
-            <string>Edit code:</string>
-           </property>
-          </widget>
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <item>
+            <widget class="QLabel" name="label_edit_code">
+             <property name="font">
+              <font>
+               <family>DejaVu Sans</family>
+               <pointsize>15</pointsize>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+             <property name="text">
+              <string>Edit code:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_loadimg">
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
          </item>
          <item>
           <widget class="QTextEdit" name="prog">
@@ -101,10 +134,10 @@ p, li { white-space: pre-wrap; }
          </item>
         </layout>
        </widget>
-       <widget class="QWidget" name="layoutWidget">
-        <layout class="QVBoxLayout" name="verticalLayout_6">
+       <widget class="QWidget" name="">
+        <layout class="QVBoxLayout" name="verticalLayout_3">
          <item>
-          <widget class="QLabel" name="label_2">
+          <widget class="QLabel" name="label_input">
            <property name="font">
             <font>
              <family>DejaVu Sans</family>
@@ -128,198 +161,6 @@ p, li { white-space: pre-wrap; }
            </property>
           </widget>
          </item>
-         <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_2">
-           <item>
-            <widget class="QGroupBox" name="groupBox">
-             <property name="title">
-              <string>Cell Size</string>
-             </property>
-             <layout class="QVBoxLayout" name="verticalLayout_4">
-              <item>
-               <widget class="QRadioButton" name="bytes8">
-                <property name="font">
-                 <font>
-                  <family>DejaVu Serif</family>
-                  <pointsize>11</pointsize>
-                  <weight>75</weight>
-                  <bold>true</bold>
-                 </font>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true"/>
-                </property>
-                <property name="text">
-                 <string>8 bytes</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QRadioButton" name="bytes16">
-                <property name="font">
-                 <font>
-                  <family>DejaVu Serif</family>
-                  <pointsize>11</pointsize>
-                  <weight>75</weight>
-                  <bold>true</bold>
-                 </font>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true"/>
-                </property>
-                <property name="text">
-                 <string>16 bytes</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QRadioButton" name="bytes32">
-                <property name="font">
-                 <font>
-                  <family>DejaVu Serif</family>
-                  <pointsize>11</pointsize>
-                  <weight>75</weight>
-                  <bold>true</bold>
-                 </font>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true"/>
-                </property>
-                <property name="text">
-                 <string>32 bytes</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </item>
-           <item>
-            <widget class="QGroupBox" name="groupBox_2">
-             <property name="title">
-              <string>Input Separator:</string>
-             </property>
-             <layout class="QVBoxLayout" name="verticalLayout_3">
-              <item>
-               <widget class="QRadioButton" name="sep_no">
-                <property name="text">
-                 <string>No</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QRadioButton" name="sep_space">
-                <property name="styleSheet">
-                 <string notr="true"/>
-                </property>
-                <property name="text">
-                 <string>Space</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QRadioButton" name="sep_nl">
-                <property name="styleSheet">
-                 <string notr="true"/>
-                </property>
-                <property name="text">
-                 <string>New line</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <widget class="QPushButton" name="viewMemoryLine">
-           <property name="font">
-            <font>
-             <family>DejaVu Serif</family>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="styleSheet">
-            <string notr="true"/>
-           </property>
-           <property name="text">
-            <string>View memory line</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" name="horizontalLayout">
-           <item>
-            <layout class="QVBoxLayout" name="verticalLayout_5">
-             <item>
-              <widget class="QLabel" name="label_loadimg">
-               <property name="text">
-                <string/>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="label_status">
-               <property name="font">
-                <font>
-                 <family>Dyuthi</family>
-                 <pointsize>15</pointsize>
-                </font>
-               </property>
-               <property name="styleSheet">
-                <string notr="true"/>
-               </property>
-               <property name="text">
-                <string>Status:</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="label_loading">
-               <property name="font">
-                <font>
-                 <family>FreeMono</family>
-                 <weight>50</weight>
-                 <italic>false</italic>
-                 <bold>false</bold>
-                </font>
-               </property>
-               <property name="styleSheet">
-                <string notr="true"/>
-               </property>
-               <property name="text">
-                <string>text editing</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-           <item>
-            <widget class="QGroupBox" name="groupBox_3">
-             <property name="title">
-              <string>Color Scheme</string>
-             </property>
-             <layout class="QVBoxLayout" name="verticalLayout_2">
-              <item>
-               <widget class="QRadioButton" name="darkScheme">
-                <property name="text">
-                 <string>Dark</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QRadioButton" name="lightScheme">
-                <property name="text">
-                 <string>Light</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </item>
-          </layout>
-         </item>
         </layout>
        </widget>
       </widget>
@@ -339,25 +180,114 @@ p, li { white-space: pre-wrap; }
    <property name="styleSheet">
     <string notr="true">color: white; background-color: rgb(46, 52, 54)</string>
    </property>
-   <widget class="QMenu" name="menuFile">
-    <property name="title">
-     <string>Execute</string>
-    </property>
-    <addaction name="actionStart_Code"/>
-    <addaction name="actionEnd_Code"/>
-   </widget>
    <widget class="QMenu" name="menuEdit_Code">
     <property name="title">
      <string>Edit</string>
     </property>
+    <widget class="QMenu" name="menuLoad_Example">
+     <property name="title">
+      <string>Load Example</string>
+     </property>
+     <addaction name="separator"/>
+     <addaction name="actionbeer_bf"/>
+     <addaction name="separator"/>
+     <addaction name="actioncellsize_bf"/>
+     <addaction name="separator"/>
+     <addaction name="actionhello_bf"/>
+     <addaction name="separator"/>
+     <addaction name="actionmandelbrot_tiny_bf"/>
+     <addaction name="separator"/>
+     <addaction name="actionmandelbrot_bf"/>
+     <addaction name="separator"/>
+     <addaction name="actionpidigits_bf"/>
+    </widget>
+    <addaction name="separator"/>
     <addaction name="actionClear"/>
+    <addaction name="separator"/>
     <addaction name="actionSave"/>
+    <addaction name="separator"/>
     <addaction name="actionLoad"/>
+    <addaction name="separator"/>
+    <addaction name="menuLoad_Example"/>
+    <addaction name="separator"/>
+    <addaction name="actionLoad_from_file"/>
+    <addaction name="separator"/>
+    <addaction name="actionSave_to_file"/>
    </widget>
-   <addaction name="menuFile"/>
+   <widget class="QMenu" name="menuStyle">
+    <property name="title">
+     <string>View</string>
+    </property>
+    <widget class="QMenu" name="menuColor_scheme">
+     <property name="title">
+      <string>Color scheme</string>
+     </property>
+     <addaction name="actionDark"/>
+     <addaction name="actionLight"/>
+    </widget>
+    <widget class="QMenu" name="menuText_settings">
+     <property name="title">
+      <string>Text settings</string>
+     </property>
+     <addaction name="separator"/>
+     <addaction name="actionOutput"/>
+     <addaction name="separator"/>
+     <addaction name="actionInput"/>
+     <addaction name="separator"/>
+     <addaction name="actionCode_buffer"/>
+     <addaction name="separator"/>
+     <addaction name="actionSystem"/>
+    </widget>
+    <addaction name="separator"/>
+    <addaction name="separator"/>
+    <addaction name="menuColor_scheme"/>
+    <addaction name="separator"/>
+    <addaction name="menuText_settings"/>
+   </widget>
+   <widget class="QMenu" name="menuInterpreter">
+    <property name="title">
+     <string>Interpreter</string>
+    </property>
+    <widget class="QMenu" name="menuCell_Size">
+     <property name="title">
+      <string>Cell Size</string>
+     </property>
+     <addaction name="action8_byte"/>
+     <addaction name="action16_byte"/>
+     <addaction name="action32_byte"/>
+    </widget>
+    <addaction name="separator"/>
+    <addaction name="menuCell_Size"/>
+    <addaction name="separator"/>
+    <addaction name="actionView_memory"/>
+   </widget>
+   <widget class="QMenu" name="menuConvert">
+    <property name="title">
+     <string>Convert</string>
+    </property>
+    <addaction name="actionto_C"/>
+    <addaction name="actiontext_to_code"/>
+   </widget>
    <addaction name="menuEdit_Code"/>
+   <addaction name="menuStyle"/>
+   <addaction name="menuInterpreter"/>
+   <addaction name="menuConvert"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionStart_Code"/>
+   <addaction name="actionEnd_Code"/>
+   <addaction name="actionCheck_Errors"/>
+  </widget>
   <action name="actionStart_Code">
    <property name="icon">
     <iconset resource="resources.qrc">
@@ -386,12 +316,139 @@ p, li { white-space: pre-wrap; }
   </action>
   <action name="actionSave">
    <property name="text">
-    <string>Save</string>
+    <string>Save to buffer</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
    </property>
   </action>
   <action name="actionLoad">
    <property name="text">
-    <string>Load</string>
+    <string>Load from buffer</string>
+   </property>
+  </action>
+  <action name="actionbeer_bf">
+   <property name="text">
+    <string>beer.bf</string>
+   </property>
+  </action>
+  <action name="actioncellsize_bf">
+   <property name="text">
+    <string>cellsize.bf</string>
+   </property>
+  </action>
+  <action name="actionhello_bf">
+   <property name="text">
+    <string>hello.bf</string>
+   </property>
+  </action>
+  <action name="actionmandelbrot_tiny_bf">
+   <property name="text">
+    <string>mandelbrot-tiny.bf</string>
+   </property>
+  </action>
+  <action name="actionmandelbrot_bf">
+   <property name="text">
+    <string>mandelbrot.bf</string>
+   </property>
+  </action>
+  <action name="actionpidigits_bf">
+   <property name="text">
+    <string>pidigits.bf</string>
+   </property>
+  </action>
+  <action name="actionDark">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Dark</string>
+   </property>
+  </action>
+  <action name="actionLight">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Light</string>
+   </property>
+  </action>
+  <action name="action8_byte">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>8 byte</string>
+   </property>
+  </action>
+  <action name="action16_byte">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>16 byte</string>
+   </property>
+  </action>
+  <action name="action32_byte">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>32 byte</string>
+   </property>
+  </action>
+  <action name="actionView_memory">
+   <property name="text">
+    <string>View memory</string>
+   </property>
+  </action>
+  <action name="actionCheck_Errors">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/res/img/errors.png</normaloff>:/res/img/errors.png</iconset>
+   </property>
+   <property name="text">
+    <string>Check Errors</string>
+   </property>
+  </action>
+  <action name="actionOutput">
+   <property name="text">
+    <string>Output</string>
+   </property>
+  </action>
+  <action name="actionInput">
+   <property name="text">
+    <string>Input</string>
+   </property>
+  </action>
+  <action name="actionCode_buffer">
+   <property name="text">
+    <string>Code buffer</string>
+   </property>
+  </action>
+  <action name="actionSystem">
+   <property name="text">
+    <string>System</string>
+   </property>
+  </action>
+  <action name="actionLoad_from_file">
+   <property name="text">
+    <string>Load from file</string>
+   </property>
+  </action>
+  <action name="actionSave_to_file">
+   <property name="text">
+    <string>Save to file</string>
+   </property>
+  </action>
+  <action name="actionto_C">
+   <property name="text">
+    <string>code to C</string>
+   </property>
+  </action>
+  <action name="actiontext_to_code">
+   <property name="text">
+    <string>text to code</string>
    </property>
   </action>
  </widget>

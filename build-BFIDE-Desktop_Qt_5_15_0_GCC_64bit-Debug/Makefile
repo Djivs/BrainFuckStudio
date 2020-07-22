@@ -54,15 +54,15 @@ OBJECTS_DIR   = ./
 
 SOURCES       = ../BFIDE/main.cpp \
 		../BFIDE/mainwindow.cpp \
-		../BFIDE/memoryline.cpp qrc_resources.cpp \
+		../BFIDE/textwindow.cpp qrc_resources.cpp \
 		moc_mainwindow.cpp \
-		moc_memoryline.cpp
+		moc_textwindow.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
-		memoryline.o \
+		textwindow.o \
 		qrc_resources.o \
 		moc_mainwindow.o \
-		moc_memoryline.o
+		moc_textwindow.o
 DIST          = ../../../Qt/5.15.0/gcc_64/mkspecs/features/spec_pre.prf \
 		../../../Qt/5.15.0/gcc_64/mkspecs/common/unix.conf \
 		../../../Qt/5.15.0/gcc_64/mkspecs/common/linux.conf \
@@ -275,9 +275,9 @@ DIST          = ../../../Qt/5.15.0/gcc_64/mkspecs/features/spec_pre.prf \
 		../../../Qt/5.15.0/gcc_64/mkspecs/features/yacc.prf \
 		../../../Qt/5.15.0/gcc_64/mkspecs/features/lex.prf \
 		../BFIDE/BFIDE.pro ../BFIDE/mainwindow.h \
-		../BFIDE/memoryline.h ../BFIDE/main.cpp \
+		../BFIDE/textwindow.h ../BFIDE/main.cpp \
 		../BFIDE/mainwindow.cpp \
-		../BFIDE/memoryline.cpp
+		../BFIDE/textwindow.cpp
 QMAKE_TARGET  = BFIDE
 DESTDIR       = 
 TARGET        = BFIDE
@@ -286,7 +286,7 @@ TARGET        = BFIDE
 first: all
 ####### Build rules
 
-BFIDE: ui_mainwindow.h ui_memoryline.h $(OBJECTS)  
+BFIDE: ui_mainwindow.h ui_textwindow.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: ../BFIDE/BFIDE.pro ../../../Qt/5.15.0/gcc_64/mkspecs/linux-g++/qmake.conf ../../../Qt/5.15.0/gcc_64/mkspecs/features/spec_pre.prf \
@@ -732,9 +732,9 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../BFIDE/resources.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../Qt/5.15.0/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../BFIDE/mainwindow.h ../BFIDE/memoryline.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../BFIDE/main.cpp ../BFIDE/mainwindow.cpp ../BFIDE/memoryline.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../BFIDE/mainwindow.ui ../BFIDE/memoryline.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../BFIDE/mainwindow.h ../BFIDE/textwindow.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../BFIDE/main.cpp ../BFIDE/mainwindow.cpp ../BFIDE/textwindow.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../BFIDE/mainwindow.ui ../BFIDE/textwindow.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -763,8 +763,10 @@ compiler_rcc_clean:
 	-$(DEL_FILE) qrc_resources.cpp
 qrc_resources.cpp: ../BFIDE/resources.qrc \
 		../../../Qt/5.15.0/gcc_64/bin/rcc \
+		../BFIDE/img/errors.png \
 		../BFIDE/img/sandwatch.png \
 		../BFIDE/img/loading.gif \
+		../BFIDE/img/logo.png \
 		../BFIDE/img/green_start.png \
 		../BFIDE/img/red_stop.jpeg
 	/home/dmitriy/Qt/5.15.0/gcc_64/bin/rcc -name resources ../BFIDE/resources.qrc -o qrc_resources.cpp
@@ -775,9 +777,9 @@ compiler_moc_predefs_clean:
 moc_predefs.h: ../../../Qt/5.15.0/gcc_64/mkspecs/features/data/dummy.cpp
 	g++ -pipe -g -std=gnu++11 -Wall -Wextra -dM -E -o moc_predefs.h ../../../Qt/5.15.0/gcc_64/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_mainwindow.cpp moc_memoryline.cpp
+compiler_moc_header_make_all: moc_mainwindow.cpp moc_textwindow.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp moc_memoryline.cpp
+	-$(DEL_FILE) moc_mainwindow.cpp moc_textwindow.cpp
 moc_mainwindow.cpp: ../BFIDE/mainwindow.h \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QMainWindow \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qmainwindow.h \
@@ -902,14 +904,28 @@ moc_mainwindow.cpp: ../BFIDE/mainwindow.h \
 		../../../Qt/5.15.0/gcc_64/include/QtCore/qregularexpression.h \
 		../../../Qt/5.15.0/gcc_64/include/QtCore/quuid.h \
 		../../../Qt/5.15.0/gcc_64/include/QtCore/qfactoryinterface.h \
-		../BFIDE/memoryline.h \
-		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QDialog \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/QThread \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qthread.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qdeadlinetimer.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qelapsedtimer.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/QTimer \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qtimer.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qbasictimer.h \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QFontDialog \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qfontdialog.h \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qdialog.h \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QFileDialog \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qfiledialog.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qdir.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qfileinfo.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/QFile \
+		../BFIDE/textwindow.h \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QDialog \
 		moc_predefs.h \
 		../../../Qt/5.15.0/gcc_64/bin/moc
 	/home/dmitriy/Qt/5.15.0/gcc_64/bin/moc $(DEFINES) --include /home/dmitriy/QT_PROJECTS/BF/build-BFIDE-Desktop_Qt_5_15_0_GCC_64bit-Debug/moc_predefs.h -I/home/dmitriy/Qt/5.15.0/gcc_64/mkspecs/linux-g++ -I/home/dmitriy/QT_PROJECTS/BF/BFIDE -I/home/dmitriy/Qt/5.15.0/gcc_64/include -I/home/dmitriy/Qt/5.15.0/gcc_64/include/QtWidgets -I/home/dmitriy/Qt/5.15.0/gcc_64/include/QtGui -I/home/dmitriy/Qt/5.15.0/gcc_64/include/QtCore -I. -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../BFIDE/mainwindow.h -o moc_mainwindow.cpp
 
-moc_memoryline.cpp: ../BFIDE/memoryline.h \
+moc_textwindow.cpp: ../BFIDE/textwindow.h \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QDialog \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qdialog.h \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
@@ -1016,22 +1032,22 @@ moc_memoryline.cpp: ../BFIDE/memoryline.h \
 		../../../Qt/5.15.0/gcc_64/include/QtGui/qtouchdevice.h \
 		moc_predefs.h \
 		../../../Qt/5.15.0/gcc_64/bin/moc
-	/home/dmitriy/Qt/5.15.0/gcc_64/bin/moc $(DEFINES) --include /home/dmitriy/QT_PROJECTS/BF/build-BFIDE-Desktop_Qt_5_15_0_GCC_64bit-Debug/moc_predefs.h -I/home/dmitriy/Qt/5.15.0/gcc_64/mkspecs/linux-g++ -I/home/dmitriy/QT_PROJECTS/BF/BFIDE -I/home/dmitriy/Qt/5.15.0/gcc_64/include -I/home/dmitriy/Qt/5.15.0/gcc_64/include/QtWidgets -I/home/dmitriy/Qt/5.15.0/gcc_64/include/QtGui -I/home/dmitriy/Qt/5.15.0/gcc_64/include/QtCore -I. -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../BFIDE/memoryline.h -o moc_memoryline.cpp
+	/home/dmitriy/Qt/5.15.0/gcc_64/bin/moc $(DEFINES) --include /home/dmitriy/QT_PROJECTS/BF/build-BFIDE-Desktop_Qt_5_15_0_GCC_64bit-Debug/moc_predefs.h -I/home/dmitriy/Qt/5.15.0/gcc_64/mkspecs/linux-g++ -I/home/dmitriy/QT_PROJECTS/BF/BFIDE -I/home/dmitriy/Qt/5.15.0/gcc_64/include -I/home/dmitriy/Qt/5.15.0/gcc_64/include/QtWidgets -I/home/dmitriy/Qt/5.15.0/gcc_64/include/QtGui -I/home/dmitriy/Qt/5.15.0/gcc_64/include/QtCore -I. -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../BFIDE/textwindow.h -o moc_textwindow.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_mainwindow.h ui_memoryline.h
+compiler_uic_make_all: ui_mainwindow.h ui_textwindow.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_mainwindow.h ui_memoryline.h
+	-$(DEL_FILE) ui_mainwindow.h ui_textwindow.h
 ui_mainwindow.h: ../BFIDE/mainwindow.ui \
 		../../../Qt/5.15.0/gcc_64/bin/uic
 	/home/dmitriy/Qt/5.15.0/gcc_64/bin/uic ../BFIDE/mainwindow.ui -o ui_mainwindow.h
 
-ui_memoryline.h: ../BFIDE/memoryline.ui \
+ui_textwindow.h: ../BFIDE/textwindow.ui \
 		../../../Qt/5.15.0/gcc_64/bin/uic
-	/home/dmitriy/Qt/5.15.0/gcc_64/bin/uic ../BFIDE/memoryline.ui -o ui_memoryline.h
+	/home/dmitriy/Qt/5.15.0/gcc_64/bin/uic ../BFIDE/textwindow.ui -o ui_textwindow.h
 
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
@@ -1167,9 +1183,23 @@ main.o: ../BFIDE/main.cpp ../BFIDE/mainwindow.h \
 		../../../Qt/5.15.0/gcc_64/include/QtCore/qregularexpression.h \
 		../../../Qt/5.15.0/gcc_64/include/QtCore/quuid.h \
 		../../../Qt/5.15.0/gcc_64/include/QtCore/qfactoryinterface.h \
-		../BFIDE/memoryline.h \
-		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QDialog \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/QThread \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qthread.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qdeadlinetimer.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qelapsedtimer.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/QTimer \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qtimer.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qbasictimer.h \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QFontDialog \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qfontdialog.h \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qdialog.h \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QFileDialog \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qfiledialog.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qdir.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qfileinfo.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/QFile \
+		../BFIDE/textwindow.h \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QDialog \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QApplication \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qapplication.h \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qdesktopwidget.h \
@@ -1301,11 +1331,26 @@ mainwindow.o: ../BFIDE/mainwindow.cpp ../BFIDE/mainwindow.h \
 		../../../Qt/5.15.0/gcc_64/include/QtCore/qregularexpression.h \
 		../../../Qt/5.15.0/gcc_64/include/QtCore/quuid.h \
 		../../../Qt/5.15.0/gcc_64/include/QtCore/qfactoryinterface.h \
-		../BFIDE/memoryline.h \
-		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QDialog \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/QThread \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qthread.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qdeadlinetimer.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qelapsedtimer.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/QTimer \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qtimer.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qbasictimer.h \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QFontDialog \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qfontdialog.h \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qdialog.h \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QFileDialog \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qfiledialog.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qdir.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qfileinfo.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/QFile \
+		../BFIDE/textwindow.h \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QDialog \
 		ui_mainwindow.h \
 		../../../Qt/5.15.0/gcc_64/include/QtCore/QVariant \
+		../../../Qt/5.15.0/gcc_64/include/QtGui/QIcon \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QAction \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qaction.h \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qactiongroup.h \
@@ -1314,9 +1359,6 @@ mainwindow.o: ../BFIDE/mainwindow.cpp ../BFIDE/mainwindow.h \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qdesktopwidget.h \
 		../../../Qt/5.15.0/gcc_64/include/QtGui/qguiapplication.h \
 		../../../Qt/5.15.0/gcc_64/include/QtGui/qinputmethod.h \
-		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QGroupBox \
-		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qgroupbox.h \
-		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qframe.h \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QHBoxLayout \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qboxlayout.h \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qlayout.h \
@@ -1324,15 +1366,12 @@ mainwindow.o: ../BFIDE/mainwindow.cpp ../BFIDE/mainwindow.h \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qgridlayout.h \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QLabel \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qlabel.h \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qframe.h \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QMenu \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qmenu.h \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QMenuBar \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qmenubar.h \
-		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QPushButton \
-		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qpushbutton.h \
-		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qabstractbutton.h \
-		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QRadioButton \
-		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qradiobutton.h \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QSpacerItem \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QSplitter \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qsplitter.h \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QStatusBar \
@@ -1347,19 +1386,13 @@ mainwindow.o: ../BFIDE/mainwindow.cpp ../BFIDE/mainwindow.h \
 		../../../Qt/5.15.0/gcc_64/include/QtGui/qtextformat.h \
 		../../../Qt/5.15.0/gcc_64/include/QtGui/qpen.h \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QTextEdit \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QToolBar \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qtoolbar.h \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QVBoxLayout \
-		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QWidget \
-		../../../Qt/5.15.0/gcc_64/include/QtCore/QDebug \
-		../../../Qt/5.15.0/gcc_64/include/QtCore/QThread \
-		../../../Qt/5.15.0/gcc_64/include/QtCore/qthread.h \
-		../../../Qt/5.15.0/gcc_64/include/QtCore/qdeadlinetimer.h \
-		../../../Qt/5.15.0/gcc_64/include/QtCore/qelapsedtimer.h \
-		../../../Qt/5.15.0/gcc_64/include/QtCore/QTimer \
-		../../../Qt/5.15.0/gcc_64/include/QtCore/qtimer.h \
-		../../../Qt/5.15.0/gcc_64/include/QtCore/qbasictimer.h
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../BFIDE/mainwindow.cpp
 
-memoryline.o: ../BFIDE/memoryline.cpp ../BFIDE/memoryline.h \
+textwindow.o: ../BFIDE/textwindow.cpp ../BFIDE/textwindow.h \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QDialog \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qdialog.h \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
@@ -1464,26 +1497,8 @@ memoryline.o: ../BFIDE/memoryline.cpp ../BFIDE/memoryline.h \
 		../../../Qt/5.15.0/gcc_64/include/QtCore/qfiledevice.h \
 		../../../Qt/5.15.0/gcc_64/include/QtGui/qvector2d.h \
 		../../../Qt/5.15.0/gcc_64/include/QtGui/qtouchdevice.h \
-		ui_memoryline.h \
-		../../../Qt/5.15.0/gcc_64/include/QtCore/QVariant \
-		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QApplication \
-		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qapplication.h \
-		../../../Qt/5.15.0/gcc_64/include/QtCore/qcoreapplication.h \
-		../../../Qt/5.15.0/gcc_64/include/QtCore/qeventloop.h \
-		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		../../../Qt/5.15.0/gcc_64/include/QtGui/qguiapplication.h \
-		../../../Qt/5.15.0/gcc_64/include/QtGui/qinputmethod.h \
-		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QTextBrowser \
-		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qtextbrowser.h \
-		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qtextedit.h \
-		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qabstractscrollarea.h \
-		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qframe.h \
-		../../../Qt/5.15.0/gcc_64/include/QtGui/qtextdocument.h \
-		../../../Qt/5.15.0/gcc_64/include/QtGui/qtextoption.h \
-		../../../Qt/5.15.0/gcc_64/include/QtGui/qtextcursor.h \
-		../../../Qt/5.15.0/gcc_64/include/QtGui/qtextformat.h \
-		../../../Qt/5.15.0/gcc_64/include/QtGui/qpen.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o memoryline.o ../BFIDE/memoryline.cpp
+		ui_textwindow.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o textwindow.o ../BFIDE/textwindow.cpp
 
 qrc_resources.o: qrc_resources.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_resources.o qrc_resources.cpp
@@ -1491,8 +1506,8 @@ qrc_resources.o: qrc_resources.cpp
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
 
-moc_memoryline.o: moc_memoryline.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_memoryline.o moc_memoryline.cpp
+moc_textwindow.o: moc_textwindow.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_textwindow.o moc_textwindow.cpp
 
 ####### Install
 

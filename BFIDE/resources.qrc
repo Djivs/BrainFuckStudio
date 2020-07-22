@@ -4,5 +4,7 @@
         <file>img/red_stop.jpeg</file>
         <file>img/loading.gif</file>
         <file>img/green_start.png</file>
+        <file>img/logo.png</file>
+        <file>img/errors.png</file>
     </qresource>
 </RCC>

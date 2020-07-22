@@ -2,7 +2,9 @@
 
 Best 2020 development environment for the BrainFuck programming language
 
-![v2.0](/img/v2_0.png)
+Support working with files, personal interface customization and working with interpreter
+
+![preview](/img/preview.gif)
 
 # Installation and running
 
@@ -12,50 +14,23 @@ Best 2020 development environment for the BrainFuck programming language
 $ git clone https://github.com/Djivs/BrainFuckStudio
 ```
 
-or download repository zip and extract it
-
-- Then, go to folder "build-BFIDE-Desktop_Qt_5_15_0_GCC_64bit-Debug", open this folder in terminal and run program:
+- Then, go to folder 
 
 ```
-$ ./BFIDE 
+build-BFIDE-Desktop_Qt_5_15_0_GCC_64bit-Debug
 ```
 
+- Open this folder in terminal and run
 
+```
+$ ./BFIDE
+```
 
-# Using BrainFuckStudio
+or (for Windows)
 
-#### Starting or ending code execution
-
-- To run code, press F5 or go to Execute -> Start Code
-
-You can't change cell size or input separator while code is running, for obvious reasons.
-
-While code is executing, status changes to "loading".
-
-- To stop code execution, go to Execute -> End Code
-
-When code is executed, or code execution stopped, status changes to "executed in " + execution time
-
-#### Input and output
-
-- While code is executing, output updates every 10 milliseconds
-- You need to type text to input text buffer before starting code execution.
-
-#### BrainFuck Interpreter settings
-
-- You can change cell size in "Cell Size" group box (default cell size is 8 bytes)
-- You can change input separator in "Input separator" group box. (default input separator is space)
-
-BrainFuckStudio ignores all symbols, that equals to input separator in Input text buffer.
-
-#### BrainFuckStudio style changing
-
-- You can change BrainFuckStudio color scheme in "Color Scheme" group box
--  You  can change output text buffer and code editing text buffer text buffer using separators.
-
-#### BrainFuckStudio code editing
-
-- To clear code editing text buffer, go to Edit -> Clear
+```
+BFIDE
+```
 
 # Testing
 
