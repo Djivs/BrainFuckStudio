@@ -764,7 +764,6 @@ compiler_rcc_clean:
 qrc_resources.cpp: ../BFIDE/resources.qrc \
 		../../../Qt/5.15.0/gcc_64/bin/rcc \
 		../BFIDE/img/errors.png \
-		../BFIDE/img/sandwatch.png \
 		../BFIDE/img/loading.gif \
 		../BFIDE/img/logo.png \
 		../BFIDE/img/green_start.png \
@@ -1030,6 +1029,11 @@ moc_textwindow.cpp: ../BFIDE/textwindow.h \
 		../../../Qt/5.15.0/gcc_64/include/QtCore/qfiledevice.h \
 		../../../Qt/5.15.0/gcc_64/include/QtGui/qvector2d.h \
 		../../../Qt/5.15.0/gcc_64/include/QtGui/qtouchdevice.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/QFile \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QFileDialog \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qfiledialog.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qdir.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qfileinfo.h \
 		moc_predefs.h \
 		../../../Qt/5.15.0/gcc_64/bin/moc
 	/home/dmitriy/Qt/5.15.0/gcc_64/bin/moc $(DEFINES) --include /home/dmitriy/QT_PROJECTS/BF/build-BFIDE-Desktop_Qt_5_15_0_GCC_64bit-Debug/moc_predefs.h -I/home/dmitriy/Qt/5.15.0/gcc_64/mkspecs/linux-g++ -I/home/dmitriy/QT_PROJECTS/BF/BFIDE -I/home/dmitriy/Qt/5.15.0/gcc_64/include -I/home/dmitriy/Qt/5.15.0/gcc_64/include/QtWidgets -I/home/dmitriy/Qt/5.15.0/gcc_64/include/QtGui -I/home/dmitriy/Qt/5.15.0/gcc_64/include/QtCore -I. -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../BFIDE/textwindow.h -o moc_textwindow.cpp
@@ -1497,7 +1501,41 @@ textwindow.o: ../BFIDE/textwindow.cpp ../BFIDE/textwindow.h \
 		../../../Qt/5.15.0/gcc_64/include/QtCore/qfiledevice.h \
 		../../../Qt/5.15.0/gcc_64/include/QtGui/qvector2d.h \
 		../../../Qt/5.15.0/gcc_64/include/QtGui/qtouchdevice.h \
-		ui_textwindow.h
+		../../../Qt/5.15.0/gcc_64/include/QtCore/QFile \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QFileDialog \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qfiledialog.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qdir.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qfileinfo.h \
+		ui_textwindow.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/QVariant \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QApplication \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qapplication.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qcoreapplication.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qeventloop.h \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		../../../Qt/5.15.0/gcc_64/include/QtGui/qguiapplication.h \
+		../../../Qt/5.15.0/gcc_64/include/QtGui/qinputmethod.h \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QHBoxLayout \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qboxlayout.h \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qlayout.h \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qlayoutitem.h \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qgridlayout.h \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QPushButton \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../../../Qt/5.15.0/gcc_64/include/QtGui/qicon.h \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QSpacerItem \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QTextBrowser \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qtextbrowser.h \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qtextedit.h \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qframe.h \
+		../../../Qt/5.15.0/gcc_64/include/QtGui/qtextdocument.h \
+		../../../Qt/5.15.0/gcc_64/include/QtGui/qtextoption.h \
+		../../../Qt/5.15.0/gcc_64/include/QtGui/qtextcursor.h \
+		../../../Qt/5.15.0/gcc_64/include/QtGui/qtextformat.h \
+		../../../Qt/5.15.0/gcc_64/include/QtGui/qpen.h \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QVBoxLayout
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o textwindow.o ../BFIDE/textwindow.cpp
 
 qrc_resources.o: qrc_resources.cpp 

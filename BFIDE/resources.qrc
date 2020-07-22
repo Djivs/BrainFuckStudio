@@ -1,6 +1,5 @@
 <RCC>
     <qresource prefix="/res">
-        <file>img/sandwatch.png</file>
         <file>img/red_stop.jpeg</file>
         <file>img/loading.gif</file>
         <file>img/green_start.png</file>
