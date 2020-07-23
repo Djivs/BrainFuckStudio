@@ -14,13 +14,13 @@ Support working with files, personal interface customization and working with in
 $ git clone https://github.com/Djivs/BrainFuckStudio
 ```
 
-- Then, go to folder 
+- Go to folder with executable file
 
 ```
-build-BFIDE-Desktop_Qt_5_15_0_GCC_64bit-Debug
+cd build-BFIDE-Desktop_Qt_5_15_0_GCC_64bit-Debug
 ```
 
-- Open this folder in terminal and run
+- Run it
 
 ```
 $ ./BFIDE
