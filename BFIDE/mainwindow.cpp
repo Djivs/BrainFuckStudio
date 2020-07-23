@@ -52,7 +52,6 @@ void MainWindow::end_errors_checking()
 void MainWindow::updateOut()
 {
     ui->output->setText(worker->getOutput());
-    ui->output->repaint();
 }
 //function to end code execution
 void MainWindow::end_code_execution()
@@ -73,11 +72,6 @@ void MainWindow::end_code_execution()
 
 }
 
-void MainWindow::on_prog_textChanged()
-{
-    if(ui->statusbar->currentMessage() != "loading")
-        ui->statusbar->showMessage("text editing");
-}
 //function to start code executing
 void MainWindow::on_actionStart_Code_triggered()
 {
@@ -96,7 +90,7 @@ void MainWindow::on_actionStart_Code_triggered()
     worker->setOutput("");
     worker->setEndCode(0);
     emit startOperation();
-    timer->start(10);
+    timer->start(1000);
     start =  QDateTime::currentDateTime();
 }
 
@@ -241,7 +235,7 @@ void MainWindow::on_action32_byte_triggered()
 
 void MainWindow::on_actionView_memory_triggered()
 {
-    textWindow = new TextWindow(this);
+    /*textWindow = new TextWindow(this);
     textWindow->show();
 
     QString list;
@@ -249,7 +243,7 @@ void MainWindow::on_actionView_memory_triggered()
     {
         list += "#" + QString::number(i) + " " + QString::number((long int)(worker->getLine())[i]) + " " + (char)((worker->getLine())[i]) + "\n";
     }
-    textWindow->drawText(list);
+    textWindow->drawText(list);*/
 }
 
 void MainWindow::on_actionCheck_Errors_triggered()

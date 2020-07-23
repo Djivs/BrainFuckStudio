@@ -6,6 +6,7 @@ CodeExecuter::CodeExecuter(QObject *parent): QObject(parent)
 
 }
 
+//function to check errors in code
 void CodeExecuter::checkErrors()
 {
     int brackets = 0;
@@ -35,16 +36,15 @@ void CodeExecuter::checkErrors()
 //function to parse code
 void CodeExecuter::parseCode()
 {
-    commands.clear();
-    commands.resize(30000, NOT);
-    args.clear();
-    args.resize(30000, 0);
-    openPos.clear();
-    openPos.resize(30000, 0);
+    cmdAmount = 0;
+    memset(commands, 0, sizeof(CMD)*1000000);
+    memset(args, 0, sizeof(int)*1000000);
+    memset(openPos, 0, sizeof(int)*1000000);
     int posJ = 0;
     int j = 0;
     for(int i = 0; i < code.size(); i++)
     {
+        ++cmdAmount;
         switch(code[i].toLatin1())
         {
             case '+':
@@ -157,13 +157,14 @@ void CodeExecuter::parseCode()
 //function to run code
 void CodeExecuter::runCode()
 {
+    index = 0;
     parseCode();
-    line.clear();
-    line.resize(30000, 0);
+    memset(line, 0, sizeof(long int)*30000);
     int pos = 0;
     int inputPos = 0;
-    for(int i =  1; !endCode && commands[i] != NOT; i++)
+    for(int i =  1; !endCode; i++)
     {
+        index = i;
         switch(commands[i])
         {
             case ADD:
@@ -184,12 +185,12 @@ void CodeExecuter::runCode()
             break;
             case GET:
                 if(inputPos < input.size())
-                    line[pos] = (int)input[inputPos].toLatin1();
+                    line[pos] = input[inputPos].toLatin1();
                 inputPos++;
             break;
             case PUT:
                 for(int j = 0; j < args[i]; j++)
-                    output += (char)line[pos];
+                    output += line[pos];
             break;
             case GOTO:
                 if((line[pos] && args[i] < 0) || (!line[pos] && args[i] > 0))
@@ -199,13 +200,15 @@ void CodeExecuter::runCode()
                 line[pos] = 0;
             break;
             default:
+                emit codeExecuted();
+                return;
             break;
 
         }
     }
     emit codeExecuted();
 }
-
+//function to convert BF code to C code
 void CodeExecuter::convertToC()
 {
     convertedCCode = "#include <stdio.h>\n";

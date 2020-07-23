@@ -61,19 +61,19 @@ public:
     QWidget *centralwidget;
     QVBoxLayout *verticalLayout_4;
     QSplitter *splitter_2;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QVBoxLayout *verticalLayout;
     QLabel *label_output;
     QTextBrowser *output;
     QSplitter *splitter;
-    QWidget *widget1;
+    QWidget *layoutWidget1;
     QVBoxLayout *verticalLayout_2;
     QHBoxLayout *horizontalLayout;
     QLabel *label_edit_code;
     QLabel *label_loadimg;
     QSpacerItem *horizontalSpacer;
     QTextEdit *prog;
-    QWidget *widget2;
+    QWidget *layoutWidget2;
     QVBoxLayout *verticalLayout_3;
     QLabel *label_input;
     QTextEdit *input;
@@ -172,12 +172,12 @@ public:
         splitter_2 = new QSplitter(centralwidget);
         splitter_2->setObjectName(QString::fromUtf8("splitter_2"));
         splitter_2->setOrientation(Qt::Vertical);
-        widget = new QWidget(splitter_2);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        verticalLayout = new QVBoxLayout(widget);
+        layoutWidget = new QWidget(splitter_2);
+        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
+        verticalLayout = new QVBoxLayout(layoutWidget);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
-        label_output = new QLabel(widget);
+        label_output = new QLabel(layoutWidget);
         label_output->setObjectName(QString::fromUtf8("label_output"));
         QFont font;
         font.setFamily(QString::fromUtf8("DejaVu Sans"));
@@ -189,7 +189,7 @@ public:
 
         verticalLayout->addWidget(label_output);
 
-        output = new QTextBrowser(widget);
+        output = new QTextBrowser(layoutWidget);
         output->setObjectName(QString::fromUtf8("output"));
         QFont font1;
         font1.setPointSize(11);
@@ -200,25 +200,25 @@ public:
 
         verticalLayout->addWidget(output);
 
-        splitter_2->addWidget(widget);
+        splitter_2->addWidget(layoutWidget);
         splitter = new QSplitter(splitter_2);
         splitter->setObjectName(QString::fromUtf8("splitter"));
         splitter->setOrientation(Qt::Horizontal);
-        widget1 = new QWidget(splitter);
-        widget1->setObjectName(QString::fromUtf8("widget1"));
-        verticalLayout_2 = new QVBoxLayout(widget1);
+        layoutWidget1 = new QWidget(splitter);
+        layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
+        verticalLayout_2 = new QVBoxLayout(layoutWidget1);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         verticalLayout_2->setContentsMargins(0, 0, 0, 0);
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        label_edit_code = new QLabel(widget1);
+        label_edit_code = new QLabel(layoutWidget1);
         label_edit_code->setObjectName(QString::fromUtf8("label_edit_code"));
         label_edit_code->setFont(font);
         label_edit_code->setStyleSheet(QString::fromUtf8(""));
 
         horizontalLayout->addWidget(label_edit_code);
 
-        label_loadimg = new QLabel(widget1);
+        label_loadimg = new QLabel(layoutWidget1);
         label_loadimg->setObjectName(QString::fromUtf8("label_loadimg"));
 
         horizontalLayout->addWidget(label_loadimg);
@@ -230,32 +230,32 @@ public:
 
         verticalLayout_2->addLayout(horizontalLayout);
 
-        prog = new QTextEdit(widget1);
+        prog = new QTextEdit(layoutWidget1);
         prog->setObjectName(QString::fromUtf8("prog"));
         prog->setStyleSheet(QString::fromUtf8(""));
 
         verticalLayout_2->addWidget(prog);
 
-        splitter->addWidget(widget1);
-        widget2 = new QWidget(splitter);
-        widget2->setObjectName(QString::fromUtf8("widget2"));
-        verticalLayout_3 = new QVBoxLayout(widget2);
+        splitter->addWidget(layoutWidget1);
+        layoutWidget2 = new QWidget(splitter);
+        layoutWidget2->setObjectName(QString::fromUtf8("layoutWidget2"));
+        verticalLayout_3 = new QVBoxLayout(layoutWidget2);
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
         verticalLayout_3->setContentsMargins(0, 0, 0, 0);
-        label_input = new QLabel(widget2);
+        label_input = new QLabel(layoutWidget2);
         label_input->setObjectName(QString::fromUtf8("label_input"));
         label_input->setFont(font);
         label_input->setStyleSheet(QString::fromUtf8(""));
 
         verticalLayout_3->addWidget(label_input);
 
-        input = new QTextEdit(widget2);
+        input = new QTextEdit(layoutWidget2);
         input->setObjectName(QString::fromUtf8("input"));
         input->setStyleSheet(QString::fromUtf8(""));
 
         verticalLayout_3->addWidget(input);
 
-        splitter->addWidget(widget2);
+        splitter->addWidget(layoutWidget2);
         splitter_2->addWidget(splitter);
 
         verticalLayout_4->addWidget(splitter_2);
@@ -372,9 +372,9 @@ public:
         actionpidigits_bf->setText(QCoreApplication::translate("MainWindow", "pidigits.bf", nullptr));
         actionDark->setText(QCoreApplication::translate("MainWindow", "Dark", nullptr));
         actionLight->setText(QCoreApplication::translate("MainWindow", "Light", nullptr));
-        action8_byte->setText(QCoreApplication::translate("MainWindow", "8 byte", nullptr));
-        action16_byte->setText(QCoreApplication::translate("MainWindow", "16 byte", nullptr));
-        action32_byte->setText(QCoreApplication::translate("MainWindow", "32 byte", nullptr));
+        action8_byte->setText(QCoreApplication::translate("MainWindow", "8 bit", nullptr));
+        action16_byte->setText(QCoreApplication::translate("MainWindow", "16 bit", nullptr));
+        action32_byte->setText(QCoreApplication::translate("MainWindow", "32 bit", nullptr));
         actionView_memory->setText(QCoreApplication::translate("MainWindow", "View memory", nullptr));
         actionCheck_Errors->setText(QCoreApplication::translate("MainWindow", "Check Errors", nullptr));
         actionOutput->setText(QCoreApplication::translate("MainWindow", "Output", nullptr));
