@@ -17,13 +17,13 @@ $ git clone https://github.com/Djivs/BrainFuckStudio
 - Go to folder with executable file
 
 ```
-cd DistributionKit/bin
+cd DistributionKit
 ```
 
-- Run it
+- Run BFIDE.sh
 
 ```
-$ ./BFIDE
+$ ./BFIDE.sh
 ```
 
 # Changelog
