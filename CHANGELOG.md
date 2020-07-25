@@ -1,3 +1,14 @@
+#### v2.2
+
+Added:
+
+- Clear any buffer you want
+- Change update frequency
+- Dynamic input
+- Optimized code executing
+
+![v2.2](/home/dmitriy/QT_PROJECTS/BF/img/v2_2.png)
+
 #### v2.1
 
 Added working with files, app customization and BF to C code converter.

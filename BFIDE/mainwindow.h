@@ -123,9 +123,15 @@ private slots:
     //convert BF code to C
     void on_actionto_C_triggered();
 
+
+
     void on_actionOutput_uodate_frequency_triggered();
 
+
+
     void on_input_textChanged();
+
+
 
     void on_actionClear_input_triggered();
 

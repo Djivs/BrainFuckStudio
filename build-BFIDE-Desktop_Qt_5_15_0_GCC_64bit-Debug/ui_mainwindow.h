@@ -368,7 +368,7 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "BrainFuckStudio v2.1", nullptr));
+        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "BrainFuckStudio v2.2", nullptr));
         actionStart_Code->setText(QCoreApplication::translate("MainWindow", "Start Code", nullptr));
 #if QT_CONFIG(shortcut)
         actionStart_Code->setShortcut(QCoreApplication::translate("MainWindow", "F5", nullptr));

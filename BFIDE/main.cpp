@@ -2,7 +2,7 @@
  * Written by Djivs, 2020
  * https://github.com/Djivs
  */
-//default main.cpp, did not changed it
+//default main.cpp, did not change it
 #include "mainwindow.h"
 
 #include <QApplication>
