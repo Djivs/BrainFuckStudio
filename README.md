@@ -1,4 +1,4 @@
-# BrainFuckStudio
+# BrainFuckStudio [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/Djivs/BrainFuckStudio/blob/master/LICENSE)
 
 Best 2020 development environment for the BrainFuck programming language
 
