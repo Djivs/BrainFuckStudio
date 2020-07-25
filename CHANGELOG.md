@@ -7,7 +7,7 @@ Added:
 - Dynamic input
 - Optimized code executing
 
-![v2.2](/home/dmitriy/QT_PROJECTS/BF/img/v2_2.png)
+![v2.2](/img/v2_2.png)
 
 #### v2.1
 
