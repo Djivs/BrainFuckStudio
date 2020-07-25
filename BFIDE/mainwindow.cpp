@@ -59,6 +59,7 @@ MainWindow::~MainWindow()
     delete ui;
 
     //delete thread
+    thread->quit();
     delete thread;
 
     //delete timer
@@ -150,7 +151,7 @@ void MainWindow::on_actionEnd_Code_triggered()
 void MainWindow::on_actionSave_triggered()
 {
     //open buffer file
-    QFile file("txt/input.txt");
+    QFile file(":/res/txt/input.txt");
 
     //if file is opened
     if (file.open(QIODevice::WriteOnly))
@@ -165,7 +166,7 @@ void MainWindow::on_actionSave_triggered()
 void MainWindow::on_actionLoad_triggered()
 {
     //open buffer file
-    QFile file("txt/input.txt");
+    QFile file(":/res/txt/input.txt");
     //if file is opened
     if (file.open(QIODevice::ReadOnly))
     {
@@ -194,7 +195,7 @@ void MainWindow::on_actionbeer_bf_triggered()
 
 void MainWindow::on_actioncellsize_bf_triggered()
 {
-    QFile file("txt/examples/cellsize.bf");
+    QFile file(":/res/txt/cellsize.bf");
     if (file.open(QIODevice::ReadOnly))
     {
         ui->prog->setText(file.readAll());
@@ -204,7 +205,7 @@ void MainWindow::on_actioncellsize_bf_triggered()
 
 void MainWindow::on_actionhello_bf_triggered()
 {
-    QFile file("txt/examples/hello.bf");
+    QFile file(":/res/txt/hello.bf");
     if (file.open(QIODevice::ReadOnly))
     {
         ui->prog->setText(file.readAll());
@@ -214,7 +215,7 @@ void MainWindow::on_actionhello_bf_triggered()
 
 void MainWindow::on_actionmandelbrot_tiny_bf_triggered()
 {
-    QFile file("txt/examples/mandelbrot-tiny.bf");
+    QFile file(":/res/txt/mandelbrot-tiny.bf");
     if (file.open(QIODevice::ReadOnly))
     {
         ui->prog->setText(file.readAll());
@@ -224,7 +225,7 @@ void MainWindow::on_actionmandelbrot_tiny_bf_triggered()
 
 void MainWindow::on_actionmandelbrot_bf_triggered()
 {
-    QFile file("txt/examples/mandelbrot.bf");
+    QFile file(":/res/txt/mandelbrot.bf");
     if (file.open(QIODevice::ReadOnly))
     {
         ui->prog->setText(file.readAll());
@@ -235,7 +236,7 @@ void MainWindow::on_actionmandelbrot_bf_triggered()
 void MainWindow::on_actionpidigits_bf_triggered()
 {
     //create QFile
-    QFile file("txt/examples/pidigits.bf");
+    QFile file(":/res/txt/pidigits.bf");
     if (file.open(QIODevice::ReadOnly))
     {
         ui->prog->setText(file.readAll());
