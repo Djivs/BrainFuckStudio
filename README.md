@@ -34,6 +34,14 @@ $ ./BFIDE
 
 [Algs](ALGS.md)
 
+# References
+Repository with codes used for testing - https://github.com/rdebath/Brainfuck/tree/master/testing
+
+Wikipedia BF page - https://ru.wikipedia.org/wiki/Brainfuck
+
+Page with BF compiler optimizing tips - https://www.nayuki.io/page/optimizing-brainfuck-compiler
+
+QT Documentation - https://doc.qt.io/qt-5/
 
 
 # License:
