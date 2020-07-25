@@ -46,6 +46,7 @@ Page with BF compiler optimizing tips - https://www.nayuki.io/page/optimizing-br
 
 QT Documentation - https://doc.qt.io/qt-5/
 
+License badge from - https://gist.github.com/lukas-h/2a5d00690736b4c3a7ba
 
 # License:
 
