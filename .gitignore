@@ -1,5 +1,6 @@
 # ignore distributionkit
-!Release/*
+
+!DistributionKit/
 # C++ objects and libs
 *.slo
 *.lo
