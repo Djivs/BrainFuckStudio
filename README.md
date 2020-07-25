@@ -26,12 +26,6 @@ cd build-BFIDE-Desktop_Qt_5_15_0_GCC_64bit-Debug
 $ ./BFIDE
 ```
 
-or (for Windows)
-
-```
-BFIDE
-```
-
 # Testing
 
 [Speed Tests](https://github.com/Djivs/BrainFuckStudio/blob/master/SPEEDTESTS.md)
