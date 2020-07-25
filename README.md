@@ -26,6 +26,9 @@ cd build-BFIDE-Desktop_Qt_5_15_0_GCC_64bit-Debug
 $ ./BFIDE
 ```
 
+# Changelog
+[Changelog](https://github.com/Djivs/BrainFuckStudio/blob/master/CHANGELOG.md)
+
 # Testing
 
 [Speed Tests](https://github.com/Djivs/BrainFuckStudio/blob/master/SPEEDTESTS.md)
