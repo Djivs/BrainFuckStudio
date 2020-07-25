@@ -36,6 +36,12 @@ BFIDE
 
 [Speed Tests](https://github.com/Djivs/BrainFuckStudio/blob/master/SPEEDTESTS.md)
 
+# Used algorithms
+
+[Algs](ALGS.md)
+
+
+
 # License:
 
 ```

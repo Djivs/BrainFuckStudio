@@ -1,13 +1,21 @@
+/*
+ * Written by Djivs, 2020
+ * https://github.com/Djivs
+ */
+
+
+/*
+ * Class for code execution, errors detecting and code converting
+ * Main functions are in private slots
+ * You can see functions descriptions in .cpp file
+ */
+
 #ifndef CODEEXECUTER_H
 #define CODEEXECUTER_H
 
 #include <QString>
 #include <QObject>
-#include <vector>
-#include <stdlib.h>
-#include <QProgressDialog>
-
-
+#include <algorithm>
 class CodeExecuter : public QObject
 {
     Q_OBJECT
@@ -18,25 +26,44 @@ public:
     //destructor
     ~CodeExecuter() {};
 
-    //setters
+    /*setters
+     * named by variables names, so i think I don't need
+     * to comment every function
+     */
     void setEndCode(bool t){endCode = t;};
     void setCode(QString newCode) {code = newCode;};
     void setMaxValue(unsigned int newMaxValue) {maxValue = newMaxValue;};
     void setInput(QString newInput){input = newInput;};
     void setOutput(QString newOutput) {output = newOutput;};
 
-    //getters
+    /*getters
+     * named by variables names, so i think I don't need
+     * to comment every function
+     */
     QString getOutput() const {return output;};
     bool getEndCode() const {return endCode;};
     QString getConvertedCCode() const {return convertedCCode;};
-    int getCmdAmount() const {return cmdAmount;};
-    int getIndex() const {return index;};
+    QString getInput() const {return input;};
+    /*function to get line - array that used in BF programm
+     * returns vector because it is easier
+     */
+    std::vector <long int> getLine() const
+    {
+        //initialize buffer vector
+        std::vector <long int> res;
+        //copy line values here
+        copy(line, line+30000, inserter(res, res.begin()));
+        //return that vector
+        return res;
+    };
 
 private slots:
+    //main codeexecuter.h functions
     void convertToC();
     void runCode();
     void checkErrors();
 signals:
+    //signals to end main functions
     void codeConverted();
     void codeExecuted();
     void errorsChecked();
@@ -44,6 +71,7 @@ private:
     //QStrings for converted code
     QString convertedCCode;
 
+    //function to parse code
     void parseCode();
 
     //var for code ending
@@ -66,12 +94,6 @@ private:
 
     //maxValue for cell size changing
     long int maxValue = 255;
-
-    //commands amount for qprogress dialog
-    int cmdAmount = 0;
-
-    //current index
-    int index = 0;
 
     //code, input and output strings
     QString code;

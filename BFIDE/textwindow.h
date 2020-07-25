@@ -1,3 +1,7 @@
+/*
+ * Written by Djivs, 2020
+ * https://github.com/Djivs
+ */
 #ifndef TEXTWINDOW_H
 #define TEXTWINDOW_H
 

@@ -34,7 +34,6 @@ class Ui_MainWindow
 public:
     QAction *actionStart_Code;
     QAction *actionEnd_Code;
-    QAction *actionClear;
     QAction *actionSave;
     QAction *actionLoad;
     QAction *actionbeer_bf;
@@ -58,6 +57,10 @@ public:
     QAction *actionSave_to_file;
     QAction *actionto_C;
     QAction *actiontext_to_code;
+    QAction *actionOutput_uodate_frequency;
+    QAction *actionClear_output;
+    QAction *actionClear_code;
+    QAction *actionClear_input;
     QWidget *centralwidget;
     QVBoxLayout *verticalLayout_4;
     QSplitter *splitter_2;
@@ -80,6 +83,7 @@ public:
     QMenuBar *menubar;
     QMenu *menuEdit_Code;
     QMenu *menuLoad_Example;
+    QMenu *menuClear;
     QMenu *menuStyle;
     QMenu *menuColor_scheme;
     QMenu *menuText_settings;
@@ -108,8 +112,6 @@ public:
         QIcon icon2;
         icon2.addFile(QString::fromUtf8(":/res/img/red_stop.jpeg"), QSize(), QIcon::Normal, QIcon::Off);
         actionEnd_Code->setIcon(icon2);
-        actionClear = new QAction(MainWindow);
-        actionClear->setObjectName(QString::fromUtf8("actionClear"));
         actionSave = new QAction(MainWindow);
         actionSave->setObjectName(QString::fromUtf8("actionSave"));
         actionLoad = new QAction(MainWindow);
@@ -164,6 +166,14 @@ public:
         actionto_C->setObjectName(QString::fromUtf8("actionto_C"));
         actiontext_to_code = new QAction(MainWindow);
         actiontext_to_code->setObjectName(QString::fromUtf8("actiontext_to_code"));
+        actionOutput_uodate_frequency = new QAction(MainWindow);
+        actionOutput_uodate_frequency->setObjectName(QString::fromUtf8("actionOutput_uodate_frequency"));
+        actionClear_output = new QAction(MainWindow);
+        actionClear_output->setObjectName(QString::fromUtf8("actionClear_output"));
+        actionClear_code = new QAction(MainWindow);
+        actionClear_code->setObjectName(QString::fromUtf8("actionClear_code"));
+        actionClear_input = new QAction(MainWindow);
+        actionClear_input->setObjectName(QString::fromUtf8("actionClear_input"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         centralwidget->setStyleSheet(QString::fromUtf8("color: white"));
@@ -269,6 +279,8 @@ public:
         menuEdit_Code->setObjectName(QString::fromUtf8("menuEdit_Code"));
         menuLoad_Example = new QMenu(menuEdit_Code);
         menuLoad_Example->setObjectName(QString::fromUtf8("menuLoad_Example"));
+        menuClear = new QMenu(menuEdit_Code);
+        menuClear->setObjectName(QString::fromUtf8("menuClear"));
         menuStyle = new QMenu(menubar);
         menuStyle->setObjectName(QString::fromUtf8("menuStyle"));
         menuColor_scheme = new QMenu(menuStyle);
@@ -294,7 +306,7 @@ public:
         menubar->addAction(menuInterpreter->menuAction());
         menubar->addAction(menuConvert->menuAction());
         menuEdit_Code->addSeparator();
-        menuEdit_Code->addAction(actionClear);
+        menuEdit_Code->addAction(menuClear->menuAction());
         menuEdit_Code->addSeparator();
         menuEdit_Code->addAction(actionSave);
         menuEdit_Code->addSeparator();
@@ -317,11 +329,15 @@ public:
         menuLoad_Example->addAction(actionmandelbrot_bf);
         menuLoad_Example->addSeparator();
         menuLoad_Example->addAction(actionpidigits_bf);
+        menuClear->addAction(actionClear_output);
+        menuClear->addAction(actionClear_code);
+        menuClear->addAction(actionClear_input);
         menuStyle->addSeparator();
         menuStyle->addSeparator();
         menuStyle->addAction(menuColor_scheme->menuAction());
         menuStyle->addSeparator();
         menuStyle->addAction(menuText_settings->menuAction());
+        menuStyle->addAction(actionOutput_uodate_frequency);
         menuColor_scheme->addAction(actionDark);
         menuColor_scheme->addAction(actionLight);
         menuText_settings->addSeparator();
@@ -358,7 +374,6 @@ public:
         actionStart_Code->setShortcut(QCoreApplication::translate("MainWindow", "F5", nullptr));
 #endif // QT_CONFIG(shortcut)
         actionEnd_Code->setText(QCoreApplication::translate("MainWindow", "End Code", nullptr));
-        actionClear->setText(QCoreApplication::translate("MainWindow", "Clear", nullptr));
         actionSave->setText(QCoreApplication::translate("MainWindow", "Save to buffer", nullptr));
 #if QT_CONFIG(shortcut)
         actionSave->setShortcut(QCoreApplication::translate("MainWindow", "Ctrl+S", nullptr));
@@ -385,6 +400,10 @@ public:
         actionSave_to_file->setText(QCoreApplication::translate("MainWindow", "Save to file", nullptr));
         actionto_C->setText(QCoreApplication::translate("MainWindow", "code to C", nullptr));
         actiontext_to_code->setText(QCoreApplication::translate("MainWindow", "text to code", nullptr));
+        actionOutput_uodate_frequency->setText(QCoreApplication::translate("MainWindow", "Output update frequency", nullptr));
+        actionClear_output->setText(QCoreApplication::translate("MainWindow", "Clear output", nullptr));
+        actionClear_code->setText(QCoreApplication::translate("MainWindow", "Clear code", nullptr));
+        actionClear_input->setText(QCoreApplication::translate("MainWindow", "Clear input", nullptr));
         label_output->setText(QCoreApplication::translate("MainWindow", "Output", nullptr));
         label_edit_code->setText(QCoreApplication::translate("MainWindow", "Edit code:", nullptr));
         label_loadimg->setText(QString());
@@ -396,6 +415,7 @@ public:
         label_input->setText(QCoreApplication::translate("MainWindow", "Input", nullptr));
         menuEdit_Code->setTitle(QCoreApplication::translate("MainWindow", "Edit", nullptr));
         menuLoad_Example->setTitle(QCoreApplication::translate("MainWindow", "Load Example", nullptr));
+        menuClear->setTitle(QCoreApplication::translate("MainWindow", "Clear", nullptr));
         menuStyle->setTitle(QCoreApplication::translate("MainWindow", "View", nullptr));
         menuColor_scheme->setTitle(QCoreApplication::translate("MainWindow", "Color scheme", nullptr));
         menuText_settings->setTitle(QCoreApplication::translate("MainWindow", "Text settings", nullptr));

@@ -201,8 +201,16 @@ p, li { white-space: pre-wrap; }
      <addaction name="separator"/>
      <addaction name="actionpidigits_bf"/>
     </widget>
+    <widget class="QMenu" name="menuClear">
+     <property name="title">
+      <string>Clear</string>
+     </property>
+     <addaction name="actionClear_output"/>
+     <addaction name="actionClear_code"/>
+     <addaction name="actionClear_input"/>
+    </widget>
     <addaction name="separator"/>
-    <addaction name="actionClear"/>
+    <addaction name="menuClear"/>
     <addaction name="separator"/>
     <addaction name="actionSave"/>
     <addaction name="separator"/>
@@ -243,6 +251,7 @@ p, li { white-space: pre-wrap; }
     <addaction name="menuColor_scheme"/>
     <addaction name="separator"/>
     <addaction name="menuText_settings"/>
+    <addaction name="actionOutput_uodate_frequency"/>
    </widget>
    <widget class="QMenu" name="menuInterpreter">
     <property name="title">
@@ -307,11 +316,6 @@ p, li { white-space: pre-wrap; }
    </property>
    <property name="text">
     <string>End Code</string>
-   </property>
-  </action>
-  <action name="actionClear">
-   <property name="text">
-    <string>Clear</string>
    </property>
   </action>
   <action name="actionSave">
@@ -449,6 +453,26 @@ p, li { white-space: pre-wrap; }
   <action name="actiontext_to_code">
    <property name="text">
     <string>text to code</string>
+   </property>
+  </action>
+  <action name="actionOutput_uodate_frequency">
+   <property name="text">
+    <string>Output update frequency</string>
+   </property>
+  </action>
+  <action name="actionClear_output">
+   <property name="text">
+    <string>Clear output</string>
+   </property>
+  </action>
+  <action name="actionClear_code">
+   <property name="text">
+    <string>Clear code</string>
+   </property>
+  </action>
+  <action name="actionClear_input">
+   <property name="text">
+    <string>Clear input</string>
    </property>
   </action>
  </widget>
