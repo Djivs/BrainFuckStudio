@@ -4,7 +4,7 @@ Best 2020 development environment for the BrainFuck programming language
 
 Support working with files, personal interface customization and working with interpreter
 
-![preview](/img/preview.gif)
+![preview](/img/large_logo.jpg)
 
 # Installation and running
 
