@@ -17,7 +17,7 @@ $ git clone https://github.com/Djivs/BrainFuckStudio
 - Go to folder with executable file
 
 ```
-cd build-BFIDE-Desktop_Qt_5_15_0_GCC_64bit-Debug
+cd Release/bin
 ```
 
 - Run it
