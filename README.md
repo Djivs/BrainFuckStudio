@@ -6,6 +6,8 @@ Supports working with files, personal interface customization and working with i
 
 ![preview](/img/large_logo.jpg)
 
+[screenshots](https://github.com/Djivs/BrainFuckStudio/tree/master/screenshots)
+
 # Installation and running(Linux)
 1. **Download Git LFS [here](https://git-lfs.github.com/)**
 
