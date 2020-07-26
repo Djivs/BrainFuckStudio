@@ -1,3 +1,11 @@
 DistributionKit/* filter=lfs diff=lfs merge=lfs -text
 DistributionKit/bin/* filter=lfs diff=lfs merge=lfs -text
 DistributionKit/lib/* filter=lfs diff=lfs merge=lfs -text
+DistributionKit/plugins/iconengines/* filter=lfs diff=lfs merge=lfs -text
+DistributionKit/plugins/imageformats/* filter=lfs diff=lfs merge=lfs -text
+DistributionKit/plugins/platforminputcontexts/* filter=lfs diff=lfs merge=lfs -text
+DistributionKit/plugins/platforms/* filter=lfs diff=lfs merge=lfs -text
+DistributionKit/plugins/platformthemes/* filter=lfs diff=lfs merge=lfs -text
+DistributionKit/plugins/wayland-shell-integration/* filter=lfs diff=lfs merge=lfs -text
+DistributionKit/plugins/xcbglintegrations/* filter=lfs diff=lfs merge=lfs -text
+DistributionKit/translations/* filter=lfs diff=lfs merge=lfs -text
