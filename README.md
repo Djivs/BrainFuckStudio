@@ -47,6 +47,20 @@ sudo apt-get install -y libxcb-xinerama0
 ```
 
 
+**If shell file running failed with error like this:**
+
+```
+./BFIDE.sh: line 1: version: command not found
+...
+```
+##### Make sure you installed LFS correctly.
+If reinstalling and checking installation guide didn't help you:
+- delete DistributionKit folder from your cloned repository
+- open repository in terminal and type:
+```
+git checkout .
+```
+
 
 # Changelog
 [Changelog](https://github.com/Djivs/BrainFuckStudio/blob/master/CHANGELOG.md)
