@@ -6,25 +6,47 @@ Supports working with files, personal interface customization and working with i
 
 ![preview](/img/large_logo.jpg)
 
-# Installation and running
+# Installation and running(Linux)
+1. **Download Git LFS [here](https://git-lfs.github.com/)**
 
-- Download this repository using
+Briefly:
+- download [this](https://github.com/git-lfs/git-lfs/releases/download/v2.11.0/git-lfs-linux-amd64-v2.11.0.tar.gz)
+- extract archive
+- open it and run
+    ```
+    $ git lfs install
+    ```
+2. **Download this repository using**
 
 ```
 $ git clone https://github.com/Djivs/BrainFuckStudio
 ```
 
-- Go to folder with executable file
+3. **Go to folder with shell executable file**
 
 ```
 cd DistributionKit
 ```
 
-- Run BFIDE.sh
+4. **Run BFIDE.sh**
 
 ```
 $ ./BFIDE.sh
 ```
+
+**If shell file running failed with error like this:**
+
+```
+Failed to load platform plugin "xcb".
+```
+
+**Type this command:**
+
+```
+sudo apt-get install -y libxcb-xinerama0
+```
+
+
 
 # Changelog
 [Changelog](https://github.com/Djivs/BrainFuckStudio/blob/master/CHANGELOG.md)
