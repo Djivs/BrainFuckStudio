@@ -498,3 +498,33 @@ void MainWindow::on_actiontext_to_code_triggered()
     //show it
     textToBfWindow->show();
 }
+
+//function to delete comments and stuff from code
+void MainWindow::on_actionMinify_code_triggered()
+{
+    //result dtring
+    QString minifiedCode = "";
+
+    //sring with commands
+    QString commands = "+-<>[].,";
+
+    //string with code to minify
+    QString code = ui->prog->toPlainText();
+
+    //scan every character in code
+    for(int i = 0; i < code.size(); i++)
+    {
+        //if code[i] is one of BF commands, add it to minified code
+        if(commands.contains(code[i]))
+            minifiedCode += code[i];
+    }
+
+    //make code look square(1 line = 55 characters)
+    for(int i = 54; i < minifiedCode.size(); i+=55)
+        minifiedCode.insert(i, '\n');
+
+    //create new text window and show minified code
+    textWindow = new TextWindow;
+    textWindow->show();
+    textWindow->drawText(minifiedCode);
+}

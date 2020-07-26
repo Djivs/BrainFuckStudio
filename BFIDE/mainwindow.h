@@ -142,6 +142,8 @@ private slots:
 
     void on_actiontext_to_code_triggered();
 
+    void on_actionMinify_code_triggered();
+
 signals:
     //start code executing
     void startOperation();

@@ -276,6 +276,7 @@ p, li { white-space: pre-wrap; }
     </property>
     <addaction name="actionto_C"/>
     <addaction name="actiontext_to_code"/>
+    <addaction name="actionMinify_code"/>
    </widget>
    <addaction name="menuEdit_Code"/>
    <addaction name="menuStyle"/>
@@ -473,6 +474,11 @@ p, li { white-space: pre-wrap; }
   <action name="actionClear_input">
    <property name="text">
     <string>Clear input</string>
+   </property>
+  </action>
+  <action name="actionMinify_code">
+   <property name="text">
+    <string>Minify code</string>
    </property>
   </action>
  </widget>
