@@ -185,7 +185,7 @@ void MainWindow::on_actionLoad_triggered()
 
 void MainWindow::on_actionbeer_bf_triggered()
 {
-    QFile file("txt/examples/beer.bf");
+    QFile file(":res/txt/beer.bf");
     if (file.open(QIODevice::ReadOnly))
     {
         ui->prog->setText(file.readAll());

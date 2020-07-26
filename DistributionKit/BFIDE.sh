@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:1d2ebb0745c42bad9bf5be5d2dd4fa198f08f395ce50b1fd3a94267193178538
-size 509
+#!/bin/sh
+BASE_DIR=$(dirname "$(readlink -f "$0")")
+export LD_LIBRARY_PATH="$BASE_DIR"/lib/:"$BASE_DIR":$LD_LIBRARY_PATH
+export QML_IMPORT_PATH="$BASE_DIR"/qml/:$QML_IMPORT_PATH
+export QML2_IMPORT_PATH="$BASE_DIR"/qml/:$QML2_IMPORT_PATH
+export QT_PLUGIN_PATH="$BASE_DIR"/plugins/:$QT_PLUGIN_PATH
+export QTWEBENGINEPROCESS_PATH="$BASE_DIR"/bin/QtWebEngineProcess
+export QTDIR="$BASE_DIR"
+export QT_QPA_PLATFORM_PLUGIN_PATH="$BASE_DIR"/plugins/platforms:$QT_QPA_PLATFORM_PLUGIN_PATH
+
+"$BASE_DIR/bin/BFIDE" "$@"
