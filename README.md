@@ -60,15 +60,19 @@ sudo apt-get install -y libxcb-xinerama0
 [Algs](ALGS.md)
 
 # References
-Repository with codes used for testing - https://github.com/rdebath/Brainfuck/tree/master/testing
+[Repository with codes used for testing](https://github.com/rdebath/Brainfuck/tree/master/testing)
 
-Wikipedia BF page - https://ru.wikipedia.org/wiki/Brainfuck
+[Wikipedia BF page](https://ru.wikipedia.org/wiki/Brainfuck)
 
-Page with BF compiler optimizing tips - https://www.nayuki.io/page/optimizing-brainfuck-compiler
+[Page with BF compiler optimizing tips](https://www.nayuki.io/page/optimizing-brainfuck-compiler)
 
-QT Documentation - https://doc.qt.io/qt-5/
+[QT Documentation](https://doc.qt.io/qt-5/)
 
-License badge from - https://gist.github.com/lukas-h/2a5d00690736b4c3a7ba
+[License badge source](https://gist.github.com/lukas-h/2a5d00690736b4c3a7ba)
+
+[Git Large File Storage](https://git-lfs.github.com/)
+
+[CQtDeployer](https://github.com/QuasarApp/CQtDeployer)
 
 # License:
 
