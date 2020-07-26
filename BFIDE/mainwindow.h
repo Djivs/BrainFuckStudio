@@ -17,6 +17,7 @@
 #include <QInputDialog>
 #include "textwindow.h"
 #include "codeexecuter.h"
+#include "texttobf.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -139,6 +140,8 @@ private slots:
 
     void on_actionClear_output_triggered();
 
+    void on_actiontext_to_code_triggered();
+
 signals:
     //start code executing
     void startOperation();
@@ -153,6 +156,9 @@ private:
 
     //window for memory view/ code converting rusults
     TextWindow *textWindow;
+
+    //window for text-to-bf-code converting
+    TextToBF *textToBfWindow;
 
     //loaging gif
     QMovie dots_loading;

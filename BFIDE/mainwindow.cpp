@@ -508,3 +508,12 @@ void MainWindow::on_actionClear_output_triggered()
     if(!worker->getEndCode())
         worker->setOutput("");
 }
+
+//function to open text-to-bf-code converting window
+void MainWindow::on_actiontext_to_code_triggered()
+{
+    //create new window
+    textToBfWindow = new TextToBF(this);
+    //show it
+    textToBfWindow->show();
+}

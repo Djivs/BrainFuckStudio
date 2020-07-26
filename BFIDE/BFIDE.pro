@@ -19,15 +19,18 @@ SOURCES += \
     codeexecuter.cpp \
     main.cpp \
     mainwindow.cpp \
+    texttobf.cpp \
     textwindow.cpp
 
 HEADERS += \
     codeexecuter.h \
     mainwindow.h \
+    texttobf.h \
     textwindow.h
 
 FORMS += \
     mainwindow.ui \
+    texttobf.ui \
     textwindow.ui
 
 # Default rules for deployment.
