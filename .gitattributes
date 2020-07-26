@@ -1,1 +1,2 @@
-DistributionKit/* filter=lfs diff=lfs merge=lfs -text
+DistributionKit/bin/* filter=lfs diff=lfs merge=lfs -text
+DistributionKit/lib/* filter=lfs diff=lfs merge=lfs -text
