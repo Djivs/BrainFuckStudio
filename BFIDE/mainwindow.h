@@ -177,5 +177,7 @@ private:
 
     //var for output update
     int outFreq = 10;
+
+    QString buf = "";
 };
 #endif // MAINWINDOW_H

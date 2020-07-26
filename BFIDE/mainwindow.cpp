@@ -150,31 +150,12 @@ void MainWindow::on_actionEnd_Code_triggered()
 //function to save typed text to input.txt file
 void MainWindow::on_actionSave_triggered()
 {
-    //open buffer file
-    QFile file(":/res/txt/input.txt");
-
-    //if file is opened
-    if (file.open(QIODevice::WriteOnly))
-    {
-        //save code here
-        file.write(ui->prog->toPlainText().toLatin1());
-        //close file
-        file.close();
-    }
+    buf = ui->prog->toPlainText();
 }
 //function to load text from input.txt file
 void MainWindow::on_actionLoad_triggered()
 {
-    //open buffer file
-    QFile file(":/res/txt/input.txt");
-    //if file is opened
-    if (file.open(QIODevice::ReadOnly))
-    {
-        //load text from buffer
-        ui->prog->setText(file.readAll());
-        //close file
-        file.close();
-    }
+    ui->prog->setText(buf);
 }
 
 /*
