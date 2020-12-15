@@ -51,6 +51,10 @@ MainWindow::MainWindow(QWidget *parent)
     //move worker to created thread and start it
     worker->moveToThread(thread);
     thread->start();
+
+
+
+    sh = std::make_unique<SyntaxHighlighter>(ui->prog->document());
 }
 
 MainWindow::~MainWindow()
@@ -527,9 +531,4 @@ void MainWindow::on_actionMinify_code_triggered()
     textWindow = new TextWindow;
     textWindow->show();
     textWindow->drawText(minifiedCode);
-}
-
-void MainWindow::on_prog_textChanged()
-{
-    SyntaxHighlighter *highlighter = new SyntaxHighlighter(ui->input->document());
 }

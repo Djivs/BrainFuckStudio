@@ -18,6 +18,7 @@
 #include "textwindow.h"
 #include "codeexecuter.h"
 #include "texttobf.h"
+#include "syntaxhighlighter.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -144,8 +145,6 @@ private slots:
 
     void on_actionMinify_code_triggered();
 
-    void on_prog_textChanged();
-
 signals:
     //start code executing
     void startOperation();
@@ -183,5 +182,9 @@ private:
     int outFreq = 10;
 
     QString buf = "";
+
+
+
+    std::unique_ptr<SyntaxHighlighter> sh;
 };
 #endif // MAINWINDOW_H
