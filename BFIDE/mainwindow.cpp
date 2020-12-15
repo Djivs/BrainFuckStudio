@@ -52,8 +52,13 @@ MainWindow::MainWindow(QWidget *parent)
     worker->moveToThread(thread);
     thread->start();
 
+    //one liners
+    connect(ui->actionLoad, &QAction::triggered, this, [this] () {return ui->prog->setText(buf);});
+    connect(ui->actionSave, &QAction::triggered, this, [this] () {return buf = ui->prog->toPlainText();});
+    connect(ui->actionEnd_Code, &QAction::triggered, this, [this] () {return worker->setEndCode(1);});
 
 
+    //setup syntax highlighting
     sh = std::make_unique<SyntaxHighlighter>(ui->prog->document());
 }
 
@@ -145,22 +150,6 @@ void MainWindow::on_actionStart_Code_triggered()
     start =  QDateTime::currentDateTime();
 }
 
-//function to stop code executing
-void MainWindow::on_actionEnd_Code_triggered()
-{
-     worker->setEndCode(1);
-}
-
-//function to save typed text to input.txt file
-void MainWindow::on_actionSave_triggered()
-{
-    buf = ui->prog->toPlainText();
-}
-//function to load text from input.txt file
-void MainWindow::on_actionLoad_triggered()
-{
-    ui->prog->setText(buf);
-}
 
 /*
  *

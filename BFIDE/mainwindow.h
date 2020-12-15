@@ -15,6 +15,7 @@
 #include <QFileDialog>
 #include <QFile>
 #include <QInputDialog>
+#include <QAction>
 #include "textwindow.h"
 #include "codeexecuter.h"
 #include "texttobf.h"
@@ -51,17 +52,6 @@ private slots:
 
     // start/end code execution
     void on_actionStart_Code_triggered();
-
-    void on_actionEnd_Code_triggered();
-
-
-
-    //save code to buffer/load code from bffer
-    void on_actionSave_triggered();
-
-    void on_actionLoad_triggered();
-
-
 
     //load example code
     void on_actionbeer_bf_triggered();
