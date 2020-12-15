@@ -528,3 +528,8 @@ void MainWindow::on_actionMinify_code_triggered()
     textWindow->show();
     textWindow->drawText(minifiedCode);
 }
+
+void MainWindow::on_prog_textChanged()
+{
+    SyntaxHighlighter *highlighter = new SyntaxHighlighter(ui->input->document());
+}

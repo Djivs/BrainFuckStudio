@@ -18,6 +18,7 @@
 #include "textwindow.h"
 #include "codeexecuter.h"
 #include "texttobf.h"
+#include "syntaxhighlighter.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }

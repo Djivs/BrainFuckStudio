@@ -19,12 +19,14 @@ SOURCES += \
     codeexecuter.cpp \
     main.cpp \
     mainwindow.cpp \
+    syntaxhighlighter.cpp \
     texttobf.cpp \
     textwindow.cpp
 
 HEADERS += \
     codeexecuter.h \
     mainwindow.h \
+    syntaxhighlighter.h \
     texttobf.h \
     textwindow.h
 
