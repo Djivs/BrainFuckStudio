@@ -86,6 +86,10 @@ MainWindow::MainWindow(QWidget *parent)
     //clear output requaries extra lines, so i left it in separated function
     connect(ui->actionClear_code, &QAction::triggered, [this] () {ui->prog->setText("");});
 
+
+    //open terminal
+    connect(ui->actionOpen_terminal, &QAction::triggered, [] () {system ("xterm -e 'cd /home/ && /bin/bash'");});
+
     //setup syntax highlighting
     sh = std::make_unique<SyntaxHighlighter>(ui->prog->document());
 }
