@@ -10,7 +10,7 @@ SyntaxHighlighter::SyntaxHighlighter(QTextDocument *parent) :
     levelColor.push_back(QTextCharFormat());
     levelColor.push_back(QTextCharFormat());
     levelColor.push_back(QTextCharFormat());
-    levelColor[0].setForeground(Qt::cyan);
+    levelColor[0].setForeground(Qt::darkCyan);
     levelColor[1].setForeground(Qt::darkGreen);
     levelColor[2].setForeground(Qt::darkRed);
     levelColor[3].setForeground(Qt::darkYellow);

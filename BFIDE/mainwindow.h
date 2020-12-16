@@ -36,11 +36,6 @@ public:
     ~MainWindow();
 
 private slots:
-    //function to update output while code is running
-    void updateOut();
-
-
-
     //functions to end code exec/ errors check/ code convert
     void end_code_execution();
 
@@ -49,30 +44,18 @@ private slots:
     void end_code_converting();
 
 
-
     // start/end code execution
     void on_actionStart_Code_triggered();
 
+
     //load example code
-    void on_actionbeer_bf_triggered();
-
-    void on_actioncellsize_bf_triggered();
-
-    void on_actionhello_bf_triggered();
-
-    void on_actionmandelbrot_tiny_bf_triggered();
-
-    void on_actionmandelbrot_bf_triggered();
-
-    void on_actionpidigits_bf_triggered();
-
+    void loadFile(QString filename);
 
 
     //choose color scheme
     void on_actionDark_triggered();
 
     void on_actionLight_triggered();
-
 
 
     //choose cell size
@@ -93,7 +76,6 @@ private slots:
     void on_actionCheck_Errors_triggered();
 
 
-
     //checng output/input/code editor/system font
     void on_actionOutput_triggered();
 
@@ -111,30 +93,16 @@ private slots:
     void on_actionLoad_from_file_triggered();
 
 
-
     //convert BF code to C
     void on_actionto_C_triggered();
 
-
-
     void on_actionOutput_uodate_frequency_triggered();
-
-
-
-    void on_input_textChanged();
-
-
-
-    void on_actionClear_input_triggered();
-
-    void on_actionClear_code_triggered();
 
     void on_actionClear_output_triggered();
 
     void on_actiontext_to_code_triggered();
 
     void on_actionMinify_code_triggered();
-
 signals:
     //start code executing
     void startOperation();

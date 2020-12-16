@@ -38,7 +38,7 @@ MainWindow::MainWindow(QWidget *parent)
     //start operation ->run code
     connect(this, SIGNAL(startOperation()), worker, SLOT(runCode()));
     //to update output every X ms while code is running
-    connect(timer, SIGNAL(timeout()), this, SLOT(updateOut()));
+    connect(timer, &QTimer::timeout, [this] () {ui->output->setText(worker->getOutput());});
     //start errors checking in different thread
     connect(this, SIGNAL(startErrorsChecking()), worker, SLOT(checkErrors()));
     //end errors checking
@@ -52,11 +52,39 @@ MainWindow::MainWindow(QWidget *parent)
     worker->moveToThread(thread);
     thread->start();
 
+
+
+
     //one liners
+
+
+
+
+
+    //load/save from buffer
     connect(ui->actionLoad, &QAction::triggered, this, [this] () {return ui->prog->setText(buf);});
     connect(ui->actionSave, &QAction::triggered, this, [this] () {return buf = ui->prog->toPlainText();});
+
+    //isnt it obvious what that function do?
     connect(ui->actionEnd_Code, &QAction::triggered, this, [this] () {return worker->setEndCode(1);});
 
+    //load examples
+    connect(ui->actionbeer_bf, &QAction::triggered, this, [this] () {loadFile("beer.bf");});
+    connect(ui->actioncellsize_bf, &QAction::triggered, this, [this] () {loadFile("cellsize.bf");});
+    connect(ui->actionhello_bf, &QAction::triggered, this, [this] () {loadFile("hello.bf");});
+    connect(ui->actionmandelbrot_tiny_bf, &QAction::triggered, this, [this] () {loadFile("mandelbrot-tiny.bf");});
+    connect(ui->actionmandelbrot_bf, &QAction::triggered, this, [this] () {loadFile("mandelbrot.bf");});
+    connect(ui->actionpidigits_bf, &QAction::triggered, this, [this] () {loadFile("pidigits.bf");});
+
+
+   //dynamic input update
+    connect(ui->input, &QTextEdit::textChanged, [this] () {if(!worker->getEndCode()) worker->setInput(ui->input->toPlainText());});
+
+
+    //clear QTextEdit's
+    connect(ui->actionClear_input, &QAction::triggered, [this] () {ui->input->setText("");});
+    //clear output requaries extra lines, so i left it in separated function
+    connect(ui->actionClear_code, &QAction::triggered, [this] () {ui->prog->setText("");});
 
     //setup syntax highlighting
     sh = std::make_unique<SyntaxHighlighter>(ui->prog->document());
@@ -64,15 +92,15 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow()
 {
-    //default
-    delete ui;
-
     //delete thread
+    thread->wait(1000);
     thread->quit();
-    delete thread;
 
     //delete timer
     delete timer;
+
+    //default
+    delete ui;
 }
 
 void MainWindow::end_errors_checking()
@@ -80,12 +108,6 @@ void MainWindow::end_errors_checking()
     //delete loading gif from the screen
     ui->label_loadimg->clear();
     ui->statusbar->showMessage("errors checked");
-    ui->output->setText(worker->getOutput());
-}
-
-//function to dynamicly update code while code execution
-void MainWindow::updateOut()
-{
     ui->output->setText(worker->getOutput());
 }
 
@@ -149,75 +171,6 @@ void MainWindow::on_actionStart_Code_triggered()
     //save starting time
     start =  QDateTime::currentDateTime();
 }
-
-
-/*
- *
- * Functions to load example programms
- * All are the same, all based on action load from file
- */
-
-void MainWindow::on_actionbeer_bf_triggered()
-{
-    QFile file(":res/txt/beer.bf");
-    if (file.open(QIODevice::ReadOnly))
-    {
-        ui->prog->setText(file.readAll());
-        file.close();
-    }
-}
-
-void MainWindow::on_actioncellsize_bf_triggered()
-{
-    QFile file(":/res/txt/cellsize.bf");
-    if (file.open(QIODevice::ReadOnly))
-    {
-        ui->prog->setText(file.readAll());
-        file.close();
-    }
-}
-
-void MainWindow::on_actionhello_bf_triggered()
-{
-    QFile file(":/res/txt/hello.bf");
-    if (file.open(QIODevice::ReadOnly))
-    {
-        ui->prog->setText(file.readAll());
-        file.close();
-    }
-}
-
-void MainWindow::on_actionmandelbrot_tiny_bf_triggered()
-{
-    QFile file(":/res/txt/mandelbrot-tiny.bf");
-    if (file.open(QIODevice::ReadOnly))
-    {
-        ui->prog->setText(file.readAll());
-        file.close();
-    }
-}
-
-void MainWindow::on_actionmandelbrot_bf_triggered()
-{
-    QFile file(":/res/txt/mandelbrot.bf");
-    if (file.open(QIODevice::ReadOnly))
-    {
-        ui->prog->setText(file.readAll());
-        file.close();
-    }
-}
-
-void MainWindow::on_actionpidigits_bf_triggered()
-{
-    //create QFile
-    QFile file(":/res/txt/pidigits.bf");
-    if (file.open(QIODevice::ReadOnly))
-    {
-        ui->prog->setText(file.readAll());
-        file.close();
-    }
-}
-
 
 //function to set dark color scheme
 void MainWindow::on_actionDark_triggered()
@@ -455,25 +408,6 @@ void MainWindow::on_actionOutput_uodate_frequency_triggered()
      }
 }
 
-//func to dynamic input update
-void MainWindow::on_input_textChanged()
-{
-    if(!worker->getEndCode())
-        worker->setInput(ui->input->toPlainText());
-}
-
-//functions to clear input/output/etc
-void MainWindow::on_actionClear_input_triggered()
-{
-    ui->input->setText("");
-}
-
-void MainWindow::on_actionClear_code_triggered()
-{
-    ui->prog->setText("");
-}
-
-
 void MainWindow::on_actionClear_output_triggered()
 {
     ui->output->setText("");
@@ -521,3 +455,34 @@ void MainWindow::on_actionMinify_code_triggered()
     textWindow->show();
     textWindow->drawText(minifiedCode);
 }
+
+void MainWindow::loadFile(QString filename)
+{
+    //create QFile
+    QFile file(":/res/txt/" + filename);
+    if (file.open(QIODevice::ReadOnly))
+    {
+        ui->prog->setText(file.readAll());
+        file.close();
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
