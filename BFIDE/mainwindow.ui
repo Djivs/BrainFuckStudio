@@ -297,7 +297,7 @@ p, li { white-space: pre-wrap; }
    <addaction name="actionStart_Code"/>
    <addaction name="actionEnd_Code"/>
    <addaction name="actionCheck_Errors"/>
-   <addaction name="actionOpen_terminal"/>
+   <addaction name="actionFast_exec"/>
   </widget>
   <action name="actionStart_Code">
    <property name="icon">
@@ -482,9 +482,9 @@ p, li { white-space: pre-wrap; }
     <string>Minify code</string>
    </property>
   </action>
-  <action name="actionOpen_terminal">
+  <action name="actionFast_exec">
    <property name="text">
-    <string>Open terminal</string>
+    <string>Fast exec</string>
    </property>
   </action>
  </widget>

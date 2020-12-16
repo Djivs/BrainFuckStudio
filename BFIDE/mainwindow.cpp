@@ -88,7 +88,8 @@ MainWindow::MainWindow(QWidget *parent)
 
 
     //open terminal
-    connect(ui->actionOpen_terminal, &QAction::triggered, [] () {system ("xterm -e 'cd /home/ && /bin/bash'");});
+    connect(ui->actionFast_exec, &QAction::triggered, [this] () {const char *command = "xterm -e /bin/sh -c \"echo '" + buf.toLatin1() + "'; exec /bin/sh\"";
+                                                             system(command);});
 
     //setup syntax highlighting
     sh = std::make_unique<SyntaxHighlighter>(ui->prog->document());

@@ -141,8 +141,6 @@ private:
 
     QString buf = "";
 
-
-
     std::unique_ptr<SyntaxHighlighter> sh;
 };
 #endif // MAINWINDOW_H
