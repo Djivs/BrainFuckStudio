@@ -90,7 +90,8 @@ MainWindow::MainWindow(QWidget *parent)
     //open terminal
     connect(ui->actionFast_exec, &QAction::triggered, [this] () {
         const char *command = "xterm -e /bin/sh -c \"echo '" + buf.toLatin1() + "' >> buf.bf; bf buf.bf; exec /bin/sh\"";
-                                                             system(command);});
+                                                             system(command);
+                                                             system("> buf.bf");});
 
     //setup syntax highlighting
     sh = std::make_unique<SyntaxHighlighter>(ui->prog->document());
