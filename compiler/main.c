@@ -1,7 +1,11 @@
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
 
 #define MAXCHAR 10000
+
+char *code;
 
 
 
@@ -32,6 +36,20 @@ int main(int argc, char *argv[])
     return 1;
   }
 
-
-  return 0;
+  while (fgets(str, MAXCHAR, fp) != NULL)
+  {
+    if(code == "" && str != "")
+    {
+      code = (char *)malloc(strlen(str));
+      strcat(code, str);
+    }
+    else
+    {
+      code = (char *)realloc(code, strlen(code) + strlen(str));
+      strcat(code, str);
+    }
+  }
+  puts(code);
+  fclose(fp);
+ return 0;
 }
