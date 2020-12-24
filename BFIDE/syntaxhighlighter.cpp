@@ -1,9 +1,7 @@
 #include "syntaxhighlighter.h"
 
 SyntaxHighlighter::SyntaxHighlighter(QTextDocument *parent) :
-    QSyntaxHighlighter(parent)
-{
-    // TODO: export into config
+    QSyntaxHighlighter(parent) {
     levelColor.push_back(QTextCharFormat());
     levelColor.push_back(QTextCharFormat());
     levelColor.push_back(QTextCharFormat());
@@ -28,23 +26,22 @@ SyntaxHighlighter::SyntaxHighlighter(QTextDocument *parent) :
 }
 
 
-void SyntaxHighlighter::highlightBlock(const QString &text)
-{
+void SyntaxHighlighter::highlightBlock(const QString &text) {
     struct FormatState {
         QTextCharFormat* currentFormat;
         int startIndex = 0;
         int length = 0;
         SyntaxHighlighter* sh;
 
-        FormatState(SyntaxHighlighter* sh) : currentFormat{ &sh->comment }, sh{ sh } {}
+        explicit FormatState(SyntaxHighlighter* sh) :
+            currentFormat{ &sh->comment }, sh{ sh } {}
 
         void upateFormat(int len, QTextCharFormat* format) {
             Q_UNUSED(len);
 
             if (format == currentFormat) {
                 length++;
-            }
-            else {
+            } else {
                 sh->setFormat(startIndex, length, *currentFormat);
                 currentFormat = format;
                 startIndex += length;
@@ -72,12 +69,10 @@ void SyntaxHighlighter::highlightBlock(const QString &text)
             if (level < 0 || (level == 0 && c == ']')) {
                 fs.upateFormat(1, &error);
                 level = INVALID_LEVEL;
-            }
-            else {
+            } else {
                 fs.upateFormat(1, &levelColor[level % levelColor.size()]);
             }
-        }
-        else {
+        } else {
             fs.upateFormat(1, &comment);
         }
         if (c == ']' && level != INVALID_LEVEL) {
@@ -89,8 +84,7 @@ void SyntaxHighlighter::highlightBlock(const QString &text)
 }
 
 
-bool SyntaxHighlighter::isBfChar(const QChar& c)
-{
+bool SyntaxHighlighter::isBfChar(const QChar& c) {
     switch (c.unicode()) {
     case '+':
     case '-':
