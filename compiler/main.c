@@ -1,55 +1,75 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-
-
 #define MAXCHAR 10000
-
-char *code;
-
-
-
-
-
-int checkErrors()
+void error(char *msg)
 {
-  return 1;
+  fprintf(stderr, "%s\n", msg);
+  exit(1);
+}
+void checkErrors(char *code)
+{
+  int brackets = 0;
+  for(int i = 0; i < strlen(code); ++i)
+  {
+    switch(code[i])
+    {
+      case '[':
+        ++brackets;
+        for(int j = i+1; j < strlen(code) && brackets; ++j)
+        {
+          switch(code[j])
+          {
+            case '[':
+              ++brackets;
+              break;
+            case ']':
+              --brackets;
+              break;
+          }
+        }
+        if(brackets)
+          error("Invalid brackets.");
+        break;
+      case ']':
+        ++brackets;
+        for(int j = i-1; j >= 0 && brackets; --j)
+        {
+          switch(code[j])
+          {
+            case '[':
+              --brackets;
+              break;
+            case ']':
+              ++brackets;
+              break;
+          }
+        }
+        if(brackets)
+          error("Invalid brackets.");
+    }
+  }
 }
 int main(int argc, char *argv[])
 {
-  if(argc != 2)
-  {
-    fprintf(stderr, "You must enter only 1 file name.\n");
-    return 1;
-  }
-
+  if(argc > 2)
+    error("Too many arguments");
+  else if(argc != 2)
+    error("No arguments");
   FILE *fp;
-
   char str[MAXCHAR];
   char *filename = argv[1];
-
   fp = fopen(filename, "r");
-
+  char *code;
   if(fp == NULL)
-  {
-    fprintf(stderr, "Could not open file.\n");
-    return 1;
-  }
-
-  while (fgets(str, MAXCHAR, fp) != NULL)
-  {
-    if(code == "" && str != "")
-    {
-      code = (char *)malloc(strlen(str));
-      strcat(code, str);
-    }
-    else
-    {
-      code = (char *)realloc(code, strlen(code) + strlen(str));
-      strcat(code, str);
-    }
-  }
-  puts(code);
+    error("Could not open file");
+  fseek(fp, 0, SEEK_END);
+  long lenght = ftell(fp);
+  fseek(fp, 0, SEEK_SET);
+  code = (char *)malloc(lenght);
+  fread(code, sizeof(char), lenght, fp);
   fclose(fp);
+  checkErrors(code);
+  puts(code);
  return 0;
 }

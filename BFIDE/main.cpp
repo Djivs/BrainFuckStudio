@@ -1,14 +1,12 @@
 /*
- * Written by Djivs, 2020
+ * Copyright 2020 Djivs
  * https://github.com/Djivs
  */
-//default main.cpp, did not change it
+// default main.cpp, did not change it
+#include <QApplication>
 #include "mainwindow.h"
 
-#include <QApplication>
-
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
     QApplication a(argc, argv);
     MainWindow w;
     w.show();
