@@ -3,18 +3,19 @@
 
 #include <QSyntaxHighlighter>
 
+#include <vector>
+
 class SyntaxHighlighter :
-        public QSyntaxHighlighter
-{
+        public QSyntaxHighlighter {
     Q_OBJECT
 
-public:
-    SyntaxHighlighter(QTextDocument *parent = 0);
+ public:
+    explicit SyntaxHighlighter(QTextDocument *parent = 0);
 
-protected:
+ protected:
     void highlightBlock(const QString &text) override;
 
-private:
+ private:
     /*struct HighlightingRule
     {
         QRegularExpression pattern;
@@ -35,4 +36,4 @@ private:
     bool isBfChar(const QChar& c);
 };
 
-#endif // SYNTAXHIGHLIGHTER_H
+#endif  // SYNTAXHIGHLIGHTER_H
